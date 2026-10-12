@@ -1,0 +1,37 @@
+{
+    "network": {
+        "num_channels": 8,
+        "spreading_factors": [7, 8, 9, 10, 11, 12],
+        "hypercycle_duration_s": 100
+    },
+    "gateway": {
+        "max_concurrent_demodulations": 8
+    },
+    "traffic": {
+        "num_end_devices": 50,
+        "payload_sizes_bytes": [10, 20, 30, 50],
+        "periods_s": [10, 20, 50, 100],
+        "priority_range": [1, 10],
+        "seed": 42,
+        "eligible_sf_mode": "all",
+        "deadline_slack_factor": 1.5
+    },
+    "lora_phy": {
+        "bandwidth_hz": 125000,
+        "coding_rate": 1,
+        "preamble_symbols": 8,
+        "crc_enabled": true,
+        "explicit_header": true,
+        "low_data_rate_optimize": "auto"
+    },
+    "toa_mode": "real",
+    "time_resolution_ms": 1,
+    "validation": {
+        "run_ilp_comparison": false,
+        "check_invariants": true
+    },
+    "output": {
+        "schedule_file": "output/schedule.json",
+        "stats_file": "output/stats.json"
+    }
+}
