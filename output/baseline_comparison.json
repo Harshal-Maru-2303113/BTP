@@ -1,0 +1,41 @@
+{
+  "instance": {
+    "n": 234,
+    "m": 48,
+    "H_ms": 100000
+  },
+  "algorithms": {
+    "2-Approx (Ours)": {
+      "makespan_ms": 1545,
+      "w_star": 775,
+      "time_s": 0.2223,
+      "ratio_to_opt": null,
+      "guarantee": "\u2264 2.0"
+    },
+    "Random Assignment": {
+      "makespan_ms": 12193,
+      "time_s": 0.0041,
+      "ratio_to_opt": null,
+      "guarantee": "None",
+      "avg_makespan_10seeds": 13542.7
+    },
+    "Greedy Least-Loaded": {
+      "makespan_ms": 989,
+      "time_s": 0.0013,
+      "ratio_to_opt": null,
+      "guarantee": "None"
+    },
+    "Min-Min": {
+      "makespan_ms": 990,
+      "time_s": 0.0716,
+      "ratio_to_opt": null,
+      "guarantee": "None"
+    },
+    "Max-Min": {
+      "makespan_ms": 933,
+      "time_s": 0.0586,
+      "ratio_to_opt": null,
+      "guarantee": "None"
+    }
+  }
+}

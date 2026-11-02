@@ -1,0 +1,2359 @@
+{
+  "feasible": true,
+  "makespan_ms": 90593,
+  "machine_makespan_ms": 1545,
+  "approx_w_star": 775,
+  "num_scheduled": 234,
+  "num_dropped": 0,
+  "energy_stats": {
+    "initial_energy_mj": 6493.79,
+    "optimized_energy_mj": 6493.79,
+    "energy_saved_mj": 0.0,
+    "energy_reduction_pct": 0.0,
+    "downshift_moves": 320,
+    "scheduled_energy_mj": 6493.79
+  },
+  "schedule": [
+    {
+      "packet_id": 197,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 42,
+      "finish_time_ms": 99,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 202,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 124,
+      "finish_time_ms": 166,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 210,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 166,
+      "finish_time_ms": 208,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 216,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 208,
+      "finish_time_ms": 265,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 198,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 20042,
+      "finish_time_ms": 20099,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 203,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 20124,
+      "finish_time_ms": 20166,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 211,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 20166,
+      "finish_time_ms": 20208,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 217,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 20208,
+      "finish_time_ms": 20265,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 185,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 20265,
+      "finish_time_ms": 20322,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 232,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 20322,
+      "finish_time_ms": 20420,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 199,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 40042,
+      "finish_time_ms": 40099,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 204,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 40155,
+      "finish_time_ms": 40197,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 212,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 40197,
+      "finish_time_ms": 40239,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 218,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 40239,
+      "finish_time_ms": 40296,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 200,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 60042,
+      "finish_time_ms": 60099,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 205,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 60141,
+      "finish_time_ms": 60183,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 213,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 60183,
+      "finish_time_ms": 60225,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 219,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 60225,
+      "finish_time_ms": 60282,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 181,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90000,
+      "finish_time_ms": 90042,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 184,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90042,
+      "finish_time_ms": 90099,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 186,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90099,
+      "finish_time_ms": 90156,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 201,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90156,
+      "finish_time_ms": 90213,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 206,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90213,
+      "finish_time_ms": 90255,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 207,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90255,
+      "finish_time_ms": 90297,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 214,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90297,
+      "finish_time_ms": 90339,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 215,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90339,
+      "finish_time_ms": 90381,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 220,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90381,
+      "finish_time_ms": 90438,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 226,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90438,
+      "finish_time_ms": 90495,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 233,
+      "machine_id": 0,
+      "sf": 7,
+      "channel": 0,
+      "start_time_ms": 90495,
+      "finish_time_ms": 90593,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 187,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 42,
+      "finish_time_ms": 166,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 188,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 10042,
+      "finish_time_ms": 10166,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 189,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 20042,
+      "finish_time_ms": 20166,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 190,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 30000,
+      "finish_time_ms": 30124,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 182,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 30124,
+      "finish_time_ms": 30248,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 191,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 40042,
+      "finish_time_ms": 40166,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 192,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 50000,
+      "finish_time_ms": 50124,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 193,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 60042,
+      "finish_time_ms": 60166,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 194,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 70000,
+      "finish_time_ms": 70124,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 195,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 80000,
+      "finish_time_ms": 80124,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 171,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 80124,
+      "finish_time_ms": 80248,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 183,
+      "machine_id": 1,
+      "sf": 8,
+      "channel": 0,
+      "start_time_ms": 80248,
+      "finish_time_ms": 80372,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 0,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 0,
+      "finish_time_ms": 42,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 15,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 42,
+      "finish_time_ms": 84,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 25,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 99,
+      "finish_time_ms": 141,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 1,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 10000,
+      "finish_time_ms": 10042,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 10,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 10042,
+      "finish_time_ms": 10099,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 16,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 10099,
+      "finish_time_ms": 10141,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 26,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 10141,
+      "finish_time_ms": 10183,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 2,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 20000,
+      "finish_time_ms": 20042,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 17,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 20042,
+      "finish_time_ms": 20084,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 27,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 20099,
+      "finish_time_ms": 20141,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 3,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 30000,
+      "finish_time_ms": 30042,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 11,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 30042,
+      "finish_time_ms": 30099,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 18,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 30099,
+      "finish_time_ms": 30141,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 28,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 30141,
+      "finish_time_ms": 30183,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 4,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 40000,
+      "finish_time_ms": 40042,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 19,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 40042,
+      "finish_time_ms": 40084,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 29,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 40099,
+      "finish_time_ms": 40141,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 5,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 50000,
+      "finish_time_ms": 50042,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 12,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 50042,
+      "finish_time_ms": 50099,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 20,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 50099,
+      "finish_time_ms": 50141,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 30,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 50141,
+      "finish_time_ms": 50183,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 6,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 60000,
+      "finish_time_ms": 60042,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 21,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 60042,
+      "finish_time_ms": 60084,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 31,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 60099,
+      "finish_time_ms": 60141,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 7,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 70000,
+      "finish_time_ms": 70042,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 13,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 70042,
+      "finish_time_ms": 70099,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 22,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 70099,
+      "finish_time_ms": 70141,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 32,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 70141,
+      "finish_time_ms": 70183,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 8,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 80000,
+      "finish_time_ms": 80042,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 23,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 80042,
+      "finish_time_ms": 80084,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 33,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 80084,
+      "finish_time_ms": 80126,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 9,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 90000,
+      "finish_time_ms": 90042,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 14,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 90042,
+      "finish_time_ms": 90099,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 24,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 90099,
+      "finish_time_ms": 90141,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 34,
+      "machine_id": 6,
+      "sf": 7,
+      "channel": 1,
+      "start_time_ms": 90141,
+      "finish_time_ms": 90183,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 221,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 42,
+      "finish_time_ms": 166,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 227,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 166,
+      "finish_time_ms": 290,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 222,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 20042,
+      "finish_time_ms": 20166,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 228,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 20166,
+      "finish_time_ms": 20290,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 208,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 20290,
+      "finish_time_ms": 20414,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 223,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 40042,
+      "finish_time_ms": 40166,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 229,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 40166,
+      "finish_time_ms": 40290,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 224,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 60042,
+      "finish_time_ms": 60166,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 230,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 60166,
+      "finish_time_ms": 60290,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 196,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 90000,
+      "finish_time_ms": 90124,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 209,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 90124,
+      "finish_time_ms": 90248,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 225,
+      "machine_id": 7,
+      "sf": 8,
+      "channel": 1,
+      "start_time_ms": 90248,
+      "finish_time_ms": 90372,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 172,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 0,
+      "finish_time_ms": 42,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 35,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 57,
+      "finish_time_ms": 99,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 43,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 99,
+      "finish_time_ms": 197,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 48,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 197,
+      "finish_time_ms": 254,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 173,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 10000,
+      "finish_time_ms": 10042,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 174,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 20000,
+      "finish_time_ms": 20042,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 36,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 20057,
+      "finish_time_ms": 20099,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 44,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 20099,
+      "finish_time_ms": 20197,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 49,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 20197,
+      "finish_time_ms": 20254,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 41,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 20254,
+      "finish_time_ms": 20296,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 53,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 20296,
+      "finish_time_ms": 20338,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 37,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 40000,
+      "finish_time_ms": 40042,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 45,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 40057,
+      "finish_time_ms": 40155,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 50,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 40155,
+      "finish_time_ms": 40212,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 38,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 60000,
+      "finish_time_ms": 60042,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 46,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 60057,
+      "finish_time_ms": 60155,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 51,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 60155,
+      "finish_time_ms": 60212,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 39,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 80000,
+      "finish_time_ms": 80042,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 40,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 80042,
+      "finish_time_ms": 80099,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 42,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 80099,
+      "finish_time_ms": 80141,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 47,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 80141,
+      "finish_time_ms": 80239,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 52,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 80239,
+      "finish_time_ms": 80296,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 54,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 80296,
+      "finish_time_ms": 80338,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 169,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 80338,
+      "finish_time_ms": 80436,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 170,
+      "machine_id": 12,
+      "sf": 7,
+      "channel": 2,
+      "start_time_ms": 80436,
+      "finish_time_ms": 80534,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 55,
+      "machine_id": 13,
+      "sf": 8,
+      "channel": 2,
+      "start_time_ms": 0,
+      "finish_time_ms": 124,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 56,
+      "machine_id": 13,
+      "sf": 8,
+      "channel": 2,
+      "start_time_ms": 10000,
+      "finish_time_ms": 10124,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 57,
+      "machine_id": 13,
+      "sf": 8,
+      "channel": 2,
+      "start_time_ms": 20000,
+      "finish_time_ms": 20124,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 58,
+      "machine_id": 13,
+      "sf": 8,
+      "channel": 2,
+      "start_time_ms": 30000,
+      "finish_time_ms": 30124,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 59,
+      "machine_id": 13,
+      "sf": 8,
+      "channel": 2,
+      "start_time_ms": 40000,
+      "finish_time_ms": 40124,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 60,
+      "machine_id": 13,
+      "sf": 8,
+      "channel": 2,
+      "start_time_ms": 50000,
+      "finish_time_ms": 50124,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 61,
+      "machine_id": 13,
+      "sf": 8,
+      "channel": 2,
+      "start_time_ms": 60000,
+      "finish_time_ms": 60124,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 231,
+      "machine_id": 13,
+      "sf": 8,
+      "channel": 2,
+      "start_time_ms": 80042,
+      "finish_time_ms": 80166,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 67,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 0,
+      "finish_time_ms": 98,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 68,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 10000,
+      "finish_time_ms": 10098,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 69,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 20000,
+      "finish_time_ms": 20098,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 70,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 30000,
+      "finish_time_ms": 30098,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 175,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 30098,
+      "finish_time_ms": 30140,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 65,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 30140,
+      "finish_time_ms": 30182,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 71,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 40000,
+      "finish_time_ms": 40098,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 176,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 40124,
+      "finish_time_ms": 40166,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 72,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 50000,
+      "finish_time_ms": 50098,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 177,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 50098,
+      "finish_time_ms": 50140,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 73,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 60000,
+      "finish_time_ms": 60098,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 178,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 60124,
+      "finish_time_ms": 60166,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 62,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 70000,
+      "finish_time_ms": 70072,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 74,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 70072,
+      "finish_time_ms": 70170,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 179,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 70170,
+      "finish_time_ms": 70212,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 63,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 80000,
+      "finish_time_ms": 80072,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 75,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 80072,
+      "finish_time_ms": 80170,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 180,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 80170,
+      "finish_time_ms": 80212,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 64,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 90000,
+      "finish_time_ms": 90072,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 66,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 90072,
+      "finish_time_ms": 90114,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 76,
+      "machine_id": 18,
+      "sf": 7,
+      "channel": 3,
+      "start_time_ms": 90114,
+      "finish_time_ms": 90212,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 79,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 0,
+      "finish_time_ms": 42,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 91,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 57,
+      "finish_time_ms": 155,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 80,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 10000,
+      "finish_time_ms": 10042,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 92,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 10042,
+      "finish_time_ms": 10140,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 81,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 20000,
+      "finish_time_ms": 20042,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 93,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 20057,
+      "finish_time_ms": 20155,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 82,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 30000,
+      "finish_time_ms": 30042,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 94,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 30042,
+      "finish_time_ms": 30140,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 77,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 30140,
+      "finish_time_ms": 30212,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 83,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 40000,
+      "finish_time_ms": 40042,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 89,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 40057,
+      "finish_time_ms": 40099,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 95,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 40141,
+      "finish_time_ms": 40239,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 84,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 50000,
+      "finish_time_ms": 50042,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 96,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 50042,
+      "finish_time_ms": 50140,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 85,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 60000,
+      "finish_time_ms": 60042,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 97,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 60057,
+      "finish_time_ms": 60155,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 86,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 70000,
+      "finish_time_ms": 70042,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 98,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 70042,
+      "finish_time_ms": 70140,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 87,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 80000,
+      "finish_time_ms": 80042,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 99,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 80042,
+      "finish_time_ms": 80140,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 78,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 80140,
+      "finish_time_ms": 80212,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 88,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 90000,
+      "finish_time_ms": 90042,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 90,
+      "machine_id": 24,
+      "sf": 7,
+      "channel": 4,
+      "start_time_ms": 90042,
+      "finish_time_ms": 90084,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 108,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 0,
+      "finish_time_ms": 57,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 103,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 98,
+      "finish_time_ms": 170,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 109,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 10000,
+      "finish_time_ms": 10057,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 118,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 10057,
+      "finish_time_ms": 10114,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 110,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 20000,
+      "finish_time_ms": 20057,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 104,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 20098,
+      "finish_time_ms": 20170,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 111,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 30000,
+      "finish_time_ms": 30057,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 119,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 30057,
+      "finish_time_ms": 30114,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 101,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 30114,
+      "finish_time_ms": 30171,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 112,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 40000,
+      "finish_time_ms": 40057,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 123,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 40098,
+      "finish_time_ms": 40155,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 105,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 40166,
+      "finish_time_ms": 40238,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 113,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 50000,
+      "finish_time_ms": 50057,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 120,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 50057,
+      "finish_time_ms": 50114,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 114,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 60000,
+      "finish_time_ms": 60057,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 106,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 60098,
+      "finish_time_ms": 60170,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 115,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 70000,
+      "finish_time_ms": 70057,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 121,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 70057,
+      "finish_time_ms": 70114,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 116,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 80000,
+      "finish_time_ms": 80057,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 100,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 90000,
+      "finish_time_ms": 90098,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 102,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 90098,
+      "finish_time_ms": 90155,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 107,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 90155,
+      "finish_time_ms": 90227,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 117,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 90227,
+      "finish_time_ms": 90284,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 122,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 90284,
+      "finish_time_ms": 90341,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 124,
+      "machine_id": 30,
+      "sf": 7,
+      "channel": 5,
+      "start_time_ms": 90341,
+      "finish_time_ms": 90398,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 125,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 0,
+      "finish_time_ms": 57,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 126,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 10000,
+      "finish_time_ms": 10057,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 137,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 10057,
+      "finish_time_ms": 10129,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 144,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 10129,
+      "finish_time_ms": 10201,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 127,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 20000,
+      "finish_time_ms": 20057,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 128,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 30000,
+      "finish_time_ms": 30057,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 138,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 30057,
+      "finish_time_ms": 30129,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 145,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 30129,
+      "finish_time_ms": 30201,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 129,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 40000,
+      "finish_time_ms": 40057,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 135,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 40099,
+      "finish_time_ms": 40197,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 130,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 50000,
+      "finish_time_ms": 50057,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 139,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 50057,
+      "finish_time_ms": 50129,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 146,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 50129,
+      "finish_time_ms": 50201,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 131,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 60000,
+      "finish_time_ms": 60057,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 132,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 70000,
+      "finish_time_ms": 70057,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 140,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 70057,
+      "finish_time_ms": 70129,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 133,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 80000,
+      "finish_time_ms": 80057,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 134,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 90000,
+      "finish_time_ms": 90057,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 136,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 90057,
+      "finish_time_ms": 90155,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 141,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 90155,
+      "finish_time_ms": 90227,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 142,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 90227,
+      "finish_time_ms": 90325,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 143,
+      "machine_id": 36,
+      "sf": 7,
+      "channel": 6,
+      "start_time_ms": 90325,
+      "finish_time_ms": 90382,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 155,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 0,
+      "finish_time_ms": 42,
+      "deadline_ms": 10000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 150,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 84,
+      "finish_time_ms": 182,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 156,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 10000,
+      "finish_time_ms": 10042,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 165,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 10042,
+      "finish_time_ms": 10140,
+      "deadline_ms": 20000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 157,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 20000,
+      "finish_time_ms": 20042,
+      "deadline_ms": 30000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 151,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 20084,
+      "finish_time_ms": 20182,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 158,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 30000,
+      "finish_time_ms": 30042,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 166,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 30042,
+      "finish_time_ms": 30140,
+      "deadline_ms": 40000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 159,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 40000,
+      "finish_time_ms": 40042,
+      "deadline_ms": 50000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 152,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 40084,
+      "finish_time_ms": 40182,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 160,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 50000,
+      "finish_time_ms": 50042,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 167,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 50042,
+      "finish_time_ms": 50140,
+      "deadline_ms": 60000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 161,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 60000,
+      "finish_time_ms": 60042,
+      "deadline_ms": 70000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 147,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 60084,
+      "finish_time_ms": 60156,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 153,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 60156,
+      "finish_time_ms": 60254,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 162,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 70000,
+      "finish_time_ms": 70042,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 168,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 70042,
+      "finish_time_ms": 70140,
+      "deadline_ms": 80000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 163,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 80000,
+      "finish_time_ms": 80042,
+      "deadline_ms": 90000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 148,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 80057,
+      "finish_time_ms": 80129,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 149,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 80129,
+      "finish_time_ms": 80227,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 154,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 80227,
+      "finish_time_ms": 80325,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    },
+    {
+      "packet_id": 164,
+      "machine_id": 42,
+      "sf": 7,
+      "channel": 7,
+      "start_time_ms": 90000,
+      "finish_time_ms": 90042,
+      "deadline_ms": 100000,
+      "deadline_met": true
+    }
+  ],
+  "dropped_packet_ids": []
+}

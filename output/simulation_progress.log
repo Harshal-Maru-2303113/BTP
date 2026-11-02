@@ -1,0 +1,40 @@
+============================================================================
+  LARGE-SCALE SIMULATION: LoRaWAN R||C_max Schedulers
+  Range: n = 100 to 10000 (16 points)
+  Repetitions per n: 10 independent trials
+  Workers: 6 parallel CPU processes
+============================================================================
+  [Resume] Loaded 10 checkpoints from output/large_scale_simulation.json
+  [Cached] Skipping n =   100 (already in checkpoint)
+  [Cached] Skipping n =   250 (already in checkpoint)
+  [Cached] Skipping n =   500 (already in checkpoint)
+  [Cached] Skipping n =   750 (already in checkpoint)
+  [Cached] Skipping n =  1000 (already in checkpoint)
+  [Cached] Skipping n =  1500 (already in checkpoint)
+  [Cached] Skipping n =  2000 (already in checkpoint)
+  [Cached] Skipping n =  2500 (already in checkpoint)
+  [Cached] Skipping n =  3000 (already in checkpoint)
+  [Cached] Skipping n =  4000 (already in checkpoint)
+
+>>> Simulating n =  5000 (10 runs)...
+    Completed in 110.6s | 2-Approx: 85821 ms (ratio: 2.000) | Greedy: 53456 ms | Random: 555642 ms
+
+>>> Simulating n =  6000 (10 runs)...
+    Completed in 153.4s | 2-Approx: 103209 ms (ratio: 2.000) | Greedy: 63354 ms | Random: 663754 ms
+
+>>> Simulating n =  7000 (10 runs)...
+    Completed in 205.3s | 2-Approx: 120173 ms (ratio: 2.000) | Greedy: 73501 ms | Random: 780400 ms
+
+>>> Simulating n =  8000 (10 runs)...
+    Completed in 266.7s | 2-Approx: 138357 ms (ratio: 2.000) | Greedy: 84273 ms | Random: 889630 ms
+
+>>> Simulating n =  9000 (10 runs)...
+    Completed in 338.4s | 2-Approx: 155224 ms (ratio: 2.000) | Greedy: 94126 ms | Random: 982545 ms
+
+>>> Simulating n = 10000 (10 runs)...
+    Completed in 422.5s | 2-Approx: 171114 ms (ratio: 2.000) | Greedy: 103730 ms | Random: 1092994 ms
+
+============================================================================
+  SIMULATION COMPLETED in 24.95 minutes
+  Aggregated results saved to: output/large_scale_simulation.json
+============================================================================

@@ -1,0 +1,105 @@
+\relax 
+\@writefile{toc}{\contentsline {section}{\numberline {1}System Model and Problem Statement}{1}{}\protected@file@percent }
+\newlabel{sec:model}{{1}{1}{}{section.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Network and Hardware Model}{1}{}\protected@file@percent }
+\citation{casals2017modeling}
+\citation{bouguera2018energy}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Traffic and Packet Model}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Time-on-Air (ToA) Matrix}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}LoRaWAN Class A Energy Consumption Model}{3}{}\protected@file@percent }
+\newlabel{subsec:energy_model}{{1.4}{3}{}{subsection.1.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Problem Formulation}{3}{}\protected@file@percent }
+\citation{gairing2007faster}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Combinatorial 2-Approximation on Unrelated Machines}{4}{}\protected@file@percent }
+\newlabel{sec:approx_theory}{{2}{4}{}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Generalized Unsplittable Flow Formulation}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Residual Network and Machine Partitioning}{4}{}\protected@file@percent }
+\newlabel{def:partitions}{{3}{4}{}{definition.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Gain Rounding and Truemper's Logarithmic Transformation}{5}{}\protected@file@percent }
+\newlabel{eq:rounding_bound}{{19}{5}{}{equation.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Node Potentials and Reduced Cost Optimality}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Algorithmic Mechanics and Theoretical Proofs}{5}{}\protected@file@percent }
+\newlabel{sec:algorithms_proofs}{{3}{5}{}{section.3}{}}
+\citation{gairing2007faster}
+\citation{gairing2007faster}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Inner Loop: Unsplittable-Blocking-Flow}{6}{}\protected@file@percent }
+\newlabel{lem:load_invariance}{{1}{6}{}{lemma.1}{}}
+\newlabel{thm:ubf_complexity}{{1}{6}{}{theorem.1}{}}
+\citation{gairing2007faster}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Unsplittable-Blocking-Flow$(\alpha , G'_\alpha (w), P, w)$}}{7}{}\protected@file@percent }
+\newlabel{alg:ubf}{{1}{7}{}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Outer Loop: Unsplittable-Truemper}{7}{}\protected@file@percent }
+\newlabel{thm:lower_bound}{{2}{7}{}{theorem.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Binary Search and 2-Approximation Theorem}{7}{}\protected@file@percent }
+\newlabel{thm:overall_2approx}{{3}{7}{}{theorem.3}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Unsplittable-Truemper$(\alpha , P, C, w)$}}{8}{}\protected@file@percent }
+\newlabel{alg:truemper}{{2}{8}{}{algorithm.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}LoRaWAN Hypercycle Scheduling with Hardware Demodulation Constraints}{8}{}\protected@file@percent }
+\newlabel{sec:lorawan_scheduler}{{4}{8}{}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Gateway Hardware Demodulation Constraint}{8}{}\protected@file@percent }
+\newlabel{subsec:hardware_limit}{{4.1}{8}{}{subsection.4.1}{}}
+\newlabel{eq:demod_constraint}{{30}{9}{}{equation.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Per-Channel Earliest Deadline First (EDF) Timeline}{9}{}\protected@file@percent }
+\newlabel{subsec:edf_timeline}{{4.2}{9}{}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Phase 1.5: Energy-Optimal Capacity-Constrained Downshifting}{9}{}\protected@file@percent }
+\newlabel{subsec:phase1_5_energy}{{4.3}{9}{}{subsection.4.3}{}}
+\newlabel{opt:energy_obj}{{34}{9}{}{equation.34}{}}
+\newlabel{opt:energy_cap}{{35}{9}{}{equation.35}{}}
+\newlabel{opt:energy_feas}{{36}{9}{}{equation.36}{}}
+\newlabel{thm:energy_preserves_bound}{{4}{9}{}{theorem.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Complete Main Algorithm Pseudocode}{10}{}\protected@file@percent }
+\newlabel{subsec:main_algorithm}{{4.4}{10}{}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Hierarchical Cyclic Executive Architecture and Inter-Cycle Carryover Buffer}{10}{}\protected@file@percent }
+\newlabel{subsec:cyclic_executive}{{4.5}{10}{}{subsection.4.5}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces LoRaWAN-Hypercycle-Scheduler$(\mathcal  {J}, \mathcal  {M}, P, E, H, N_{\text  {demod}}^{\max })$}}{11}{}\protected@file@percent }
+\newlabel{alg:lorawan_scheduler}{{3}{11}{}{algorithm.3}{}}
+\newlabel{thm:cyclic_guarantee}{{5}{12}{}{theorem.5}{}}
+\citation{lenstra1990approximation}
+\citation{lenstra1990approximation,shmoys1993approximation}
+\@writefile{toc}{\contentsline {section}{\numberline {5}A Priori Feasibility and Schedulability Analysis via Upper Bound Duality}{13}{}\protected@file@percent }
+\newlabel{sec:schedulability_certificate}{{5}{13}{}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The Lenstra--Shmoys--Tardos (1990) LP Relaxation and Rounding Bound}{13}{}\protected@file@percent }
+\newlabel{eq:lp_assign}{{45}{13}{}{equation.45}{}}
+\newlabel{eq:lp_load}{{46}{13}{}{equation.46}{}}
+\newlabel{eq:lp_prune}{{47}{13}{}{equation.47}{}}
+\newlabel{eq:lp_energy}{{48}{13}{}{equation.48}{}}
+\newlabel{thm:lst_rounding}{{6}{13}{}{theorem.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Closed-Form Schedulability Certificate Without Simulation}{14}{}\protected@file@percent }
+\newlabel{thm:apriori_feasibility}{{7}{14}{}{theorem.7}{}}
+\newlabel{eq:x_tight}{{52}{14}{}{equation.52}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Numerical Evaluation on Standard Deployment}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Time Complexity Analysis of the Complete Framework}{15}{}\protected@file@percent }
+\newlabel{sec:time_complexity}{{6}{15}{}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Phase-by-Phase Computational Complexity}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}Matrix Initialization and Input Generation}{15}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.2}Phase 1: Combinatorial 2-Approximation Makespan Minimization}{15}{}\protected@file@percent }
+\newlabel{eq:phase1_complexity}{{63}{16}{}{equation.63}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.3}Phase 2: Chronological EDF Placement with Segment Tree Tracking}{17}{}\protected@file@percent }
+\newlabel{eq:phase2_complexity}{{67}{17}{}{equation.67}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.4}Phase 3: Priority-Conscious Drop Resolution Loop}{17}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Overall System Time Complexity}{18}{}\protected@file@percent }
+\newlabel{thm:overall_complexity}{{8}{18}{}{theorem.8}{}}
+\newlabel{eq:total_practical_complexity}{{70}{18}{}{equation.70}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Experimental Performance and Empirical Validation}{18}{}\protected@file@percent }
+\newlabel{sec:experiments}{{7}{18}{}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Benchmark Configuration and Methodology}{18}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Detailed Computational Complexity Breakdown by Component}}{19}{}\protected@file@percent }
+\newlabel{tab:complexity_breakdown}{{1}{19}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Approximation Ratio Verification Against Exact Optimum}{19}{}\protected@file@percent }
+\citation{casals2017modeling}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Demodulation Occupancy and Invariant Verification}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Physical Bottleneck Analysis of Packet Drops}{20}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Radio Energy Consumption Evaluation}{20}{}\protected@file@percent }
+\newlabel{subsec:energy_evaluation}{{7.5}{20}{}{subsection.7.5}{}}
+\bibstyle{IEEEtran}
+\bibdata{refr}
+\bibcite{casals2017modeling}{1}
+\bibcite{bouguera2018energy}{2}
+\bibcite{gairing2007faster}{3}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Energy Consumption Comparison across All $n=234$ Packets ($m=48$ Machines)}}{21}{}\protected@file@percent }
+\newlabel{tab:energy_comparison}{{2}{21}{}{table.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion and Future Work}{21}{}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{21}{}{section.8}{}}
+\bibcite{lenstra1990approximation}{4}
+\bibcite{shmoys1993approximation}{5}
+\gdef \@abspage@last{22}

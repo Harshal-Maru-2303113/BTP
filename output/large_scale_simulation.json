@@ -1,0 +1,1704 @@
+{
+  "n_values": [
+    100,
+    250,
+    500,
+    750,
+    1000,
+    1500,
+    2000,
+    2500,
+    3000,
+    4000,
+    5000,
+    6000,
+    7000,
+    8000,
+    9000,
+    10000
+  ],
+  "num_runs": 10,
+  "num_machines": 48,
+  "results": {
+    "100": {
+      "w_star_mean": 1846.0,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 3670.1,
+            "std": 29.1,
+            "min": 3615,
+            "max": 3692
+          },
+          "ratio": {
+            "mean": 1.99,
+            "std": 0.02,
+            "min": 1.96,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 0.04,
+            "std": 0.01,
+            "min": 0.03,
+            "max": 0.05
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 2446.6,
+            "std": 479.66,
+            "min": 1846,
+            "max": 3490
+          },
+          "ratio": {
+            "mean": 1.33,
+            "std": 0.26,
+            "min": 1.0,
+            "max": 1.89
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 2557.9,
+            "std": 364.28,
+            "min": 2217,
+            "max": 3244
+          },
+          "ratio": {
+            "mean": 1.39,
+            "std": 0.2,
+            "min": 1.2,
+            "max": 1.76
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.01
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 1903.8,
+            "std": 121.14,
+            "min": 1846,
+            "max": 2216
+          },
+          "ratio": {
+            "mean": 1.03,
+            "std": 0.07,
+            "min": 1.0,
+            "max": 1.2
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.01
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 19183.7,
+            "std": 4198.77,
+            "min": 12478,
+            "max": 27577
+          },
+          "ratio": {
+            "mean": 10.39,
+            "std": 2.27,
+            "min": 6.76,
+            "max": 14.94
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        }
+      }
+    },
+    "250": {
+      "w_star_mean": 2267.1,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 4532.0,
+            "std": 696.17,
+            "min": 3672,
+            "max": 5746
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 1.99,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 0.23,
+            "std": 0.05,
+            "min": 0.18,
+            "max": 0.31
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 4149.5,
+            "std": 451.62,
+            "min": 3325,
+            "max": 4719
+          },
+          "ratio": {
+            "mean": 1.84,
+            "std": 0.14,
+            "min": 1.64,
+            "max": 2.1
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 4204.2,
+            "std": 632.59,
+            "min": 3408,
+            "max": 5334
+          },
+          "ratio": {
+            "mean": 1.86,
+            "std": 0.06,
+            "min": 1.77,
+            "max": 1.98
+          },
+          "runtime": {
+            "mean": 0.04,
+            "std": 0.0,
+            "min": 0.03,
+            "max": 0.05
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 3009.9,
+            "std": 476.81,
+            "min": 2352,
+            "max": 3692
+          },
+          "ratio": {
+            "mean": 1.34,
+            "std": 0.16,
+            "min": 1.13,
+            "max": 1.74
+          },
+          "runtime": {
+            "mean": 0.03,
+            "std": 0.0,
+            "min": 0.03,
+            "max": 0.04
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 41800.2,
+            "std": 6708.65,
+            "min": 31838,
+            "max": 57777
+          },
+          "ratio": {
+            "mean": 18.66,
+            "std": 2.83,
+            "min": 12.11,
+            "max": 21.97
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        }
+      }
+    },
+    "500": {
+      "w_star_mean": 4612.1,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 9223.2,
+            "std": 1326.84,
+            "min": 7188,
+            "max": 11376
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 0.68,
+            "std": 0.14,
+            "min": 0.5,
+            "max": 0.9
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 7272.8,
+            "std": 524.54,
+            "min": 6565,
+            "max": 7963
+          },
+          "ratio": {
+            "mean": 1.59,
+            "std": 0.13,
+            "min": 1.4,
+            "max": 1.83
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 6883.5,
+            "std": 358.83,
+            "min": 6078,
+            "max": 7218
+          },
+          "ratio": {
+            "mean": 1.51,
+            "std": 0.16,
+            "min": 1.27,
+            "max": 1.86
+          },
+          "runtime": {
+            "mean": 0.16,
+            "std": 0.01,
+            "min": 0.15,
+            "max": 0.18
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 5572.9,
+            "std": 576.74,
+            "min": 4681,
+            "max": 6488
+          },
+          "ratio": {
+            "mean": 1.22,
+            "std": 0.08,
+            "min": 1.14,
+            "max": 1.41
+          },
+          "runtime": {
+            "mean": 0.13,
+            "std": 0.01,
+            "min": 0.11,
+            "max": 0.15
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 64859.3,
+            "std": 8629.65,
+            "min": 52550,
+            "max": 80782
+          },
+          "ratio": {
+            "mean": 14.41,
+            "std": 3.08,
+            "min": 9.88,
+            "max": 21.02
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        }
+      }
+    },
+    "750": {
+      "w_star_mean": 6675.0,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 13349.5,
+            "std": 1395.67,
+            "min": 10725,
+            "max": 15718
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 1.29,
+            "std": 0.33,
+            "min": 0.89,
+            "max": 1.78
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 10174.4,
+            "std": 457.29,
+            "min": 9399,
+            "max": 10874
+          },
+          "ratio": {
+            "mean": 1.53,
+            "std": 0.1,
+            "min": 1.38,
+            "max": 1.75
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.01
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 9543.5,
+            "std": 282.72,
+            "min": 9322,
+            "max": 10349
+          },
+          "ratio": {
+            "mean": 1.44,
+            "std": 0.13,
+            "min": 1.23,
+            "max": 1.74
+          },
+          "runtime": {
+            "mean": 0.35,
+            "std": 0.02,
+            "min": 0.33,
+            "max": 0.39
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 8070.0,
+            "std": 517.03,
+            "min": 7519,
+            "max": 9034
+          },
+          "ratio": {
+            "mean": 1.22,
+            "std": 0.07,
+            "min": 1.15,
+            "max": 1.4
+          },
+          "runtime": {
+            "mean": 0.3,
+            "std": 0.03,
+            "min": 0.26,
+            "max": 0.34
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 110193.4,
+            "std": 17258.46,
+            "min": 84084,
+            "max": 144467
+          },
+          "ratio": {
+            "mean": 16.66,
+            "std": 2.8,
+            "min": 11.28,
+            "max": 20.69
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        }
+      }
+    },
+    "1000": {
+      "w_star_mean": 8626.2,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 17251.6,
+            "std": 1436.23,
+            "min": 14790,
+            "max": 19382
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 2.06,
+            "std": 0.55,
+            "min": 1.23,
+            "max": 2.91
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 12326.2,
+            "std": 449.64,
+            "min": 11492,
+            "max": 13141
+          },
+          "ratio": {
+            "mean": 1.44,
+            "std": 0.08,
+            "min": 1.34,
+            "max": 1.58
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.01
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 12030.5,
+            "std": 687.25,
+            "min": 10966,
+            "max": 13429
+          },
+          "ratio": {
+            "mean": 1.4,
+            "std": 0.06,
+            "min": 1.32,
+            "max": 1.54
+          },
+          "runtime": {
+            "mean": 0.66,
+            "std": 0.04,
+            "min": 0.58,
+            "max": 0.71
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 10489.1,
+            "std": 466.73,
+            "min": 9607,
+            "max": 11212
+          },
+          "ratio": {
+            "mean": 1.22,
+            "std": 0.08,
+            "min": 1.16,
+            "max": 1.41
+          },
+          "runtime": {
+            "mean": 0.54,
+            "std": 0.04,
+            "min": 0.48,
+            "max": 0.6
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 127325.3,
+            "std": 16206.91,
+            "min": 107408,
+            "max": 160542
+          },
+          "ratio": {
+            "mean": 14.79,
+            "std": 1.67,
+            "min": 11.57,
+            "max": 17.89
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        }
+      }
+    },
+    "1500": {
+      "w_star_mean": 12949.9,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 25899.2,
+            "std": 1149.15,
+            "min": 24428,
+            "max": 28427
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 3.89,
+            "std": 0.99,
+            "min": 2.97,
+            "max": 5.44
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 17659.6,
+            "std": 673.32,
+            "min": 16827,
+            "max": 19246
+          },
+          "ratio": {
+            "mean": 1.36,
+            "std": 0.04,
+            "min": 1.3,
+            "max": 1.45
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.02
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 16643.4,
+            "std": 571.95,
+            "min": 15854,
+            "max": 17907
+          },
+          "ratio": {
+            "mean": 1.29,
+            "std": 0.03,
+            "min": 1.25,
+            "max": 1.37
+          },
+          "runtime": {
+            "mean": 1.69,
+            "std": 0.13,
+            "min": 1.56,
+            "max": 1.97
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 15381.6,
+            "std": 621.66,
+            "min": 14368,
+            "max": 16584
+          },
+          "ratio": {
+            "mean": 1.19,
+            "std": 0.03,
+            "min": 1.16,
+            "max": 1.26
+          },
+          "runtime": {
+            "mean": 1.24,
+            "std": 0.08,
+            "min": 1.12,
+            "max": 1.32
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 183906.6,
+            "std": 16029.07,
+            "min": 158312,
+            "max": 215712
+          },
+          "ratio": {
+            "mean": 14.23,
+            "std": 1.44,
+            "min": 12.54,
+            "max": 16.98
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        }
+      }
+    },
+    "2000": {
+      "w_star_mean": 17460.1,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 34919.7,
+            "std": 2047.04,
+            "min": 31419,
+            "max": 38780
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 6.19,
+            "std": 1.54,
+            "min": 4.83,
+            "max": 8.19
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 23191.7,
+            "std": 791.8,
+            "min": 22327,
+            "max": 24627
+          },
+          "ratio": {
+            "mean": 1.33,
+            "std": 0.05,
+            "min": 1.26,
+            "max": 1.42
+          },
+          "runtime": {
+            "mean": 0.02,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.02
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 22589.6,
+            "std": 966.84,
+            "min": 21522,
+            "max": 24300
+          },
+          "ratio": {
+            "mean": 1.3,
+            "std": 0.05,
+            "min": 1.23,
+            "max": 1.37
+          },
+          "runtime": {
+            "mean": 3.17,
+            "std": 0.29,
+            "min": 2.78,
+            "max": 3.63
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 20863.6,
+            "std": 678.42,
+            "min": 20273,
+            "max": 22660
+          },
+          "ratio": {
+            "mean": 1.2,
+            "std": 0.05,
+            "min": 1.16,
+            "max": 1.29
+          },
+          "runtime": {
+            "mean": 2.24,
+            "std": 0.18,
+            "min": 1.94,
+            "max": 2.48
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 241815.8,
+            "std": 28589.71,
+            "min": 204633,
+            "max": 290605
+          },
+          "ratio": {
+            "mean": 13.86,
+            "std": 1.46,
+            "min": 11.61,
+            "max": 16.32
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        }
+      }
+    },
+    "2500": {
+      "w_star_mean": 20858.8,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 41717.3,
+            "std": 1920.4,
+            "min": 38739,
+            "max": 45310
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 9.0,
+            "std": 2.39,
+            "min": 6.98,
+            "max": 13.15
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 27586.0,
+            "std": 693.19,
+            "min": 26435,
+            "max": 29133
+          },
+          "ratio": {
+            "mean": 1.32,
+            "std": 0.05,
+            "min": 1.28,
+            "max": 1.43
+          },
+          "runtime": {
+            "mean": 0.02,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.03
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 26764.8,
+            "std": 740.48,
+            "min": 25618,
+            "max": 28256
+          },
+          "ratio": {
+            "mean": 1.28,
+            "std": 0.03,
+            "min": 1.25,
+            "max": 1.36
+          },
+          "runtime": {
+            "mean": 5.23,
+            "std": 0.6,
+            "min": 4.52,
+            "max": 6.19
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 25091.3,
+            "std": 630.9,
+            "min": 24367,
+            "max": 26519
+          },
+          "ratio": {
+            "mean": 1.2,
+            "std": 0.03,
+            "min": 1.17,
+            "max": 1.26
+          },
+          "runtime": {
+            "mean": 3.52,
+            "std": 0.21,
+            "min": 3.24,
+            "max": 3.73
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 288888.5,
+            "std": 12308.73,
+            "min": 268317,
+            "max": 308412
+          },
+          "ratio": {
+            "mean": 13.87,
+            "std": 0.81,
+            "min": 12.93,
+            "max": 15.48
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.01
+          }
+        }
+      }
+    },
+    "3000": {
+      "w_star_mean": 25380.5,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 50760.5,
+            "std": 1512.72,
+            "min": 48658,
+            "max": 54175
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 12.14,
+            "std": 3.19,
+            "min": 9.34,
+            "max": 16.3
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 32750.8,
+            "std": 540.69,
+            "min": 32012,
+            "max": 33611
+          },
+          "ratio": {
+            "mean": 1.29,
+            "std": 0.04,
+            "min": 1.24,
+            "max": 1.36
+          },
+          "runtime": {
+            "mean": 0.02,
+            "std": 0.01,
+            "min": 0.02,
+            "max": 0.03
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 31874.2,
+            "std": 725.1,
+            "min": 30952,
+            "max": 33168
+          },
+          "ratio": {
+            "mean": 1.26,
+            "std": 0.03,
+            "min": 1.22,
+            "max": 1.29
+          },
+          "runtime": {
+            "mean": 8.02,
+            "std": 0.67,
+            "min": 7.28,
+            "max": 9.05
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 30367.1,
+            "std": 587.75,
+            "min": 29766,
+            "max": 31862
+          },
+          "ratio": {
+            "mean": 1.2,
+            "std": 0.03,
+            "min": 1.17,
+            "max": 1.25
+          },
+          "runtime": {
+            "mean": 5.05,
+            "std": 0.34,
+            "min": 4.62,
+            "max": 5.4
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 343951.1,
+            "std": 34228.73,
+            "min": 288663,
+            "max": 410132
+          },
+          "ratio": {
+            "mean": 13.54,
+            "std": 1.19,
+            "min": 11.55,
+            "max": 15.76
+          },
+          "runtime": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.01
+          }
+        }
+      }
+    },
+    "4000": {
+      "w_star_mean": 34181.9,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 68363.2,
+            "std": 3157.91,
+            "min": 64981,
+            "max": 76511
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 20.23,
+            "std": 3.8,
+            "min": 15.66,
+            "max": 27.84
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 43132.7,
+            "std": 1170.82,
+            "min": 42230,
+            "max": 46325
+          },
+          "ratio": {
+            "mean": 1.26,
+            "std": 0.03,
+            "min": 1.21,
+            "max": 1.31
+          },
+          "runtime": {
+            "mean": 0.03,
+            "std": 0.01,
+            "min": 0.02,
+            "max": 0.04
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 42146.1,
+            "std": 1572.97,
+            "min": 41198,
+            "max": 46780
+          },
+          "ratio": {
+            "mean": 1.23,
+            "std": 0.03,
+            "min": 1.19,
+            "max": 1.28
+          },
+          "runtime": {
+            "mean": 17.01,
+            "std": 1.78,
+            "min": 15.18,
+            "max": 20.95
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 40782.9,
+            "std": 1444.83,
+            "min": 39974,
+            "max": 44934
+          },
+          "ratio": {
+            "mean": 1.19,
+            "std": 0.02,
+            "min": 1.17,
+            "max": 1.24
+          },
+          "runtime": {
+            "mean": 9.93,
+            "std": 1.28,
+            "min": 8.24,
+            "max": 13.15
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 454292.2,
+            "std": 46460.49,
+            "min": 387237,
+            "max": 568428
+          },
+          "ratio": {
+            "mean": 13.31,
+            "std": 1.47,
+            "min": 11.5,
+            "max": 16.83
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.01
+          }
+        }
+      }
+    },
+    "5000": {
+      "w_star_mean": 42910.6,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 85820.8,
+            "std": 2785.27,
+            "min": 81866,
+            "max": 92379
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 22.59,
+            "std": 0.58,
+            "min": 21.47,
+            "max": 23.6
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 53455.8,
+            "std": 1070.48,
+            "min": 52110,
+            "max": 56212
+          },
+          "ratio": {
+            "mean": 1.25,
+            "std": 0.02,
+            "min": 1.21,
+            "max": 1.29
+          },
+          "runtime": {
+            "mean": 0.03,
+            "std": 0.0,
+            "min": 0.03,
+            "max": 0.03
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 52729.4,
+            "std": 1383.07,
+            "min": 51181,
+            "max": 55900
+          },
+          "ratio": {
+            "mean": 1.23,
+            "std": 0.02,
+            "min": 1.21,
+            "max": 1.27
+          },
+          "runtime": {
+            "mean": 19.02,
+            "std": 0.97,
+            "min": 17.39,
+            "max": 20.27
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 50676.2,
+            "std": 1392.88,
+            "min": 49386,
+            "max": 54354
+          },
+          "ratio": {
+            "mean": 1.18,
+            "std": 0.02,
+            "min": 1.17,
+            "max": 1.23
+          },
+          "runtime": {
+            "mean": 13.63,
+            "std": 0.45,
+            "min": 12.92,
+            "max": 14.12
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 555642.5,
+            "std": 45885.16,
+            "min": 505478,
+            "max": 670896
+          },
+          "ratio": {
+            "mean": 12.96,
+            "std": 1.06,
+            "min": 11.87,
+            "max": 15.63
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.01
+          }
+        }
+      }
+    },
+    "6000": {
+      "w_star_mean": 51604.8,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 103209.1,
+            "std": 3364.24,
+            "min": 99972,
+            "max": 111631
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 30.93,
+            "std": 0.69,
+            "min": 29.68,
+            "max": 32.04
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 63353.8,
+            "std": 1425.96,
+            "min": 61314,
+            "max": 66273
+          },
+          "ratio": {
+            "mean": 1.23,
+            "std": 0.02,
+            "min": 1.19,
+            "max": 1.25
+          },
+          "runtime": {
+            "mean": 0.03,
+            "std": 0.0,
+            "min": 0.03,
+            "max": 0.03
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 63028.4,
+            "std": 1759.99,
+            "min": 60586,
+            "max": 66338
+          },
+          "ratio": {
+            "mean": 1.22,
+            "std": 0.02,
+            "min": 1.19,
+            "max": 1.25
+          },
+          "runtime": {
+            "mean": 26.87,
+            "std": 1.68,
+            "min": 24.32,
+            "max": 28.88
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 60921.6,
+            "std": 1650.92,
+            "min": 59049,
+            "max": 64895
+          },
+          "ratio": {
+            "mean": 1.18,
+            "std": 0.01,
+            "min": 1.16,
+            "max": 1.19
+          },
+          "runtime": {
+            "mean": 19.34,
+            "std": 0.99,
+            "min": 17.92,
+            "max": 20.58
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 663754.5,
+            "std": 45615.22,
+            "min": 600720,
+            "max": 778944
+          },
+          "ratio": {
+            "mean": 12.88,
+            "std": 1.05,
+            "min": 11.19,
+            "max": 15.32
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.01
+          }
+        }
+      }
+    },
+    "7000": {
+      "w_star_mean": 60086.6,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 120173.0,
+            "std": 3669.07,
+            "min": 114965,
+            "max": 128468
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 40.81,
+            "std": 2.36,
+            "min": 38.31,
+            "max": 45.58
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 73501.1,
+            "std": 1557.07,
+            "min": 70778,
+            "max": 76732
+          },
+          "ratio": {
+            "mean": 1.22,
+            "std": 0.02,
+            "min": 1.19,
+            "max": 1.25
+          },
+          "runtime": {
+            "mean": 0.04,
+            "std": 0.0,
+            "min": 0.04,
+            "max": 0.04
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 72865.6,
+            "std": 1899.14,
+            "min": 69959,
+            "max": 76849
+          },
+          "ratio": {
+            "mean": 1.21,
+            "std": 0.02,
+            "min": 1.19,
+            "max": 1.26
+          },
+          "runtime": {
+            "mean": 36.26,
+            "std": 1.67,
+            "min": 33.96,
+            "max": 38.66
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 71067.7,
+            "std": 1848.11,
+            "min": 68736,
+            "max": 75370
+          },
+          "ratio": {
+            "mean": 1.18,
+            "std": 0.01,
+            "min": 1.17,
+            "max": 1.2
+          },
+          "runtime": {
+            "mean": 26.4,
+            "std": 1.53,
+            "min": 24.39,
+            "max": 28.62
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 780399.8,
+            "std": 46066.8,
+            "min": 700320,
+            "max": 850213
+          },
+          "ratio": {
+            "mean": 13.0,
+            "std": 0.84,
+            "min": 12.14,
+            "max": 14.43
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.01
+          }
+        }
+      }
+    },
+    "8000": {
+      "w_star_mean": 69178.7,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 138356.9,
+            "std": 3506.36,
+            "min": 134225,
+            "max": 143788
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 51.0,
+            "std": 2.18,
+            "min": 48.08,
+            "max": 55.04
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 84272.8,
+            "std": 1358.6,
+            "min": 81854,
+            "max": 86579
+          },
+          "ratio": {
+            "mean": 1.22,
+            "std": 0.02,
+            "min": 1.19,
+            "max": 1.25
+          },
+          "runtime": {
+            "mean": 0.04,
+            "std": 0.0,
+            "min": 0.04,
+            "max": 0.05
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 83638.4,
+            "std": 1836.7,
+            "min": 81491,
+            "max": 86378
+          },
+          "ratio": {
+            "mean": 1.21,
+            "std": 0.01,
+            "min": 1.2,
+            "max": 1.23
+          },
+          "runtime": {
+            "mean": 48.09,
+            "std": 2.01,
+            "min": 45.4,
+            "max": 50.84
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 81724.1,
+            "std": 1792.23,
+            "min": 79591,
+            "max": 84571
+          },
+          "ratio": {
+            "mean": 1.18,
+            "std": 0.01,
+            "min": 1.17,
+            "max": 1.2
+          },
+          "runtime": {
+            "mean": 34.74,
+            "std": 1.88,
+            "min": 32.07,
+            "max": 37.35
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 889630.3,
+            "std": 41976.59,
+            "min": 835858,
+            "max": 979931
+          },
+          "ratio": {
+            "mean": 12.87,
+            "std": 0.77,
+            "min": 11.87,
+            "max": 14.6
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.02
+          }
+        }
+      }
+    },
+    "9000": {
+      "w_star_mean": 77612.1,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 155223.7,
+            "std": 3458.68,
+            "min": 149405,
+            "max": 160718
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 64.54,
+            "std": 2.73,
+            "min": 59.85,
+            "max": 69.46
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 94126.5,
+            "std": 1455.43,
+            "min": 91304,
+            "max": 96836
+          },
+          "ratio": {
+            "mean": 1.21,
+            "std": 0.01,
+            "min": 1.18,
+            "max": 1.24
+          },
+          "runtime": {
+            "mean": 0.05,
+            "std": 0.0,
+            "min": 0.05,
+            "max": 0.05
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 93878.7,
+            "std": 1802.9,
+            "min": 90895,
+            "max": 97181
+          },
+          "ratio": {
+            "mean": 1.21,
+            "std": 0.01,
+            "min": 1.19,
+            "max": 1.23
+          },
+          "runtime": {
+            "mean": 61.71,
+            "std": 2.67,
+            "min": 57.87,
+            "max": 65.18
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 91612.2,
+            "std": 1575.16,
+            "min": 89999,
+            "max": 94743
+          },
+          "ratio": {
+            "mean": 1.18,
+            "std": 0.01,
+            "min": 1.17,
+            "max": 1.21
+          },
+          "runtime": {
+            "mean": 44.18,
+            "std": 2.24,
+            "min": 41.1,
+            "max": 46.93
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 982545.4,
+            "std": 59988.21,
+            "min": 902838,
+            "max": 1125700
+          },
+          "ratio": {
+            "mean": 12.67,
+            "std": 0.91,
+            "min": 11.58,
+            "max": 15.07
+          },
+          "runtime": {
+            "mean": 0.01,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.02
+          }
+        }
+      }
+    },
+    "10000": {
+      "w_star_mean": 85557.2,
+      "algorithms": {
+        "2-Approximation": {
+          "makespan": {
+            "mean": 171114.1,
+            "std": 3908.38,
+            "min": 164870,
+            "max": 178099
+          },
+          "ratio": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "runtime": {
+            "mean": 79.1,
+            "std": 3.85,
+            "min": 73.11,
+            "max": 83.83
+          }
+        },
+        "Greedy Least-Loaded": {
+          "makespan": {
+            "mean": 103729.8,
+            "std": 1477.25,
+            "min": 102172,
+            "max": 106859
+          },
+          "ratio": {
+            "mean": 1.21,
+            "std": 0.02,
+            "min": 1.19,
+            "max": 1.24
+          },
+          "runtime": {
+            "mean": 0.05,
+            "std": 0.0,
+            "min": 0.05,
+            "max": 0.06
+          }
+        },
+        "Min-Min": {
+          "makespan": {
+            "mean": 103134.7,
+            "std": 1573.91,
+            "min": 101244,
+            "max": 105891
+          },
+          "ratio": {
+            "mean": 1.21,
+            "std": 0.01,
+            "min": 1.19,
+            "max": 1.23
+          },
+          "runtime": {
+            "mean": 77.77,
+            "std": 3.18,
+            "min": 73.55,
+            "max": 80.97
+          }
+        },
+        "Max-Min": {
+          "makespan": {
+            "mean": 101319.7,
+            "std": 1528.18,
+            "min": 99152,
+            "max": 104779
+          },
+          "ratio": {
+            "mean": 1.18,
+            "std": 0.02,
+            "min": 1.17,
+            "max": 1.22
+          },
+          "runtime": {
+            "mean": 54.69,
+            "std": 3.0,
+            "min": 50.85,
+            "max": 58.1
+          }
+        },
+        "Random Assignment": {
+          "makespan": {
+            "mean": 1092993.7,
+            "std": 51306.37,
+            "min": 1003444,
+            "max": 1205795
+          },
+          "ratio": {
+            "mean": 12.78,
+            "std": 0.72,
+            "min": 11.92,
+            "max": 14.63
+          },
+          "runtime": {
+            "mean": 0.02,
+            "std": 0.0,
+            "min": 0.01,
+            "max": 0.02
+          }
+        }
+      }
+    }
+  }
+}

@@ -160,4 +160,14 @@ def compute_stats(
         if pid in pkt_by_id
     ]
 
+    # ---- Energy metrics ---- #
+    if result.energy_stats:
+        stats["energy"] = result.energy_stats
+
+    # ---- Cyclic Executive metrics ---- #
+    if hasattr(result, "carryover_stats") and result.carryover_stats:
+        stats["cyclic_executive"] = result.carryover_stats
+        stats["per_cycle_summary"] = getattr(result, "cycle_results", [])
+        stats["recovered_packet_ids"] = getattr(result, "recovered_packet_ids", [])
+
     return stats

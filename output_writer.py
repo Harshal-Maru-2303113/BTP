@@ -22,6 +22,7 @@ def write_schedule(result: ScheduleResult, path: str):
         "approx_w_star": result.approx_ratio_w,
         "num_scheduled": len(result.entries),
         "num_dropped": len(result.dropped_packet_ids),
+        "energy_stats": result.energy_stats,
         "schedule": [
             {
                 "packet_id": e.packet_id,

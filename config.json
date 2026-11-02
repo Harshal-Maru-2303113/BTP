@@ -33,5 +33,28 @@
     "output": {
         "schedule_file": "output/schedule.json",
         "stats_file": "output/stats.json"
+    },
+    "energy": {
+        "enable_energy_optimization": true,
+        "supply_voltage_v": 3.3,
+        "i_tx_a": 0.044,
+        "i_rx_a": 0.0115,
+        "i_stby_a": 0.0016,
+        "i_sleep_a": 0.000002,
+        "i_mcu_a": 0.005,
+        "t_mcu_s": 0.05,
+        "i_sens_a": 0.003,
+        "t_sens_s": 0.1,
+        "t_rx_s": 0.03,
+        "mac_header_bytes": 13
+    },
+    "cyclic_executive": {
+        "enable_cyclic_mode": false,
+        "minor_cycle_duration_s": 10,
+        "minor_cycle_durations_s": null,
+        "enable_packet_carryover": true,
+        "max_carryover_cycles": 3,
+        "carryover_priority_boost": 1.5,
+        "deadline_mode": "period"
     }
 }

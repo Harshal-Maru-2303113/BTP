@@ -54,15 +54,33 @@ class ScheduleResult:
     entries: List[ScheduleEntry] = field(default_factory=list)
     dropped_packet_ids: List[int] = field(default_factory=list)
     makespan_ms: int = 0         # Timeline span (latest finish time in ms)
-    machine_makespan_ms: int = 0 # Phase 1 machine load makespan (max sum_i p_ij in ms)
+    machine_makespan_ms: int = 0 # Phase 1/1.5 machine load makespan (max sum_i p_ij in ms)
     approx_ratio_w: int = 0      # the w* found by binary search
     feasible: bool = False
+    energy_stats: dict = field(default_factory=dict) # Phase 1.5 energy metrics
 
     def add_entry(self, entry: ScheduleEntry):
         self.entries.append(entry)
 
     def add_drop(self, packet_id: int):
         self.dropped_packet_ids.append(packet_id)
+
+
+@dataclass
+class CyclicScheduleResult(ScheduleResult):
+    """
+    Output of the Cyclic Executive hypercycle scheduler.
+    Extends ScheduleResult with carryover metrics and per-cycle breakdown.
+    Supports both homogeneous (uniform) and heterogeneous (variable-length) minor cycles.
+    """
+    recovered_packet_ids: List[int] = field(default_factory=list)
+    unrecoverable_dropped_ids: List[int] = field(default_factory=list)
+    cycle_results: List[dict] = field(default_factory=list)
+    num_minor_cycles: int = 0
+    minor_cycle_ms: int = 0  # uniform duration (if all cycles equal), else 0
+    minor_cycle_durations_ms: List[int] = field(default_factory=list)  # explicit list of frame durations
+    is_homogeneous: bool = True
+    carryover_stats: dict = field(default_factory=dict)
 
 
 @dataclass

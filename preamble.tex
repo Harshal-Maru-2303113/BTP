@@ -1,0 +1,132 @@
+\usepackage{graphicx} % Required for inserting images
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath} % for \DeclareMathOperator
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{cite}
+
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{loa}
+\floatname{algorithm}{Algorithm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\DeclareMathOperator{\lcm}{lcm}
+%\DeclareMathOperator{\max}{max}
+
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Comment}[1]{\hfill\textnormal{\textit{// #1}}}
+
+
+\title{LoRa AOI}
+%\author{nirajcse08 }
+\date{ }
+\newcommand{\nkt}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\tbd}{{\color{blue}TBD}}
+
+%% Notations
+
+%index
+\newcommand{\taskInd}{\ensuremath{i}} %index for tasks
+\newcommand{\taskIndTwo}{\ensuremath{k}} %another index for tasks
+\newcommand{\jobInd}{\ensuremath{x}} %index for jobs
+\newcommand{\procInd}{\ensuremath{j}} %index for processors
+\newcommand{\freqInd}{\ensuremath{q}} %freq index
+\newcommand{\tempInd}{\ensuremath{z}} %anywhere
+
+%input
+\newcommand{\task}{\ensuremath{\tau}}   %task
+\newcommand{\period}{\ensuremath{p}}   %period of task/deadline of job
+\newcommand{\execTime}{\ensuremath{e}}   %execution time of task
+\newcommand{\proc}{\ensuremath{P}}   %processor
+\newcommand{\freq}{\ensuremath{f}}   %frequency
+\newcommand{\execTimeAttack}{\ensuremath{e}^{attack}}   %execution time of task
+\newcommand{\util}{\ensuremath{u}}   % utility
+
+%intermediate
+\newcommand{\prior}{\ensuremath{\rho}}   %priority of a task
+\newcommand{\finTime}{\ensuremath{\delta}}   %letter for finishing time 
+\newcommand{\hyper}{\ensuremath{h}}   %letter for denoting heaviness of a job
+\newcommand{\fmax}{\ensuremath{\freq}^{max}}   %max frequency
+\newcommand{\energy}{\ensuremath{E}} % letter for energy consumption
+
+%set
+\newcommand{\taskSet}{\ensuremath{\mathcal{T}}} %task set
+\newcommand{\critTaskSet}{\ensuremath{\mathcal{T}^{crit}}} % safety critical task set
+\newcommand{\nonCritTaskSet}{\ensuremath{\mathcal{T}^{ncrit}}} %non-safety critical task set
+\newcommand{\procSet}{\ensuremath{\mathcal{P}}} %proc set
+\newcommand{\freqSet}{\ensuremath{\mathcal{F}}} %freq set
+\newcommand{\hpTasks}{\ensuremath{\mathcal{H}}}   %set of hp jobs of Ji
+\newcommand{\lpTasks}{\ensuremath{\mathcal{L}}}   %letter for set of lp jobs of Ji
+\newcommand{\selectedJobs}{\ensuremath{\mathcal{S}}} % selected set of jobs
+\newcommand{\jobSet}{\ensuremath{\mathcal{J}}} % jobs assigned to a processor
+\newcommand{\arrTimeSet}{\ensuremath{\mathcal{A}}} % all arrivals of jobs
+\newcommand{\deadlineSet}{\ensuremath{\mathcal{D}}} % deadline for all jobs
+\newcommand{\jobPairSet}{\ensuremath{\mathcal{B}}} % pair of jobs
+\newcommand{\victimSet}{\ensuremath{\mathcal{V}}} % set of victim tasks
+\newcommand{\nonVictimSet}{\ensuremath{\mathcal{NV}}} % non victim set
+\newcommand{\safetyCrit}{\ensuremath{\mathcal{SC}}} % set of safety crit tasks
+\newcommand{\nonSafetyCrit}{\ensuremath{\mathcal{NSC}}} % non safety crit tasks
+
+
+%count
+\newcommand{\noTasks}{\ensuremath{N^{tsk}}} %number of tasks
+\newcommand{\noCritTasks}{\ensuremath{N^{ctsk}}} %number of safety crit tasks
+\newcommand{\noNonCritTasks}{\ensuremath{N^{nctsk}}} %number of non-sfety critical tasks
+\newcommand{\noJobs}{\ensuremath{N^{job}}} %number of jobs
+\newcommand{\noProc}{\ensuremath{N^{proc}}} %number of processors
+\newcommand{\noFreq}{\ensuremath{N^{freq}}} %number of freq
+
+%formulation
+\newcommand{\bvar}{\ensuremath{X}} %decision variable 
+\newcommand{\obj}{\ensuremath{\Psi}} % objective 
+
+\newcommand{\curSoln}{\ensuremath{S}^{cur}} % current solution
+\newcommand{\nextSoln}{\ensuremath{S}^{next}} % next solution
+\newcommand{\bestSoln}{\ensuremath{S}^{best}} % best solution
+\newcommand{\tempSoln}{\ensuremath{S}^{temp}} % temp solution
+\newcommand{\selectedSoln}{\ensuremath{S}^{sel}} % temp solution
+
+\newcommand{\curSolnCost}{\ensuremath{C}^{cur}} % current solution cost
+\newcommand{\nextSolnCost}{\ensuremath{C}^{next}} % next solution cost
+\newcommand{\bestSolnCost}{\ensuremath{C}^{best}} % best solution cost
+\newcommand{\tempSolnCost}{\ensuremath{C}^{temp}} % temp solution cost
+\newcommand{\selectedSolnCost}{\ensuremath{C}^{sel}} % temp solution cost
+
+\newcommand{\probBadSoln}{\ensuremath{\beta}} % prob of accepting a bad solution
+\newcommand{\probFreqDec}{\ensuremath{\gamma}} % prob of frequency decreaase
+\newcommand{\probScalingFactor}{\ensuremath{q}} % prob of frequency decreaase
+
+\newcommand{\dbf}{\ensuremath{DBF}}
+
+%BV
+\newcommand{\dvar}{\ensuremath{V}} %letter denoting binary variable for task
+\newcommand{\dvarAux}{\ensuremath{Y}} %letter denoting aux binary variable
+
+\newcommand{\releaseTime}{\ensuremath{r}} %release time of a job = (j-1)period
+\newcommand{\deadline}{\ensuremath{d}} %deadline of a job = (j)period
+\newcommand{\effExecTime}{\ensuremath{e^{eff}}} %letter denoting effective exec time of a job with specific freq and optional segment
+\newcommand{\exec}{\ensuremath{e}} %letter denoting exec time
+%\newcommand{\execOptional}{\ensuremath{e^{O}}} %letter denoting optional execution time
+\newcommand{\optionalSeg}{\ensuremath{G}} %letter denoting optional segment
+\newcommand{\totalEnergy}{\ensuremath{E^{total}}} %total denoting energy consumption
+\newcommand{\utilTask}{\ensuremath{u}} %letter denoting utility of a task, utility gained per unit execution of optional segment
+\newcommand{\execStartTime}{\ensuremath{t^{beg}}} %letter denoting execution start time
+\newcommand{\execFinishTime}{\ensuremath{t^{fin}}} %letter denoting execution finish time
+\newcommand{\energyBudget}{\ensuremath{\mathcal{B}}} %letter denoting energy budget
+\newcommand{\numPostions}{\ensuremath{L}} %letter denoting positions
+\newcommand{\numAlloc}{\ensuremath{A}} %letter denoting allocations on a processor
+\newcommand{\timeSlack}{\ensuremath{\Delta^t}} % time slack
+\newcommand{\energySlack}{\ensuremath{\Delta^e}} % energy slack
+\newcommand{\selectedJob}{\ensuremath{J^*}} % a job 
+\newcommand{\utilGainedJob}{\ensuremath{U^{job}}} % utility gained by a job
+\newcommand{\utilGainedTask}{\ensuremath{U^{tsk}}} % utility gained by a task
+\newcommand{\utilGainedTotal}{\ensuremath{U^{total}}} % total utility gained
+\newcommand{\jobPair}{\ensuremath{p}} % a job pair

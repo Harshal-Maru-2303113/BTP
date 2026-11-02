@@ -26,12 +26,16 @@ Schedule **n** real-time LoRa packets across **m = N_ch × N_sf** logical machin
  │           │ │             │ │ ToA formula  │
  └───────────┘ └─────────────┘ │ + cost matrix│
                                └──────────────┘
-       ┌───────────────────────────────────────┐
-       │       scheduler/lorawan_scheduler.py  │
-       │  Phase 1: 2-Approx Makespan (below)   │
-       │  Phase 2: EDF Timeline + Demod Check   │
-       │  Phase 3: Priority-Based Dropping      │
-       └──────┬────────────────────────────────┘
+       ┌────────────────────────────────────────────────────────┐
+       │             scheduler/lorawan_scheduler.py             │
+       │  Phase 1: 2-Approx Makespan (below)                    │
+       │  Phase 1.5: Energy-Optimal Downshifting (Algorithm 4)  │
+       │  Phase 2: EDF Timeline + Demod Check                    │
+       │  Phase 3: Priority-Based Dropping                       │
+       │                                                        │
+       │       scheduler/cyclic_hypercycle_wrapper.py           │
+       │  Hierarchical Cyclic Executive & Carryover Buffer      │
+       └──────┬─────────────────────────────────────────────────┘
               │
        ┌──────▼──────────────────────────┐
        │      approximation/             │
@@ -81,7 +85,14 @@ Packets that violate deadlines or the demod constraint are dropped in order of `
 ### Run the Simulation
 
 ```bash
+# Standard hypercycle scheduling
 python main.py
+
+# Cyclic Executive mode (minor cycles tau=10s under major H=100s + carryover buffer)
+python main.py --cyclic
+
+# Analytical A Priori Schedulability Certificate (LST Duality, without simulation)
+python main.py --certify
 ```
 
 ### Run with Exact OPT Comparison
@@ -134,16 +145,19 @@ All parameters are in [`config.json`](config.json):
 ```
 BTP/
 ├── config.json                  # Simulation parameters
-├── main.py                      # Entry point
+├── main.py                      # Entry point (--cyclic, --certify, --ilp)
 ├── config_loader.py             # Config parsing and validation
-├── data_structures.py           # Packet, Machine, ScheduleResult
+├── data_structures.py           # Packet, Machine, ScheduleResult, CyclicScheduleResult
 ├── lorawan_toa.py               # Semtech SX1276 ToA formula + cost matrix
+├── lorawan_energy.py            # Casals et al. Class A multi-state radio energy model
 ├── packet_generator.py          # Harmonic periodic traffic generation
 ├── segment_tree.py              # Lazy-propagation max segment tree
 ├── stats.py                     # Per-SF, per-channel, aggregate metrics
 ├── output_writer.py             # JSON output
 ├── scheduler/
-│   └── lorawan_scheduler.py     # Algorithm 3: full scheduling pipeline
+│   ├── lorawan_scheduler.py     # Algorithm 3: full scheduling pipeline
+│   ├── energy_optimizer.py      # Algorithm 4: capacity-constrained downshifting
+│   └── cyclic_hypercycle_wrapper.py # Hierarchical Cyclic Executive & carryover buffer
 ├── approximation/
 │   ├── binary_search.py         # Outer binary search over w
 │   ├── truemper.py              # Algorithm 2: Unsplittable-Truemper
@@ -151,16 +165,53 @@ BTP/
 │   └── graph_utils.py           # Dijkstra, BFS, admissible graph
 ├── validator/
 │   ├── invariant_checker.py     # Schedule validity checks
+│   ├── feasibility_certificate.py # Theorem 5.1 / LST a priori bound certifier
 │   ├── ilp_solver.py            # PuLP ILP solver with B&B fallback
 │   └── bruteforce_comparator.py # Exact B&B + naive brute-force verifier
 ├── tests/
-│   └── test_scheduler.py        # 8 unit/integration tests
+│   └── test_scheduler.py        # 20 unit/integration tests (100% passing)
+├── papers/                      # 12 primary source research papers & specifications
+├── main.pdf                     # Compiled 22-page academic thesis / conference paper
+├── presentation.pdf             # Compiled 10-slide Beamer presentation deck
 └── output/
-    ├── schedule.json             # Generated schedule
-    └── stats.json                # Generated statistics
+    ├── schedule.json            # Generated schedule
+    └── stats.json               # Generated statistics
 ```
 
 ## References
 
 - M. Gairing, B. Monien, A. Woclaw, *"A faster combinatorial approximation algorithm for scheduling unrelated parallel machines"*, Theoretical Computer Science, 2007.
 - Semtech, *"LoRa Modem Designer's Guide"*, AN1200.13, §4.1.
+
+
+
+## Baseline Comparison and Stress Testing
+
+We evaluate the combinatorial 2-approximation against four standard baseline heuristics from the scheduling literature:
+1. **Random Assignment (Pure ALOHA)** — Uncoordinated transmission baseline
+2. **Greedy Least-Loaded** — Graham (1966) list scheduling
+3. **Min-Min Heuristic** — Ibarra & Kim (1977)
+4. **Max-Min Heuristic** — Ibarra & Kim (1977)
+
+### Running Comparisons
+
+```bash
+# Run baseline comparison on the default benchmark instance
+python run_baseline_comparison.py
+
+# Run with exact optimum ILP solver comparison
+python run_baseline_comparison.py --ilp
+
+# Run multi-suite stress testing across 5 adversarial benchmark suites
+python run_stress_test.py
+```
+
+### Deliverable Documents
+
+- `main.pdf`: Full 15-page academic BTP thesis report (LaTeX source in `main.tex`).
+- `upper_bound_proof.md`: Complete theoretical derivation of the 2-approximation upper bound based on Gairing et al. (2007).
+- `baseline_comparison.md`: Detailed baseline analysis and 5-suite stress test results.
+- `input.md`: System input and configuration guide.
+- `output.md`: Output specifications and metric verification guide.
+
+

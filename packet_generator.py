@@ -83,11 +83,17 @@ def generate_packets(config: SimConfig,
         )
         min_toa_int = max(1, int(math.ceil(min_toa_ms)))
 
+        cyclic_cfg = getattr(config, "cyclic_executive", None)
+        deadline_mode = getattr(cyclic_cfg, "deadline_mode", "slack") if cyclic_cfg else "slack"
+
         for k in range(num_instances):
             release = k * period
-            raw_deadline = release + int(
-                config.traffic.deadline_slack_factor * min_toa_int
-            )
+            if deadline_mode == "period":
+                raw_deadline = release + period
+            else:
+                raw_deadline = release + int(
+                    config.traffic.deadline_slack_factor * min_toa_int
+                )
             # Clamp to hypercycle boundary AND ensure at least within period
             deadline = min(raw_deadline, release + period, H_ms)
             # Deadline must be > release

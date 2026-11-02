@@ -1,0 +1,396 @@
+{
+  "summary": {
+    "total_packets": 234,
+    "scheduled_packets": 234,
+    "dropped_packets": 0,
+    "drop_rate_pct": 0.0,
+    "makespan_ms": 90593,
+    "machine_makespan_ms": 1545,
+    "hypercycle_ms": 100000,
+    "makespan_utilisation_pct": 90.59,
+    "approx_w_star": 775,
+    "feasible": true
+  },
+  "per_sf": {
+    "7": {
+      "num_packets": 202,
+      "total_airtime_ms": 12261,
+      "avg_toa_ms": 60.7
+    },
+    "8": {
+      "num_packets": 32,
+      "total_airtime_ms": 3968,
+      "avg_toa_ms": 124.0
+    },
+    "9": {
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "avg_toa_ms": 0.0
+    },
+    "10": {
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "avg_toa_ms": 0.0
+    },
+    "11": {
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "avg_toa_ms": 0.0
+    },
+    "12": {
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "avg_toa_ms": 0.0
+    }
+  },
+  "per_channel": {
+    "0": {
+      "num_packets": 41,
+      "total_airtime_ms": 3028,
+      "utilisation_pct": 3.03
+    },
+    "1": {
+      "num_packets": 47,
+      "total_airtime_ms": 3033,
+      "utilisation_pct": 3.03
+    },
+    "2": {
+      "num_packets": 33,
+      "total_airtime_ms": 2524,
+      "utilisation_pct": 2.52
+    },
+    "3": {
+      "num_packets": 21,
+      "total_airtime_ms": 1532,
+      "utilisation_pct": 1.53
+    },
+    "4": {
+      "num_packets": 23,
+      "total_airtime_ms": 1530,
+      "utilisation_pct": 1.53
+    },
+    "5": {
+      "num_packets": 25,
+      "total_airtime_ms": 1541,
+      "utilisation_pct": 1.54
+    },
+    "6": {
+      "num_packets": 22,
+      "total_airtime_ms": 1497,
+      "utilisation_pct": 1.5
+    },
+    "7": {
+      "num_packets": 22,
+      "total_airtime_ms": 1544,
+      "utilisation_pct": 1.54
+    }
+  },
+  "per_machine": {
+    "SF7_CH0": {
+      "machine_id": 0,
+      "num_packets": 29,
+      "total_airtime_ms": 1540,
+      "utilisation_pct": 1.54
+    },
+    "SF8_CH0": {
+      "machine_id": 1,
+      "num_packets": 12,
+      "total_airtime_ms": 1488,
+      "utilisation_pct": 1.49
+    },
+    "SF9_CH0": {
+      "machine_id": 2,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF10_CH0": {
+      "machine_id": 3,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF11_CH0": {
+      "machine_id": 4,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF12_CH0": {
+      "machine_id": 5,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF7_CH1": {
+      "machine_id": 6,
+      "num_packets": 35,
+      "total_airtime_ms": 1545,
+      "utilisation_pct": 1.54
+    },
+    "SF8_CH1": {
+      "machine_id": 7,
+      "num_packets": 12,
+      "total_airtime_ms": 1488,
+      "utilisation_pct": 1.49
+    },
+    "SF9_CH1": {
+      "machine_id": 8,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF10_CH1": {
+      "machine_id": 9,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF11_CH1": {
+      "machine_id": 10,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF12_CH1": {
+      "machine_id": 11,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF7_CH2": {
+      "machine_id": 12,
+      "num_packets": 25,
+      "total_airtime_ms": 1532,
+      "utilisation_pct": 1.53
+    },
+    "SF8_CH2": {
+      "machine_id": 13,
+      "num_packets": 8,
+      "total_airtime_ms": 992,
+      "utilisation_pct": 0.99
+    },
+    "SF9_CH2": {
+      "machine_id": 14,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF10_CH2": {
+      "machine_id": 15,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF11_CH2": {
+      "machine_id": 16,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF12_CH2": {
+      "machine_id": 17,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF7_CH3": {
+      "machine_id": 18,
+      "num_packets": 21,
+      "total_airtime_ms": 1532,
+      "utilisation_pct": 1.53
+    },
+    "SF8_CH3": {
+      "machine_id": 19,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF9_CH3": {
+      "machine_id": 20,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF10_CH3": {
+      "machine_id": 21,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF11_CH3": {
+      "machine_id": 22,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF12_CH3": {
+      "machine_id": 23,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF7_CH4": {
+      "machine_id": 24,
+      "num_packets": 23,
+      "total_airtime_ms": 1530,
+      "utilisation_pct": 1.53
+    },
+    "SF8_CH4": {
+      "machine_id": 25,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF9_CH4": {
+      "machine_id": 26,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF10_CH4": {
+      "machine_id": 27,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF11_CH4": {
+      "machine_id": 28,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF12_CH4": {
+      "machine_id": 29,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF7_CH5": {
+      "machine_id": 30,
+      "num_packets": 25,
+      "total_airtime_ms": 1541,
+      "utilisation_pct": 1.54
+    },
+    "SF8_CH5": {
+      "machine_id": 31,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF9_CH5": {
+      "machine_id": 32,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF10_CH5": {
+      "machine_id": 33,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF11_CH5": {
+      "machine_id": 34,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF12_CH5": {
+      "machine_id": 35,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF7_CH6": {
+      "machine_id": 36,
+      "num_packets": 22,
+      "total_airtime_ms": 1497,
+      "utilisation_pct": 1.5
+    },
+    "SF8_CH6": {
+      "machine_id": 37,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF9_CH6": {
+      "machine_id": 38,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF10_CH6": {
+      "machine_id": 39,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF11_CH6": {
+      "machine_id": 40,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF12_CH6": {
+      "machine_id": 41,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF7_CH7": {
+      "machine_id": 42,
+      "num_packets": 22,
+      "total_airtime_ms": 1544,
+      "utilisation_pct": 1.54
+    },
+    "SF8_CH7": {
+      "machine_id": 43,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF9_CH7": {
+      "machine_id": 44,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF10_CH7": {
+      "machine_id": 45,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF11_CH7": {
+      "machine_id": 46,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    },
+    "SF12_CH7": {
+      "machine_id": 47,
+      "num_packets": 0,
+      "total_airtime_ms": 0,
+      "utilisation_pct": 0.0
+    }
+  },
+  "demod_profile": {
+    "max_concurrent": 8,
+    "limit": 8,
+    "within_limit": true
+  },
+  "dropped_packets_detail": [],
+  "energy": {
+    "initial_energy_mj": 6493.79,
+    "optimized_energy_mj": 6493.79,
+    "energy_saved_mj": 0.0,
+    "energy_reduction_pct": 0.0,
+    "downshift_moves": 320,
+    "scheduled_energy_mj": 6493.79
+  },
+  "timing": {
+    "toa_computation_s": 0.0009,
+    "scheduling_s": 0.2341
+  }
+}

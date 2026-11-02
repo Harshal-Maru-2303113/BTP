@@ -25,7 +25,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config_loader import load_config
 from packet_generator import create_machines, generate_packets
 from lorawan_toa import compute_toa_matrix
+from lorawan_energy import compute_energy_matrix
+from data_structures import CyclicScheduleResult
 from scheduler.lorawan_scheduler import lorawan_hypercycle_scheduler
+from scheduler.cyclic_hypercycle_wrapper import run_cyclic_hypercycle_scheduler
 from validator.invariant_checker import check_schedule_validity, InvariantError
 from stats import compute_stats
 from output_writer import write_schedule, write_stats
@@ -38,6 +41,14 @@ def main():
     parser.add_argument(
         "--config", "-c", default="config.json",
         help="Path to configuration JSON file (default: config.json)",
+    )
+    parser.add_argument(
+        "--cyclic", "-y", action="store_true",
+        help="Enable cyclic executive mode (minor cycles under hypercycle with packet carryover)",
+    )
+    parser.add_argument(
+        "--certify", action="store_true",
+        help="Compute closed-form A Priori Schedulability Certificate (proof of feasibility without simulation)",
     )
     parser.add_argument(
         "--ilp", action="store_true",
@@ -103,6 +114,20 @@ def main():
         print(f"  Mean ToA : {sum(finite_toas)/len(finite_toas):.1f} ms")
         print(f"  Computed in {t_toa:.3f}s")
 
+    # ================================================================ #
+    # 3b. Compute Energy Matrix (Casals et al. 2017)                   #
+    # ================================================================ #
+    t0 = time.time()
+    E = compute_energy_matrix(packets, machines, config, P)
+    t_energy = time.time() - t0
+    if args.verbose:
+        finite_energies = [E[i][j] for i in range(n) for j in range(m) if E[i][j] < 10**18]
+        if finite_energies:
+            print(f"\n[Energy Matrix] ({n} × {m})")
+            print(f"  Min Energy: {min(finite_energies):.1f} mJ")
+            print(f"  Max Energy: {max(finite_energies):.1f} mJ")
+            print(f"  Computed in {t_energy:.3f}s")
+
     if args.verbose:
         # Print ToA per SF (one representative)
         for sf in config.network.spreading_factors:
@@ -114,20 +139,71 @@ def main():
                 print(f"    SF{sf}: {toas_for_sf[0]} ms "
                       f"(payload={packets[0].payload_size}B)")
 
-    # ================================================================ #
-    # 4. Run Scheduler                                                  #
-    # ================================================================ #
-    print(f"\n[Scheduling] Running LoRaWAN Hypercycle Scheduler...")
-    t0 = time.time()
+    is_cyclic = args.cyclic or getattr(config.cyclic_executive, "enable_cyclic_mode", False)
+    enable_energy = getattr(config.energy, "enable_energy_optimization", True)
 
-    result = lorawan_hypercycle_scheduler(
+    # ================================================================ #
+    # 3c. A Priori Schedulability & Feasibility Certificate            #
+    # ================================================================ #
+    from validator.feasibility_certificate import compute_schedulability_certificate
+    cert = compute_schedulability_certificate(
         packets=packets,
         machines=machines,
-        P_full=P,
+        P=P,
         H_ms=H_ms,
-        max_demod=max_demod,
-        check_invariants=config.validation.check_invariants,
+        E=E,
+        tau_ms=config.cyclic_executive.minor_cycle_duration_ms if is_cyclic else None,
     )
+    if args.certify or args.verbose:
+        print(f"\n[A Priori Feasibility Certificate] (Theorem 5.1 / Potts-LST Bound)")
+        print(f"  Minimal Workload (W)   : {cert['total_min_workload_ms']} ms across {n} packets")
+        print(f"  Avg Workload / Mach    : {cert['avg_min_workload_per_machine_ms']} ms (m = {m})")
+        print(f"  Analytical Lower Bound : {cert['analytical_lower_bound_opt_ms']} ms <= OPT")
+        print(f"  Proven Upper Bound (X) : {cert['proven_upper_bound_x_tight_ms']} ms")
+        print(f"  Hypercycle Horizon (H) : {H_ms} ms")
+        print(f"  A Priori Safety Margin : {cert['safety_margin_pct']}% ({cert['safety_margin_ms']} ms)")
+        print(f"  Verdict                : {'FEASIBLE A PRIORI' if cert['feasible_a_priori'] else 'UNCERTIFIED'}")
+
+    # ================================================================ #
+    # 4. Run Scheduler (Phase 1 + 1.5 + 2 + 3)                         #
+    # ================================================================ #
+
+    if is_cyclic:
+        cyc_cfg = config.cyclic_executive
+        if cyc_cfg.minor_cycle_durations_ms:
+            num_cycles = len(cyc_cfg.minor_cycle_durations_ms)
+            dur_summary = ", ".join(f"{d/1000:.1f}s" for d in cyc_cfg.minor_cycle_durations_ms[:5])
+            if num_cycles > 5:
+                dur_summary += ", ..."
+            print(f"\n[Scheduling] Running Cyclic Executive Scheduler ({num_cycles} heterogeneous minor cycles: [{dur_summary}])...")
+        else:
+            tau_s = cyc_cfg.minor_cycle_duration_s
+            tau_ms = cyc_cfg.minor_cycle_duration_ms
+            num_cycles = H_ms // tau_ms
+            print(f"\n[Scheduling] Running Cyclic Executive Scheduler ({num_cycles} uniform minor cycles, tau={tau_s}s)...")
+        t0 = time.time()
+        result = run_cyclic_hypercycle_scheduler(
+            packets=packets,
+            machines=machines,
+            P_full=P,
+            config=config,
+            E_full=E,
+            check_invariants=config.validation.check_invariants,
+            enable_energy_opt=enable_energy,
+        )
+    else:
+        print(f"\n[Scheduling] Running LoRaWAN Hypercycle Scheduler...")
+        t0 = time.time()
+        result = lorawan_hypercycle_scheduler(
+            packets=packets,
+            machines=machines,
+            P_full=P,
+            H_ms=H_ms,
+            max_demod=max_demod,
+            check_invariants=config.validation.check_invariants,
+            E_full=E,
+            enable_energy_opt=enable_energy,
+        )
 
     t_sched = time.time() - t0
     print(f"  Completed in {t_sched:.3f}s")
@@ -136,6 +212,23 @@ def main():
     print(f"  Dropped      : {len(result.dropped_packet_ids)}")
     print(f"  Makespan     : {result.makespan_ms} ms")
     print(f"  w* (approx)  : {result.approx_ratio_w}")
+    if isinstance(result, CyclicScheduleResult):
+        cs = result.carryover_stats
+        if result.is_homogeneous:
+            print(f"  Minor Cycles : {result.num_minor_cycles} uniform (tau = {result.minor_cycle_ms} ms)")
+        else:
+            print(f"  Minor Cycles : {result.num_minor_cycles} heterogeneous (durations: {result.minor_cycle_durations_ms} ms)")
+        print(f"  Direct Sched : {len(result.entries) - len(result.recovered_packet_ids)}")
+        print(f"  Recovered    : {cs.get('recovered_count', 0)} ({cs.get('recovery_rate_pct', 0.0):.1f}% recovery rate)")
+        print(f"  Hard Drops   : {cs.get('unrecoverable_drop_count', 0)}")
+    if result.energy_stats:
+        es = result.energy_stats
+        if "downshift_moves" in es:
+            print(f"  Energy Opt   : {es.get('downshift_moves', 0)} downshifts, "
+                  f"{es.get('energy_saved_mj', 0.0):.1f} mJ saved "
+                  f"({es.get('energy_reduction_pct', 0.0):.1f}% reduction)")
+        elif "scheduled_energy_mj" in es:
+            print(f"  Energy       : {es.get('scheduled_energy_mj', 0.0):.1f} mJ")
 
     # ================================================================ #
     # 5. Optional ILP Comparison                                        #
@@ -233,6 +326,9 @@ def main():
     print(f"  Timeline Span: {result.makespan_ms} ms / {H_ms} ms "
           f"({100.0*result.makespan_ms/max(H_ms,1):.1f}%)")
     print(f"  Machine Load Makespan: {result.machine_makespan_ms} ms")
+    if result.energy_stats and "scheduled_energy_mj" in result.energy_stats:
+        print(f"  Total Radio Energy: {result.energy_stats['scheduled_energy_mj']:.1f} mJ "
+              f"({result.energy_stats['scheduled_energy_mj']/max(len(result.entries), 1):.1f} mJ/pkt)")
     if ilp_opt:
         target_makespan = (
             result.machine_makespan_ms

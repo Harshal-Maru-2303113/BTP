@@ -1,0 +1,741 @@
+{
+  "suite_1_lorawan_scale": [
+    {
+      "n": 142,
+      "m": 48,
+      "w_star": 462,
+      "2_approx": {
+        "makespan": 924,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0923,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 621,
+          "ratio_to_w_star": 1.344,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 637,
+          "ratio_to_w_star": 1.379,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 576,
+          "ratio_to_w_star": 1.247,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 10218,
+          "ratio_to_w_star": 22.117,
+          "feasible": true
+        }
+      },
+      "test_name": "LoRaWAN Dense Scale (25 devices)",
+      "devices": 25
+    },
+    {
+      "n": 234,
+      "m": 48,
+      "w_star": 775,
+      "2_approx": {
+        "makespan": 1545,
+        "ratio_to_w_star": 1.994,
+        "time_s": 0.2099,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 989,
+          "ratio_to_w_star": 1.276,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 990,
+          "ratio_to_w_star": 1.277,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 933,
+          "ratio_to_w_star": 1.204,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 12193,
+          "ratio_to_w_star": 15.733,
+          "feasible": true
+        }
+      },
+      "test_name": "LoRaWAN Dense Scale (50 devices)",
+      "devices": 50
+    },
+    {
+      "n": 496,
+      "m": 48,
+      "w_star": 1796,
+      "2_approx": {
+        "makespan": 3592,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.7,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 1859,
+          "ratio_to_w_star": 1.035,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 1919,
+          "ratio_to_w_star": 1.068,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 1820,
+          "ratio_to_w_star": 1.013,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 19763,
+          "ratio_to_w_star": 11.004,
+          "feasible": true
+        }
+      },
+      "test_name": "LoRaWAN Dense Scale (100 devices)",
+      "devices": 100
+    },
+    {
+      "n": 920,
+      "m": 48,
+      "w_star": 3553,
+      "2_approx": {
+        "makespan": 7106,
+        "ratio_to_w_star": 2.0,
+        "time_s": 1.5582,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 3573,
+          "ratio_to_w_star": 1.006,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 3556,
+          "ratio_to_w_star": 1.001,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 3544,
+          "ratio_to_w_star": 0.997,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 41172,
+          "ratio_to_w_star": 11.588,
+          "feasible": true
+        }
+      },
+      "test_name": "LoRaWAN Dense Scale (200 devices)",
+      "devices": 200
+    },
+    {
+      "n": 1780,
+      "m": 48,
+      "w_star": 7126,
+      "2_approx": {
+        "makespan": 14251,
+        "ratio_to_w_star": 2.0,
+        "time_s": 4.9825,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 7173,
+          "ratio_to_w_star": 1.007,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 7167,
+          "ratio_to_w_star": 1.006,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 7076,
+          "ratio_to_w_star": 0.993,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 76749,
+          "ratio_to_w_star": 10.77,
+          "feasible": true
+        }
+      },
+      "test_name": "LoRaWAN Dense Scale (400 devices)",
+      "devices": 400
+    }
+  ],
+  "suite_2_graham_anomalies": [
+    {
+      "n": 13,
+      "m": 4,
+      "w_star": 4,
+      "2_approx": {
+        "makespan": 8,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0002,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 7,
+          "ratio_to_w_star": 1.75,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 7,
+          "ratio_to_w_star": 1.75,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 4,
+          "ratio_to_w_star": 1.0,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 7,
+          "ratio_to_w_star": 1.75,
+          "feasible": true
+        }
+      },
+      "test_name": "Graham Anomaly (m=4)",
+      "exact_opt": 4,
+      "graham_bound": 1.75
+    },
+    {
+      "n": 57,
+      "m": 8,
+      "w_star": 8,
+      "2_approx": {
+        "makespan": 16,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0027,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 15,
+          "ratio_to_w_star": 1.875,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 15,
+          "ratio_to_w_star": 1.875,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 8,
+          "ratio_to_w_star": 1.0,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 15,
+          "ratio_to_w_star": 1.875,
+          "feasible": true
+        }
+      },
+      "test_name": "Graham Anomaly (m=8)",
+      "exact_opt": 8,
+      "graham_bound": 1.875
+    },
+    {
+      "n": 241,
+      "m": 16,
+      "w_star": 16,
+      "2_approx": {
+        "makespan": 32,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0444,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 31,
+          "ratio_to_w_star": 1.938,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 31,
+          "ratio_to_w_star": 1.938,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 16,
+          "ratio_to_w_star": 1.0,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 34,
+          "ratio_to_w_star": 2.125,
+          "feasible": true
+        }
+      },
+      "test_name": "Graham Anomaly (m=16)",
+      "exact_opt": 16,
+      "graham_bound": 1.938
+    },
+    {
+      "n": 993,
+      "m": 32,
+      "w_star": 32,
+      "2_approx": {
+        "makespan": 64,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.7949,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 63,
+          "ratio_to_w_star": 1.969,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 63,
+          "ratio_to_w_star": 1.969,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 32,
+          "ratio_to_w_star": 1.0,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 58,
+          "ratio_to_w_star": 1.812,
+          "feasible": true
+        }
+      },
+      "test_name": "Graham Anomaly (m=32)",
+      "exact_opt": 32,
+      "graham_bound": 1.969
+    },
+    {
+      "n": 2257,
+      "m": 48,
+      "w_star": 48,
+      "2_approx": {
+        "makespan": 96,
+        "ratio_to_w_star": 2.0,
+        "time_s": 4.3657,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 95,
+          "ratio_to_w_star": 1.979,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 95,
+          "ratio_to_w_star": 1.979,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 48,
+          "ratio_to_w_star": 1.0,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 93,
+          "ratio_to_w_star": 1.938,
+          "feasible": true
+        }
+      },
+      "test_name": "Graham Anomaly (m=48)",
+      "exact_opt": 48,
+      "graham_bound": 1.979
+    }
+  ],
+  "suite_3_min_min_starvation": [
+    {
+      "n": 48,
+      "m": 4,
+      "w_star": 160,
+      "2_approx": {
+        "makespan": 320,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0029,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 435,
+          "ratio_to_w_star": 2.719,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 435,
+          "ratio_to_w_star": 2.719,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 300,
+          "ratio_to_w_star": 1.875,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 440,
+          "ratio_to_w_star": 2.75,
+          "feasible": true
+        }
+      },
+      "test_name": "Min-Min Bottleneck Starvation (m=4, n=48)"
+    },
+    {
+      "n": 104,
+      "m": 6,
+      "w_star": 300,
+      "2_approx": {
+        "makespan": 600,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0112,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 835,
+          "ratio_to_w_star": 2.783,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 835,
+          "ratio_to_w_star": 2.783,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 600,
+          "ratio_to_w_star": 2.0,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 880,
+          "ratio_to_w_star": 2.933,
+          "feasible": true
+        }
+      },
+      "test_name": "Min-Min Bottleneck Starvation (m=6, n=104)"
+    },
+    {
+      "n": 215,
+      "m": 8,
+      "w_star": 500,
+      "2_approx": {
+        "makespan": 1000,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0395,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 1395,
+          "ratio_to_w_star": 2.79,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 1395,
+          "ratio_to_w_star": 2.79,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 1000,
+          "ratio_to_w_star": 2.0,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 1595,
+          "ratio_to_w_star": 3.19,
+          "feasible": true
+        }
+      },
+      "test_name": "Min-Min Bottleneck Starvation (m=8, n=215)"
+    },
+    {
+      "n": 446,
+      "m": 12,
+      "w_star": 750,
+      "2_approx": {
+        "makespan": 1500,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.1738,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 2080,
+          "ratio_to_w_star": 2.773,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 2080,
+          "ratio_to_w_star": 2.773,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 1500,
+          "ratio_to_w_star": 2.0,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 2680,
+          "ratio_to_w_star": 3.573,
+          "feasible": true
+        }
+      },
+      "test_name": "Min-Min Bottleneck Starvation (m=12, n=446)"
+    }
+  ],
+  "suite_4_max_min_traps": [
+    {
+      "n": 84,
+      "m": 3,
+      "w_star": 157,
+      "2_approx": {
+        "makespan": 314,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0034,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 300,
+          "ratio_to_w_star": 1.911,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 336,
+          "ratio_to_w_star": 2.14,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 300,
+          "ratio_to_w_star": 1.911,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 1480,
+          "ratio_to_w_star": 9.427,
+          "feasible": true
+        }
+      },
+      "test_name": "Max-Min Heterogeneity Trap (m=3, n=84, skew=10x)"
+    },
+    {
+      "n": 125,
+      "m": 4,
+      "w_star": 204,
+      "2_approx": {
+        "makespan": 408,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0102,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 394,
+          "ratio_to_w_star": 1.931,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 442,
+          "ratio_to_w_star": 2.167,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 394,
+          "ratio_to_w_star": 1.931,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 1968,
+          "ratio_to_w_star": 9.647,
+          "feasible": true
+        }
+      },
+      "test_name": "Max-Min Heterogeneity Trap (m=4, n=125, skew=12x)"
+    },
+    {
+      "n": 208,
+      "m": 6,
+      "w_star": 309,
+      "2_approx": {
+        "makespan": 618,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0332,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 600,
+          "ratio_to_w_star": 1.942,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 700,
+          "ratio_to_w_star": 2.265,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 600,
+          "ratio_to_w_star": 1.942,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 3240,
+          "ratio_to_w_star": 10.485,
+          "feasible": true
+        }
+      },
+      "test_name": "Max-Min Heterogeneity Trap (m=6, n=208, skew=15x)"
+    }
+  ],
+  "suite_5_unrelated_adversarial": [
+    {
+      "n": 40,
+      "m": 4,
+      "w_star": 13,
+      "2_approx": {
+        "makespan": 26,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0009,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 35,
+          "ratio_to_w_star": 2.692,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 35,
+          "ratio_to_w_star": 2.692,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 20,
+          "ratio_to_w_star": 1.538,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 41,
+          "ratio_to_w_star": 3.154,
+          "feasible": true
+        }
+      },
+      "test_name": "Unrelated Machine Contention (m=4, n=40)"
+    },
+    {
+      "n": 120,
+      "m": 6,
+      "w_star": 24,
+      "2_approx": {
+        "makespan": 48,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0049,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 76,
+          "ratio_to_w_star": 3.167,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 76,
+          "ratio_to_w_star": 3.167,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 40,
+          "ratio_to_w_star": 1.667,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 96,
+          "ratio_to_w_star": 4.0,
+          "feasible": true
+        }
+      },
+      "test_name": "Unrelated Machine Contention (m=6, n=120)"
+    },
+    {
+      "n": 240,
+      "m": 8,
+      "w_star": 36,
+      "2_approx": {
+        "makespan": 72,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0216,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 118,
+          "ratio_to_w_star": 3.278,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 118,
+          "ratio_to_w_star": 3.278,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 60,
+          "ratio_to_w_star": 1.667,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 179,
+          "ratio_to_w_star": 4.972,
+          "feasible": true
+        }
+      },
+      "test_name": "Unrelated Machine Contention (m=8, n=240)"
+    },
+    {
+      "n": 400,
+      "m": 10,
+      "w_star": 48,
+      "2_approx": {
+        "makespan": 96,
+        "ratio_to_w_star": 2.0,
+        "time_s": 0.0725,
+        "feasible": true
+      },
+      "baselines": {
+        "Greedy Least-Loaded": {
+          "makespan": 159,
+          "ratio_to_w_star": 3.312,
+          "feasible": true
+        },
+        "Min-Min": {
+          "makespan": 159,
+          "ratio_to_w_star": 3.312,
+          "feasible": true
+        },
+        "Max-Min": {
+          "makespan": 80,
+          "ratio_to_w_star": 1.667,
+          "feasible": true
+        },
+        "Random Assignment": {
+          "makespan": 280,
+          "ratio_to_w_star": 5.833,
+          "feasible": true
+        }
+      },
+      "test_name": "Unrelated Machine Contention (m=10, n=400)"
+    }
+  ]
+}

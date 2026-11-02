@@ -64,11 +64,11 @@ def find_2approx_assignment(
         min_toas.append(row_min)
         max_toas.append(row_max)
 
-    w_min = max(min_toas)
+    sum_min = sum(min_toas)
+    w_min = max(max(min_toas), math.ceil(sum_min / m))
 
     # Tight upper bound: average min-ToA load plus maximum possible job duration
     # This upper bound guarantees an assignment exists if the system is balanceable.
-    sum_min = sum(min_toas)
     w_max_tight = math.ceil(sum_min / m) + max(max_toas)
     
     if H_ms is not None:

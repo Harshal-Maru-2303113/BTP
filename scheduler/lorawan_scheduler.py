@@ -21,6 +21,7 @@ from segment_tree import SegmentTree
 from approximation.binary_search import find_2approx_assignment
 from approximation.graph_utils import compute_loads
 from lorawan_toa import compute_cost_matrix
+from scheduler.energy_optimizer import energy_optimal_downshift
 
 
 def _build_edf_timeline_with_demod(
@@ -64,6 +65,7 @@ def _build_edf_timeline_with_demod(
     """
     n = len(candidate_ids)
     m = len(machines)
+    pkt_map = {p.id: p for p in packets} if isinstance(packets, list) else packets
 
     # Group local indices by assigned machine
     machine_jobs: List[List[int]] = [[] for _ in range(m)]
@@ -73,7 +75,7 @@ def _build_edf_timeline_with_demod(
     # Sort each machine's jobs by deadline (EDF)
     for j in range(m):
         machine_jobs[j].sort(
-            key=lambda li: packets[candidate_ids[li]].deadline
+            key=lambda li: pkt_map[candidate_ids[li]].deadline
         )
 
     # Segment tree over [0, H_ms) for global demod occupancy
@@ -97,7 +99,7 @@ def _build_edf_timeline_with_demod(
     for j in range(m):
         if machine_jobs[j]:
             li = machine_jobs[j][0]
-            pkt = packets[candidate_ids[li]]
+            pkt = pkt_map[candidate_ids[li]]
             s = max(channel_cursor[j], pkt.release_time)
             heapq.heappush(pq, (s, li, j, 0))
 
@@ -110,7 +112,7 @@ def _build_edf_timeline_with_demod(
             # This entry may have been superseded; push next if needed
             continue
 
-        pkt = packets[candidate_ids[li]]
+        pkt = pkt_map[candidate_ids[li]]
         toa = P[li][j]
 
         # Earliest start respecting per-channel ordering and release time
@@ -151,7 +153,7 @@ def _build_edf_timeline_with_demod(
                     next_pos = q_pos + 1
                     if next_pos < len(machine_jobs[j]):
                         nli = machine_jobs[j][next_pos]
-                        npkt = packets[candidate_ids[nli]]
+                        npkt = pkt_map[candidate_ids[nli]]
                         ns = max(channel_cursor[j], npkt.release_time)
                         heapq.heappush(pq, (ns, nli, j, next_pos))
                     continue
@@ -192,7 +194,7 @@ def _build_edf_timeline_with_demod(
         next_pos = q_pos + 1
         if next_pos < len(machine_jobs[j]):
             nli = machine_jobs[j][next_pos]
-            npkt = packets[candidate_ids[nli]]
+            npkt = pkt_map[candidate_ids[nli]]
             ns = max(channel_cursor[j], npkt.release_time)
             heapq.heappush(pq, (ns, nli, j, next_pos))
 
@@ -206,36 +208,23 @@ def lorawan_hypercycle_scheduler(
     H_ms: int,
     max_demod: int,
     check_invariants: bool = False,
+    E_full: Optional[List[List[float]]] = None,
+    enable_energy_opt: bool = True,
 ) -> ScheduleResult:
     """
-    Algorithm 3: LoRaWAN-Hypercycle-Scheduler.
+    Algorithm 3 + Algorithm 4 (Energy Optimization):
+    LoRaWAN-Hypercycle-Scheduler with Energy Minimization.
 
-    Complete end-to-end scheduling:
+    Complete end-to-end scheduling pipeline:
       1. Clamp deadlines to H.
       2. Loop:
-         a. Phase 1: 2-approx makespan minimisation.
+         a. Phase 1: 2-approx makespan minimisation (Gairing et al. 2007).
          b. If makespan > H → drop lowest-priority, restart Phase 1.
-         c. Phase 2: EDF timeline with demod-aware placement.
-         d. If violations → drop lowest-priority offender, retry Phase 2
-            (without re-running Phase 1).
-         e. If clean → return schedule.
-
-    Parameters
-    ----------
-    packets : list[Packet]
-        All packets with release times, deadlines, priorities.
-    machines : list[Machine]
-        m = N_ch × N_sf machines.
-    P_full : list[list[int]]
-        Full n_total × m ToA matrix.
-    H_ms : int
-        Hypercycle duration in milliseconds.
-    max_demod : int
-        Maximum concurrent gateway demodulations (8).
-
-    Returns
-    -------
-    ScheduleResult
+         c. Phase 1.5: Energy-optimal capacity-constrained downshifting.
+            Minimizes energy consumption while strictly guaranteeing max load <= 2 * w*.
+         d. Phase 2: EDF timeline with demod-aware placement (Segment tree).
+         e. Phase 3: Priority-based dropping of violators (retry Phase 2).
+         f. If clean → return schedule.
     """
     m = len(machines)
     result = ScheduleResult()
@@ -258,6 +247,13 @@ def lorawan_hypercycle_scheduler(
         P_local = [[INF] * m for _ in range(n_cand)]
         for li, pid in enumerate(candidate_ids):
             P_local[li] = list(P_full[pid])
+
+        # Build local Energy matrix if available
+        E_local = None
+        if E_full is not None:
+            E_local = [[float(INF)] * m for _ in range(n_cand)]
+            for li, pid in enumerate(candidate_ids):
+                E_local[li] = list(E_full[pid])
 
         # ---- Phase 1: Makespan Minimisation ---- #
         C_local = compute_cost_matrix(P_local, m)
@@ -294,6 +290,20 @@ def lorawan_hypercycle_scheduler(
 
         result.approx_ratio_w = w_star
 
+        # ---- Phase 1.5: Energy-Optimal Capacity-Constrained Downshift ---- #
+        if E_local is not None and enable_energy_opt:
+            alpha, energy_stats = energy_optimal_downshift(
+                n=n_cand,
+                m=m,
+                P=P_local,
+                E=E_local,
+                alpha=alpha,
+                w_star=w_star,
+                machines=machines,
+                H_ms=H_ms,
+            )
+            result.energy_stats = energy_stats
+
         # ---- Phase 2 + 3: EDF timeline with demod check ---- #
         # Retry Phase 2 after dropping offenders without re-running Phase 1
         while candidate_ids:
@@ -316,6 +326,15 @@ def lorawan_hypercycle_scheduler(
                 final_loads = compute_loads(len(candidate_ids), m, P_local, alpha)
                 result.machine_makespan_ms = max(final_loads, default=0)
                 result.feasible = True
+
+                if E_local is not None:
+                    final_e_mj = sum(
+                        E_local[li][alpha[li]]
+                        for li in range(len(candidate_ids))
+                        if 0 <= alpha[li] < m and E_local[li][alpha[li]] < INF
+                    )
+                    result.energy_stats["scheduled_energy_mj"] = round(final_e_mj, 3)
+
                 return result
 
             # ---- Drop lowest-priority offender ---- #
@@ -331,6 +350,8 @@ def lorawan_hypercycle_scheduler(
             candidate_ids.pop(victim_idx)
             alpha.pop(victim_idx)
             P_local.pop(victim_idx)
+            if E_local is not None:
+                E_local.pop(victim_idx)
 
         # If all candidates dropped
         result.feasible = False
