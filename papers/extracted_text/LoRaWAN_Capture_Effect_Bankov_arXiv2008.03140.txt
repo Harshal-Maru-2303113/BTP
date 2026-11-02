@@ -1,0 +1,869 @@
+Mathematical Model of LoRaWAN
+Channel Access with Capture Effect
+Dmitry Bankov*† , Evgeny Khorov*‡ and Andrey Lyakhov*†
+* Institute for Information Transmission Problems, Russian Academy of Sciences, Moscow, Russia
+† Moscow Institute of Physics and Technology, Moscow, Russia
+‡ National Research University Higher School of Economics, Moscow, Russia
+
+arXiv:2008.03140v1 [cs.NI] 6 Aug 2020
+
+Email: {bankov, khorov, lyakhov}@iitp.ru
+
+Abstract—LoRaWAN is a promising low power long
+range wireless communications technology for the Internet
+of Things. An important feature of LoRaWAN gateways is
+related to so-called capture effect: under some conditions
+the gateway may correctly receive a frame even if it
+overlaps with other ones. In this paper, we develop a
+pioneering mathematical model of a LoRaWAN network
+which allows finding network capacity and transmission
+reliability taking into account the capture effect.
+Index Terms—LoRa, LoRaWAN, LPWAN, Channel Access, Performance Evaluation, ALOHA, Capture Effect
+
+I. I NTRODUCTION
+Low Power Wide Area Networks (LPWANs) are a
+promising solution for the Internet of Things, especially those related to sensor and actuator networks.
+Recently LoRa/LoRaWAN has become a very popular LPWAN technology, mostly thanks to its reliable
+PHY design which enables energy-efficient long range
+communications and resilience to noise. At the same
+time, LoRaWAN MAC protocol has fallen a victim of
+oversimplification due to the pursuit of keeping end
+devices cheap and easy-to-implement and therefore has
+many open issues [1]. Being an open solution operating
+in the ISM band, LoRaWAN faces an outlook of multiple
+independent networks using the same frequency range
+in vicinity of each other, which will result in problems
+related to interference. Such a prospect could be avoided
+by the usage of an efficient power allocation and channel
+access scheme, however, its design requires an accurate
+model of network operation.
+Although LoRaWAN specification was released in
+2015, LoRa/LoRaWAN has already been extensively
+studied. Most papers pay attention to LoRa PHY [2]–[4],
+leaving MAC out of scope. Some researches have been
+directed towards performance evaluation of LoRaWAN
+networks in order to find the limits of this technology via
+simulation [5], [6]. At the same time, little attention has
+been paid to analytical models. Existing works [7], [8]
+consider only unacknowledged transmission mode and
+Poisson total network traffic and apply the well-known
+The research was done at IITP RAS and was supported by the
+Russian Science Foundation (agreement No 14-50-00150).
+
+approach for ALOHA modeling [9]. However, as shown
+in [10], such an approach provides incorrect results
+for basic LoRaWAN operation with acknowledgements
+(ACKs) and retransmissions, therefore more advanced
+mathematical model is required to describe the network.
+In this paper, we extend the approach introduced in
+[10] for LoRaWAN network modelling by taking into
+account the propagation losses and capture effect: i.e.
+the possibility of a packet to be received even if it
+intersects in time with packets from other devices but
+its power is sufficiently high. The proposed model can
+be used to optimize, design and evaluate the performance
+of LoRaWAN MAC layer solutions, related to channel
+access, power and spreading factor control [8].
+The rest of the paper is organized as follows. In
+Section II we explain LoRaWAN channel access and
+its features important for modelling. Section III contains
+the description of the modelled scenario. In Section
+IV we describe the mathematical model of LoRaWAN
+channel access with capture effect. Section V provides
+numerical results which prove the accuracy of the model.
+Conclusion is given in Section VI.
+II. L O R AWAN C HANNEL ACCESS D ESCRIPTION
+A typical LoRaWAN [11] network consists of a server,
+gateways (GWs) and end devices, called motes. GWs are
+connected to the server via IP network and to the motes
+via LoRa links and act as relays between them.
+We consider class A devices, which operate in a way
+fruitful for sporadic uplink data transmission.
+A LoRaWAN network simultaneously operates in
+several wireless channels. For example, in Europe LoRaWAN devices can use three main channels and one
+downlink channel. To transmit a data frame, each mote
+randomly selects one of the main channels (see Fig. 1).
+Having received the frame, the GW transmits two ACKs.
+The first ACK is sent 𝑇1 after the frame reception in the
+same channel where data was transmitted. The second
+one is sent after timeout 𝑇2 = 𝑇1 + 1 s in the downlink
+channel. If the mote does not receive any ACK, it makes
+a retransmission. The standard recommends making a
+retransmission in a random time drawn from interval
+[1, 1 + 𝑊 ] seconds, where 𝑊 = 2.
+
+c
+○ 2017 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future
+media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or
+redistribution to servers or lists, or reuse of any copyrighted component of this work in other works. DOI: 10.1109/PIMRC.2017.8292748
+
+At the PHY layer, LoRaWAN uses Chirp Spread
+Spectrum modulation. Its main feature is that signals
+with different spreading factors can be distinguished and
+received simultaneously, even if they are transmitted in
+the same time on the same channel. Channel width,
+coding rate and the spreading factor determine the data
+rate. Lower data rates allow reliable transmission for big
+distance. Data frames are sent at a rate determined by the
+GW, but the algorithm for rate allocation is not specified
+in the standard. The first ACK is sent at a rate lower than
+the data rate for the frame transmission by a configurable
+offset (it can be zero). The second ACK should always
+be sent at a fixed data rate, by default the lowest one.
+
+Main channel
+Mote: Data
+
+IV. M ATHEMATICAL M ODEL
+To solve the problem, we develop a mathematical
+model of the transmission process. We consider separately the first and the subsequent transmission attempts.
+As the first transmission attempts are described by the
+Poisson process, to find the PER in these assumptions,
+in Section IV-A, we consider the approach used to
+evaluate ALOHA networks [9] and extend it to take into
+account ACKs. This approach is however inapplicable
+for retransmissions, because they do not form a Poisson
+process, so in Section IV-B we propose a way to take
+account of them. For both kinds of attempts, we consider
+the possibility of several frames to be transmitted simultaneously and one of them to be successfully received if
+it has sufficient power. Sections IV-A and IV-B describe
+the general model of transmission process, while in
+
+GW: ACK1
+
+Downlink channel
+
+𝑡
+
+GW: ACK2
+
+𝑇2
+
+𝑡
+
+Fig. 1: LoRaWAN channel access
+Section IV-C we study a specific case, when the motes
+are distributed uniformly in a circle around the GW and
+the path-loss is described by Okumura-Hata model.
+A. The First Transmission Attempt
+Let 𝑝𝑖 be the probability of a mote using data rate 𝑖. Its
+first transmission attempt is successful with probability:
+
+III. P ROBLEM S TATEMENT
+Consider a LoRaWAN network that consists of a GW
+and 𝑁 motes and operates in 𝐹 main channels and one
+downlink channel. The motes use data rates 0, 1, ..., 𝑅,
+set by the GW. The motes generate frames according to
+a Poisson process with total intensity 𝜆 (the network
+load). All motes transmit frames with 51-byte Frame
+Payload, which is the biggest payload that can fit a frame
+at the lowest data rate. The frames are transmitted in the
+acknowledged mode, and ACKs carry no frame payload.
+We consider a situation, when motes have no queue, i.e.
+if two messages are generated, a mote transmits only the
+most recent one. Motes have a retry limit 𝑅𝐿 and drop
+frames after 𝑅𝐿 retransmission attempts.
+We consider a scenario, when a frame is successful if
+for its duration its power is greater than the noise plus the
+power of the interfering frames transmitted in the same
+channel and at the same rate by at least 𝐶𝑅 dB, where
+𝐶𝑅 is the co-channel rejection parameter, specified in
+LoRa chip datasheets. For the described scenario, we
+want to find the maximal load at which the network can
+provide reliable communications. We define packet error
+rate as the probability of frame transmission attempt to
+be unsuccessful and state the problem to find the packet
+error rate (PER) as a function of network load 𝜆.
+
+𝑇1
+
+𝑃𝑖𝑆,1 = 𝑃𝑖𝐷𝑎𝑡𝑎 𝑃𝑖𝐴𝑐𝑘 ,
+
+(1)
+
+where 𝑃𝑖𝐷𝑎𝑡𝑎 is the probability that the data frame is
+transmitted without collision at data rate 𝑖 and 𝑃𝑖𝐴𝑐𝑘 is
+the probability that at least one ACK is received by the
+mote, provided that the data frame is successful.
+Since packets transmitted in different channels and
+at different rates do not collide, we need to consider
+separately each combination of channel and data rate.
+𝑖
+The load at rate 𝑖 and one of 𝐹 channels equals 𝑟𝑖 = 𝜆𝑝
+𝐹 .
+Probability of a successful data frame transmission
+consists of several summands. Firstly, a data frame is
+successful if it does not intersect with another frame or
+an ACK of a previous frame. Let 𝑇𝑖𝐷𝑎𝑡𝑎 and 𝑇𝑖𝐴𝑐𝑘 be the
+durations of data frame and ACK, respectively, at rate 𝑖.
+Intersection with a frame does not occur if no frames are
+generated in the interval [−𝑇𝑖𝐷𝑎𝑡𝑎 , 𝑇𝑖𝐷𝑎𝑡𝑎 ], relative to the
+beginning of the considered frame. For a Poisson process
+𝐷𝑎𝑡𝑎
+the probability of such event is 𝑒−2𝑟𝑖 𝑇𝑖
+. We consider
+that the GW cancels ACK transmission if it is receiving
+a data frame, so a collision with an ACK happens only
+if the ACK is generated in the interval [−𝑇𝑖𝐴𝑐𝑘 , 0]. The
+rate of ACK generation is 𝑃𝑖𝐷𝑎𝑡𝑎 𝑟𝑖 , so the probability to
+𝐷𝑎𝑡𝑎 𝐴𝑐𝑘
+𝑇𝑖
+avoid collision with an ACK is 𝑒−𝑟𝑖 𝑃𝑖
+.
+Secondly, data frame is also successful, if it intersects with another frames, but the interfering signal is
+weaker. The probability of 𝑘 motes transmitting their
+frames in time
+intervals
+)︀𝑘 that intersect the frame equals
+𝐷𝑎𝑡𝑎 (︀
+2𝑟𝑖 𝑇𝑖𝐷𝑎𝑡𝑎 /𝑘!. If we sum over all possible
+𝑒−2𝑟𝑖 𝑇𝑖
+𝑘 values, we obtain the equation for 𝑃𝑖𝐷𝑎𝑡𝑎 :
+𝐷𝑎𝑡𝑎
+
+𝐷𝑎𝑡𝑎
+
+𝐴𝑐𝑘
+
++𝑃𝑖
+𝑇𝑖
+)𝑟𝑖
+𝑃𝑖𝐷𝑎𝑡𝑎 =𝑒−(2𝑇𝑖
++
+)︀
+(︀
+𝑘
+𝑁
+−1
+∑︁ 2𝑟𝑖 𝑇𝑖𝐷𝑎𝑡𝑎
+𝐷𝑎𝑡𝑎
++
+𝑒−2𝑟𝑖 𝑇𝑖
+W𝐺𝑊
+𝑖,𝑘 ,
+𝑘!
+
+(2)
+
+𝑘=1
+
+where W𝐺𝑊
+𝑖,𝑘 is the probability of total interfering signal
+from 𝑘 motes (in dBm) having less power than the
+considered mote’s signal plus co-channel rejection 𝐶𝑅.
+In this case, the signal power is measured at the GW.
+The probability that at least one ACK arrives is
+calculated according to the inclusion-exclusion principle:
+
+frame of mote A
+
+frame of mote B
+
+...
+0
+
+𝑥 𝑇
+
+𝑦
+𝜏
+𝑧
+Fig. 2: Retransmission
+
+𝜏 +𝑊
+
+𝑡
+
+𝑃𝑖𝐴𝑐𝑘 = 𝑃𝑖𝐴𝑐𝑘1 + 𝑃𝑖𝐴𝑐𝑘2 − 𝑃𝑖𝐴𝑐𝑘1 𝑃𝑖𝐴𝑐𝑘2 , where 𝑃𝑖𝐴𝑐𝑘1
+and 𝑃𝑖𝐴𝑐𝑘2 are the probabilities that the first and the
+second ACK, respectively, is transmitted successfully,
+provided that data was transmitted at rate 𝑖.
+The first ACK is delivered if no data frame intersects
+it or if the interfering signal is weaker:
+𝐷𝑎𝑡𝑎
+
+𝐴𝑐𝑘
+
+)+𝑇𝑖 )𝑟𝑖 +
+𝑃𝑖𝐴𝑐𝑘1 =𝑒−(min(𝑇1 ,𝑇𝑖
+)︀𝑘
+𝑁
+−1 (︀
+∑︁
+𝑟𝑖 𝑇𝑖𝐴𝑐𝑘
+𝐴𝑐𝑘
+𝑜𝑡𝑒
+𝑒−𝑟𝑖 𝑇𝑖 W𝑀
++
+𝑖,𝑘 ,
+𝑘!
+
+(3)
+
+𝑘=1
+
+where in the first summand we take the minimum of
+𝑇𝑖𝐷𝑎𝑡𝑎 and 𝑇1 , because if a frame exceeds 𝑇1 , it breaks
+the acknowledged frame, but such an event is already
+taken into account by 𝑃𝑖𝐷𝑎𝑡𝑎 . The second summand
+stands for the situation, when 𝑘 motes start transmission
+after the beginning of the ACK (if data is transmitted
+before ACK, the GW skips ACK transmission), but their
+total power is less than the power of the GW’s signal,
+𝑜𝑡𝑒
+which happens with probability W𝑀
+𝑖,𝑘 . In this case, the
+signal power is measured at the ACK recipient mote,
+therefore the distributions of signal power in eqs. (2)
+and (3) are different.
+The second ACK is transmitted without collision if no
+data frame is successful in any other channel or at any
+other data rate, such that its second ACK would begin
+before the considered one
+it:
+)︂
+(︂ and intersect
+𝑝 𝑃 𝐷𝑎𝑡𝑎
+
+−𝑇0𝐴𝑐𝑘 𝜆 1− 𝑖 𝑖𝐹
+
+∑︀𝑅
+
+𝐷𝑎𝑡𝑎
+𝑗=0 𝑝𝑗 𝑃𝑗
+
+,
+𝑃𝑖𝐴𝑐𝑘2 = 𝑒
+where in the exponent we multiply the interval during
+which the ACK should not start by the total intensity of
+successful frame process from all channels and all data
+rates except the one used by the considered mote.
+B. Retransmissions
+The mote makes a retransmission when it does not
+receive any ACK after transmission For that it randomly
+selects a channel and transmits data frame again after a
+random delay from 1 to 1 + 𝑊 seconds.
+We consider a situation, when retransmission is caused
+by collision of two motes’ (motes A and B) frames
+and find the probability of successful retransmission. We
+use this probability as an amendment to the model to
+take account of the retransmissions. Although it does
+not describe a case when more than two motes make a
+retransmission, it allows us to estimate 𝑃 𝐸𝑅 correctly,
+as shown in Section V. There are two different cases.
+The first case is when one frame is much more
+powerful than another (𝑤𝐴 > 𝑤𝐵 + 𝐶𝑅 or 𝑤𝐵 >
+𝑤𝐴 + 𝐶𝑅), so it is successful and the second one is
+
+needs a retransmission. Let the probability of such event
+be W𝑜𝑛𝑒
+𝑖 . In this case, retransmission is successful with
+the same probability as the first transmission attempt.
+The second case is when both frames are unsuccessful,
+which happens with probability W𝐵𝑜𝑡ℎ
+. In this case,
+𝑖
+both motes make a retransmission which is likely to
+result in a new collision, because frames in LoRaWAN
+are rather long compared with the window for random
+delay (compare 𝑊 = 2 s and 𝑇0𝐷𝑎𝑡𝑎 ≈ 2.4 s). Let 0
+be the time when the frame of mote A begins, and 𝑥
+be the offset for the frame of mote B (see Fig. 2). If
+motes choose different channels for retransmission, the
+collision is resolved. Otherwise, with probability 𝐹1 , they
+choose the same channel. In this case, let 𝑦 and 𝑧 be the
+times when motes A and B start their retransmission,
+respectively. The value of 𝑦 is distributed uniformly in
+the interval [𝜏, 𝜏 + 𝑊 ], where 𝜏 is the frame duration
+𝑇𝑖𝐷𝑎𝑡𝑎 plus the timeout for the ACK. The value of 𝑧 is
+distributed uniformly in the interval [𝜏 + 𝑥, 𝜏 + 𝑥 + 𝑊 ].
+The retransmission results in a new collision, if one
+frame intersects with another or if a frame starts after the
+GW starts transmitting
+the acknowledgement
+for another
+(︀
+)︀
+frame. Let 𝑓 𝑦, 𝑧, 𝑇𝑖𝐷𝑎𝑡𝑎 , 𝑇𝑖𝐴𝑐𝑘 be the indicator of such
+an event, i.e., it equals 1 if it happens and 0 otherwise:
+(︀
+)︀
+(︀
+)︀
+𝑓 𝑦, 𝑧, 𝑇𝑖𝐷𝑎𝑡𝑎 , 𝑇𝑖𝐴𝑐𝑘 = 1 𝑦 ≤ 𝑧 ≤ 𝑦 + 𝑇𝑖𝐷𝑎𝑡𝑎 +
+(︀
+)︀
++1 𝑦 + 𝑇𝑖𝐷𝑎𝑡𝑎 + 𝑇1 ≤ 𝑧 ≤ 𝑦 + 𝑇𝑖𝐷𝑎𝑡𝑎 + 𝑇1 + 𝑇𝑖𝐴𝑐𝑘
+(︀
+)︀
++1 𝑧 ≤ 𝑦 ≤ 𝑧 + 𝑇𝑖𝐷𝑎𝑡𝑎 +
+(︀
+)︀
++1 𝑧 + 𝑇𝑖𝐷𝑎𝑡𝑎 + 𝑇1 ≤ 𝑦 ≤ 𝑧 + 𝑇𝑖𝐷𝑎𝑡𝑎 + 𝑇1 + 𝑇𝑖𝐴𝑐𝑘 .
+Using it we find the probability of a new collision:
+∫︀𝑇
+
+𝑃𝑖𝑐 = 𝐹1 · −𝑇
+
+𝑟𝑖 𝑒−𝑟𝑖 𝑥
+
+(
+
+𝑊
+∫︀ 𝑊∫︀+𝑥 𝑓 𝑦,𝑧,𝑇𝑖𝐷𝑎𝑡𝑎 ,𝑇𝑖𝐴𝑐𝑘
+𝑊2
+𝑥
+0
+
+∫︀𝑇
+
+) 𝑑𝑧𝑑𝑦𝑑𝑥
+.
+
+𝑟𝑖 𝑒−𝑟𝑖 𝑥 𝑑𝑥
+
+−𝑇
+
+Here we firstly integrate over all possible offsets between
+mote A and mote B frames that result in a collision,
+and then integrate over all possible random delays for
+both motes. The integral in the denominator stands for
+the collision probability, so in the end we obtain the
+conditional probability of a new collision, provided that
+the first collision has already happened.
+Taking into account all the aforementioned cases, the
+resulting probability of successful delivery of data frame
+during retransmission equals
+(︀ 𝑂𝑛𝑒
+)︀
+W𝑖 + W𝐵𝑜𝑡ℎ
+(1 − 𝑃𝑖𝑐 ) 𝐷𝑎𝑡𝑎
+𝑖
+𝐷𝑎𝑡𝑎
+𝑃𝑖,𝑅𝑒 =
+𝑃𝑖
+.
+1 − W𝐺𝑊
+𝑖,1
+Here we divide the probabilities W𝑂𝑛𝑒
+and W𝐵𝑜𝑡ℎ
+𝑖
+𝑖
+𝐺𝑊
+by 1 − W𝑖,1 , because the fact that devices make a
+retransmission already means that the power of at least
+one mote is not enough for a successful transmission,
+and we thus obtain the conditional probabilities.
+
+We obtain the probability of successful retransmission
+𝐷𝑎𝑡𝑎
+instead of 𝑃𝑖𝐷𝑎𝑡𝑎 . The
+𝑃𝑖𝑆,𝑅𝑒 as in eq. (1), using 𝑃𝑖,𝑅𝑒
+probability of a successful transmission 𝑃𝑆 is
+)︁
+∑︁ (︁
+𝑃𝑆 =
+𝑝𝑖 𝑃1,𝑖 𝑃𝑖𝑆,1 + (1 − 𝑃1,𝑖 )𝑃𝑖𝑆,𝑅𝑒 ,
+𝑖
+
+where 𝑃1 is the probability that the transmission attempt
+is the first one (not a retry). 𝑃1 is reverse to the average
+number of transmission attempts per a frame:
+(︂
+)︁
+)︁𝑟 )︂−1
+)︁
+(︁
+𝑅𝐿
+∑︀ (︁(︁
+𝑆,𝑅𝑒
+𝑆,1
+𝐺
+𝐺
+𝑃𝑖
+,
+𝑃𝑖
+1 − 𝑃𝑖
+𝑃1,𝑖 = 1 + 1 − 𝑃𝑖
+𝑟=0
+
+𝑃𝑖𝐺
+
+where
+is the probability of no new frame being
+generated during retransmission, which equals
+∫︁𝑊
+𝐷𝑎𝑡𝑎
+𝜆
+1
++𝑇2 +𝑇0𝐴𝑐𝑘 +1+𝑥)
+𝐺
+𝑒− 𝑁 (𝑇𝑖
+𝑃𝑖 =
+𝑑𝑥 =
+𝑊
+0
+)︁
+𝜆
+𝑁 − 𝑁𝜆 (𝑇𝑖𝐷𝑎𝑡𝑎 +𝑇2 +𝑇0𝐴𝑐𝑘 +1) (︁
+𝑒
+=
+1 − 𝑒− 𝑁 𝑊 ,
+𝑊𝜆
+The packet error rate is calculated as 𝑃 𝐸𝑅 = 1 − 𝑃𝑆 .
+The model estimates PER correctly up to such load,
+that new frames are generated so often that every retransmission results in a collision with a newly generated
+frame, which, in fact, is the network capacity. To obtain
+it we divide 𝐹 by the average retransmission duration:
+(︁∑︀
+(︀ 𝐷𝑎𝑡𝑎
+)︀)︁−1
+𝑅
+𝜆* = 𝐹
++ 𝑇2 + 𝑇0𝐴𝑐𝑘 + 1 + 𝑊
+.
+𝑖=0 𝑝𝑖 𝑇𝑖
+2
+C. Specific Case
+The general model contains values W** , to define
+which we consider a specific distribution of motes in
+space, a specific channel model and a way to assign data
+rates to the motes. Let us consider the Okumura-Hata
+path-loss channel with no fading [12]. The signal power
+at the receiver equals 𝑤𝑟𝑥 (𝑑) = 𝐴 − 𝐵 lg (𝑑), where
+lg(𝑥) is base 10 logarithm of 𝑥, 𝐴 = 𝑤𝑡𝑥 − 69.55 −
+2
+26.16 lg (𝑓 )+13.82 lg (ℎ𝐺𝑊 )+3.2 (lg (11.75ℎ𝑀 𝑜𝑡𝑒 )) −
+4.97 and 𝐵 = 44.9 − 6.55 lg (ℎ𝐺𝑊 ). Here 𝑤𝑡𝑥 is the
+transmit power (in dBM), ℎ𝐺𝑊 is the height of the GW
+antenna, ℎ𝑀 𝑜𝑡𝑒 is the height of the mote’s antenna and
+𝑑 is the distance between them.
+Let the motes be spread around the GW uniformly in
+a circle with radius 𝑅. In this case, the pdf of the Mote’s
+distance from the GW equals 𝜌(𝑟) = 2𝑟
+𝑅 . We consider a
+case,
+when
+the
+server
+has
+a
+set
+of
+sensitivity
+thresholds
+(︀ 𝑚𝑖𝑛 𝑚𝑎𝑥 )︀ 𝑚𝑖𝑛
+𝑤𝑖 , 𝑤𝑖
+, 𝑤𝑖+1 = 𝑤𝑖𝑚𝑎𝑥 , and assigns data rate 𝑖
+to a mote if the power of its signal at the GW is within
+[𝑤𝑖𝑚𝑖𝑛 , 𝑤𝑖𝑚𝑎𝑥 ) interval. These bounds define distance
+intervals [𝜇𝑖 , 𝜈𝑖 ), within which motes use specific data
+rates (see Fig. 3a). The radii are found as the solution of
+the equations 𝑤𝑟𝑥 (𝜇𝑖 ) = 𝑤𝑖𝑚𝑖𝑛 and 𝑤𝑟𝑥 (𝜈𝑖 ) = 𝑤𝑖𝑚𝑎𝑥 .
+Under such considerations we, firstly, derive the
+(︀probability
+)︀ of a mote to use data rate 𝑖 as 𝑝𝑖 =
+𝜈𝑖2 − 𝜇2𝑖 /𝑅2 , which is the area, where the data rate
+is used divided by the total area of the circle.
+
+Secondly, we consider the transmission of two motes,
+Mote 0 and Mote 1, and find the probability W𝐺𝑊
+𝑖,1 of
+Mote 0 signal being more powerful than Mote 1 signal:
+(︀ 𝐺
+)︀
+𝐺
+W𝐺𝑊
+𝑖,1 = P 𝑤1 < 𝑤0 − 𝐶𝑅 =
+)︁ ∫︁𝜈𝑖 ∫︁
+(︁
+𝐶𝑅
+=P 𝑟1 > 𝑟0 10 𝐵 =
+
+4𝑟0 𝑟1
+
+2
+(𝜈𝑖2 − 𝜇2𝑖 )
+𝜇𝑖 ℛ
+
+𝑑𝑟1 𝑑𝑟0 ,
+
+where we integrate over distance 𝑟0 from Mote 0 to the
+GW, and then integrate over such a distance 𝑟1 ∈ ℛ
+from Mote 1 to the GW that the power condition holds.
+This location is shown in Fig. 3b and is defined as
+{︁
+}︁
+𝐶𝑅
+ℛ = 𝑟1 : 𝜇𝑖 < 𝑟1 < 𝜈𝑖 ∧ 𝑟0 · 10 𝐵 < 𝑟1 .
+The integral can be simplified as
+⎧ (︂
+)︂2
+𝐶𝑅
+− 𝐶𝑅
+2
+2
+⎪
+⎨ 𝜈𝑖 10 𝐵 −𝜇𝑖 10 𝐵
+𝐶𝑅
+, 𝜈𝑖 > 𝜇𝑖 10 𝐵 ,
+2 −𝜇2 2
+W𝐺𝑊
+=
+2
+𝜈
+𝑖,1
+( 𝑖 𝑖)
+⎪
+𝐶𝑅
+⎩
+0,
+𝜈𝑖 ≤ 𝜇𝑖 10 𝐵 .
+In a similar way, we find the probability W𝐵𝑜𝑡ℎ
+:
+𝑖
+)︂
+(︂
+)︂
+⎧ (︂
+2𝐶𝑅
+− 2𝐶𝑅
+4
+4
+⎪
+⎨ 𝜈𝑖 1−10 𝐵 +𝜇𝑖 1−10 𝐵
+,
+2
+W𝐵𝑜𝑡ℎ
+=
+(𝜈𝑖2 −𝜇2𝑖 )
+𝑖
+⎪
+⎩
+1,
+
+𝐶𝑅
+
+𝜈𝑖 > 𝜇𝑖 10 𝐵 ,
+𝐶𝑅
+
+𝜈𝑖 ≤ 𝜇𝑖 10 𝐵 .
+
+𝐵𝑜𝑡ℎ
+Then we find W𝑂𝑛𝑒
+= 1 − W𝐺𝑊
+.
+𝑖
+𝑖,1 − W𝑖
+𝑀 𝑜𝑡𝑒
+Finally, we find the probability W𝑖,1 of the GW’s
+
+signal at Mote 0 being more powerful than the signal
+from Mote 1:
+(︁
+)︁
+(︀
+)︀
+𝐶𝑅
+𝑜𝑡𝑒
+W𝑀
+=P 𝑤1𝑀 < 𝑤0𝑀 − 𝐶𝑅 = P 𝑑1 > 𝑟0 10 𝐵
+𝑖,1
+∫︁𝜈𝑖 ∫︁ ∫︁
+=
+𝜇𝑖
+
+ℛ
+
+2𝑟0 𝑟1 𝑑𝜑
+𝑑𝑟1 𝑑𝑟0 ,
+2
+2
+(𝜈𝑖 − 𝜇2𝑖 ) 𝜋
+
+where we firstly integrate over distance 𝑟0 from Mote 0
+to the GW, and then integrate over such distance 𝑟1 and
+angle 𝜑 (see Fig. 3c) that the power condition holds, i.e.:
+{︂
+}︂
+2𝐶𝑅
+𝑟 2 +𝑟 2 −𝑟 2 10 𝐵
+ℛ = 𝑟1 , 𝜑 : 𝜇𝑖 < 𝑟1 < 𝜈𝑖 ∧ 𝑐𝑜𝑠𝜑 ≤ 0 12𝑟00𝑟1
+.
+𝑂𝑛𝑒
+𝑜𝑡𝑒
+We further assume that W𝐺𝑊
+, W𝑀
+equal
+𝑖,𝑘 , W𝑖
+𝑖,𝑘
+zero for 𝑘 > 1 (i.e., a device cannot retrieve a frame if
+it is interfered my two or more frames at once), which
+allows us to simplify the calculations of the model and,
+as numerical results show, does not affect the accuracy
+of the model.
+
+V. N UMERICAL R ESULTS
+To evaluate the performance of LoRaWAN networks,
+we consider EU 863-880 MHz ISM band with three
+default channels for data transmission and one downlink
+channel. We simulate a network with 1000 motes and
+compare the average PER with one obtained with our
+mathematical model. The results are shown in Fig. 4.
+We show two opposite cases, the first one is 𝐶𝑅 → ∞,
+which means that collision always happens if two frames
+
+DR3
+DR2
+ν1 = μ2
+
+R
+ν2 = μ3
+
+DR1
+
+r010CR / B
+
+r010CR / B
+
+DR0
+GW μ0 = 0
+
+νi
+
+GW
+
+μi
+
+ν0 = μ1
+
+Mote 1
+
+φ
+
+r1
+
+r0
+Mote 0
+
+GW
+
+νi
+
+μi
+
+r0
+
+Mote 0
+
+R
+ν3 = R
+
+(a) Data rate intervals and their
+bounds
+
+(b) Mote 1 location for successful
+Mote 0 transmission
+
+(c) Mote 1 location when ACK is successful if it
+collides with data
+
+Fig. 3: Mote locations for various cases.
+100
+10-1
+
+λ∗
+
+also describe a specific case, when the propagation losses
+are described by Okumura-Hata model. We provide the
+bound on network load for which our model provides
+correct results and show that the extended model is
+more accurate than the previous one. This model can
+be used as a tool for future research related to power
+and spreading factor allocation in LoRaWAN networks,
+for parameter optimization and development of more
+advanced channel access schemes.
+
+PER
+
+10-2
+
+λold
+
+PER, sim, CR =0
+PER, sim, CR →∞
+PER, math, CR =0
+PER, math, CR →∞
+
+10-3
+10-4
+10-5 -3
+10
+
+10-2
+
+10-1
+100
+Network load, frames per second
+
+101
+
+Fig. 4: Dependency of PER on the network load
+intersect in time in one channel, and both frames are
+damaged in this case. Such results completely align with
+the results of a model from [10], which does not take
+capture effect into account. The second case is 𝐶𝑅 = 0,
+which means that the frame always passes if its power is
+greater than interference plus thermal noise. From Fig.
+4 we can see that our model accurately predicts 𝑃 𝐸𝑅
+for any 𝐶𝑅 value.
+According to numerical results, 𝑃 𝐸𝑅, calculated by
+taking into account the capture effect can be up to 50%
+lower than the one calculated with traditional ALOHA
+approach. As the result, the estimated maximal load
+supported by the network without exceeding the given
+𝑃 𝐸𝑅, can be up to 100% higher.
+Numerical results also show that we correctly estimate
+𝜆* , and that our upper bound on model accuracy is better
+than 𝜆*𝑜𝑙𝑑 , which is the bound found in [10].
+VI. C ONCLUSION
+In the paper, we consider LoRaWAN networks with
+class A devices operating in acknowledged mode. We
+have extended the model from [10] to accurately describe
+data transmission process, taking into account the difference between power of the signal from different devices
+and considering the capture effect. We have developed
+a general model which can be used to evaluate performance of LoRaWAN networks in different scenarios, and
+
+R EFERENCES
+[1] D. Bankov, E. Khorov, and A. Lyakhov, “On the Limits of
+LoRaWAN Channel Access,” in Engineering and Telecommunication (EnT), International Conference on. IEEE, 2016, pp.
+10–14.
+[2] M. Centenaro, L. Vangelista, A. Zanella, and M. Zorzi, “Longrange Communications in Unlicensed Bands: The Rising Stars in
+the IoT and Smart City Scenarios,” IEEE Wireless Communications, vol. 23, no. 5, pp. 60–67, 2016.
+[3] A. Augustin, J. Yi, T. Clausen, and W. M. Townsley, “A Study
+of LoRa: Long Range & Low Power Networks for the Internet
+of Things,” Sensors, vol. 16, no. 9, p. 1466, 2016.
+[4] J. Haxhibeqiri, F. Van den Abeele, I. Moerman, and J. Hoebeke,
+“Lora scalability: A simulation model based on interference
+measurements,” Sensors, vol. 17, no. 6, p. 1193, 2017.
+[5] K. Mikhaylov, J. Petäjäjärvi, and T. Hänninen, “Analysis of the
+Capacity and Scalability of the LoRa Wide Area Network Technology,” in Proceedings of 22nd European Wireless Conference.
+VDE, May 2016.
+[6] D. Magrin, M. Centenaro, and L. Vangelista, “Performance
+evaluation of lora networks in a smart city scenario,” in IEEE
+ICC 2017, 2017.
+[7] F. Adelantado, X. Vilajosana, P. Tuset, B. Martinez, J. MeliaSegui, and T. Watteyne, “Understanding the Limits of LoRaWAN,” IEEE Communications Magazine, Jun. 2017.
+[8] B. Reynders, W. Meert, and S. Pollin, “Power and spreading
+factor control in low power wide area networks,” in IEEE ICC
+2017, 2017, pp. 1–5.
+[9] N. Abramson, “THE ALOHA SYSTEM: Another Alternative for
+Computer Communications,” in Proceedings of the November 1719, 1970, Fall Joint Computer Conference, ser. AFIPS ’70 (Fall).
+New York, NY, USA: ACM, 1970, pp. 281–285.
+[10] D. Bankov, E. Khorov, and A. Lyakhov, “Mathematical Model
+of LoRaWAN Channel Access,” in Proceedings of the IEEE
+WoWMoM, Macao, China, 2017, pp. 12–15.
+[11] LoRaWAN Specification, V. 1.0.2, LoRa Alliance, Jul. 2016.
+[12] M. Hata, “Empirical formula for propagation loss in land mobile
+radio services,” IEEE transactions on Vehicular Technology,
+vol. 29, no. 3, pp. 317–325, 1980.
+
+

@@ -1,0 +1,454 @@
+Mathematical Model of LoRaWAN Channel Access
+
+arXiv:2004.07645v1 [cs.NI] 16 Apr 2020
+
+Dmitry Bankov, Evgeny Khorov and Andrey Lyakhov
+Institute for Information Transmission Problems, Russian Academy of Sciences, Moscow, Russia
+Email: {bankov, khorov, lyakhov}@iitp.ru
+
+Abstract—While 3GPP has been developing NB-IoT, the market of Low Power Wide Area Networks has been mastered
+by cheap and simple Sigfox and LoRa/LoRaWAN technologies.
+Being positioned as having an open standard, LoRaWAN has
+attracted also much interest from the research community.
+Specifically, many papers address the efficiency of its PHY
+layer. However MAC is still underinvestigated. Existing studies
+of LoRaWAN do not take into account the acknowledgement
+and retransmission policy, which may lead to incorrect results.
+In this paper, we carefully take into account the peculiarities of
+LoRaWAN transmission retries and show that it is the weakest
+issue of this technology, which significantly increases failure
+probability for retries. The main contribution of the paper is
+a mathematical model which accurately estimates how packet
+error rate depends on the offered load. In contrast to other
+papers, which evaluate LoRaWAN capacity just as the maximal
+throughput, our model can be used to find the maximal load,
+which allows reliable packet delivery.
+Index Terms—LoRa, LoRaWAN, LPWAN, Channel Access,
+Performance Evaluation, ALOHA
+
+I. I NTRODUCTION
+LoRaWAN is a relatively new protocol designed to provide
+cheap and reliable wireless connectivity in various Internet
+of Things scenarios. Being a Low Power Wide Area Network
+technology operating in the ISM band, it rapidly got popularity
+in both industry and academic communities. Literature review
+shows that in spite of numerous studies of its PHY layer [1]–
+[3], the MAC layer got little attention, even though it has
+multiple issues [4], [5] that limit its performance. However, as
+LoRaWAN is designed to support networks of thousands of
+devices, it is crucial not only to consider the performance of
+this technology in point-to-point scenarios, but also to evaluate
+its applicability in case of highly-populated networks.
+To calculate throughput of LoRaWAN networks, in existing
+studies of the MAC layer (e.g., see [6]), the authors typically
+use the classical approach for modeling ALOHA networks [7].
+The papers (e.g. [8]) also limit the study to unacknowledged
+mode, which has no control acknowledgements (ACKs). Thus,
+with no control traffic the throughput increases. However the
+reliability of transmission decreases.
+In this paper, we provide a mathematical model for a
+LoRaWAN network operating in the acknowledged mode. We
+explain why the usage of classical ALOHA-like approach
+underestimates the collision probability and develop an accurate mathematical model which takes into account LoRaWAN
+peculiarities related to retransmission policy.
+
+Main
+channel
+Downlink
+channel
+
+𝑇1
+Mote: Data
+
+𝑡
+
+GW: ACK1
+GW: ACK2
+
+𝑇2
+
+𝑡
+
+Fig. 1: LoRaWAN channel access
+II. L O R AWAN C HANNEL ACCESS D ESCRIPTION
+A typical LoRaWAN [9] network consists of end devices,
+called motes, gateways (GWs), and a server. Motes are connected to the GWs via wireless LoRa links. Gateways gather
+information from the motes, send it to the server via an IP
+network, and forward packets from the server to the motes.
+LoRaWAN devices operate in different ways. Depending
+on operation, the standard describes three classes of devices.
+The basic functionality for sporadic uplink data transmission
+is described as class A operation and is studied in this paper.
+A LoRaWAN network simultaneously works in several
+wireless channels. For example, in Europe they can use three
+main channels and one downlink channel. To transmit a data
+frame, each mote randomly selects one of the main channels
+(see Fig. 1). Having received the frame, the GW sends two
+ACKs. The first one is sent in the main channel, where the
+frame was received, 𝑇1 after frame reception. The second ACK
+is sent in the downlink channel after timeout 𝑇2 = 𝑇1 + 1 s.
+If a mote receives no ACK, it makes a retransmission. The
+standard recommends making a retransmission in a random
+time drawn from [1, 1 + 𝑊 ] seconds, where 𝑊 = 2. Note
+that the recommended 𝑊 is too small and, as we show in the
+paper leads to the “avalanche effect”.
+At the PHY layer, LoRaWAN uses Chirp Spread Spectrum
+modulation. Its main feature is that signals with different
+spreading factors can be distinguished and received simultaneously, even if they are transmitted in the same time on the same
+channel. Spreading factor, together with the channel width and
+the coding rate, determines the data rate. Lower data rates
+extend transmission range and improve transmission reliability.
+For the first transmission attempt, the rate is determined by
+the GW. The standard also recommends decrementing data
+rate every two consequent transmission failures, limiting the
+number of retransmissions by 𝑅𝐿 = 7. The first ACK is sent
+at a data rate that is lower than the data rate for the frame
+transmission by a configurable offset (it can be zero). The
+second ACK should always be sent at a fixed data rate, by
+default the lowest one.
+
+c
+○ 2017 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, includin
+g reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists,
+or reuse of any copyrighted component of this work in other works. DOI: 10.1109/WoWMoM.2017.7974300
+
+III. P ROBLEM S TATEMENT
+Consider a LoRaWAN network that consists of a GW and
+𝑁 motes and operates in 𝐹 main channels and one downlink
+channel. The motes use data rates 0, 1, ..., 𝑅, set by the GW.
+Let 𝑝𝑖 be the probability that a mote uses data rate 𝑖.
+We consider that a frame collision occurs when two frames
+are transmitted in the same channel at the same data rate, and
+they intersect in time.
+The motes generate frames according to a Poisson process
+with total intensity 𝜆 (the network load). All motes transmit
+frames with 51-byte Frame Payload which corresponds to the
+biggest payload that can fit a frame at the lowest data rate.
+The frames are transmitted in the acknowledged mode, and
+ACKs carry no frame payload. We consider a situation, when
+motes have no queue, i.e. if two messages are generated, a
+mote transmits the most recent one.
+For the described scenario, it is important not only to know
+the nominal channel capacity, but also to find the maximal load
+at which the network can provide reliable communications. In
+other words, we need to find the packet error rate (PER) as
+a function of network load 𝜆.
+IV. M ATHEMATICAL M ODEL
+To solve the problem, we develop a mathematical model of
+the transmission process. As the first transmission attempts
+are described by the Poisson process, to find the PER in
+these assumptions, in Section IV-A, we consider the approach
+used to evaluate ALOHA networks [7] and extended to take
+into account ACKs. This approach is however inapplicable for
+retransmissions, because they do not form a Poisson process,
+so in Section IV-B we propose another way to take them into
+account and thus to improve the accuracy of the model.
+A. The First Transmission Attempt
+The first transmission attempt is successful with probability
+𝑃𝑆,1 =
+
+𝑅
+∑︁
+
+𝑝𝑖 𝑃𝑖𝐷𝑎𝑡𝑎 𝑃𝑖𝐴𝑐𝑘 ,
+
+(1)
+
+𝑖=0
+
+where 𝑃𝑖𝐷𝑎𝑡𝑎 is the probability that the data frame is transmitted without collision at data rate 𝑖 and 𝑃𝑖𝐴𝑐𝑘 is the probability
+that at least one ACK out of two is received by the mote,
+provided that the data frame is successful.
+Since the packets transmitted in different channels and at
+different rates do not collide, we need to consider separately
+each combination of channel and data rate. Specifically for
+𝑖
+rate 𝑖 and one of 𝐹 channels, the load equals 𝑟𝑖 = 𝜆𝑝
+𝐹 .
+A data frame transmission is successful if it intersects with
+no transmission of another frame or an ACK sent by the
+GW as a response to previous frame. Let 𝑇𝑖𝐷𝑎𝑡𝑎 and 𝑇𝑖𝐴𝑐𝑘
+be the durations of a data frame and an ACK, respectively,
+at rate 𝑖. Intersection with a frame does not occur if no
+frames are generated in the interval [−𝑇𝑖𝐷𝑎𝑡𝑎 , 𝑇𝑖𝐷𝑎𝑡𝑎 ], relative
+to the beginning of the considered frame. For a Poisson
+process of frame generation, such an event happens with
+𝐷𝑎𝑡𝑎
+probability 𝑒−2𝑟𝑖 𝑇𝑖
+. We consider that the GW cancels ACK
+
+transmission if it is receiving a data frame, so a collision can
+happen only if the ACK is generated in the interval [−𝑇𝑖𝐴𝑐𝑘 , 0].
+The rate of ACK generation is 𝑃𝑖𝐷𝑎𝑡𝑎 𝑟𝑖 , so the probability to
+𝐷𝑎𝑡𝑎 𝐴𝑐𝑘
+𝑇𝑖
+avoid collision with an ACK is 𝑒−𝑟𝑖 𝑃𝑖
+. Finally, 𝑃𝑖𝐷𝑎𝑡𝑎
+can be found from the following equation:
+𝐷𝑎𝑡𝑎
+
+𝑃𝑖𝐷𝑎𝑡𝑎 = 𝑒−(2𝑇𝑖
+
++𝑃𝑖𝐷𝑎𝑡𝑎 𝑇𝑖𝐴𝑐𝑘 )𝑟𝑖
+
+.
+
+As for ACKs, the probability that at least one ACK arrives
+is calculated according to the inclusion-exclusion principle:
+𝑃𝑖𝐴𝑐𝑘 = 𝑃𝑖𝐴𝑐𝑘1 + 𝑃𝑖𝐴𝑐𝑘2 − 𝑃𝑖𝐴𝑐𝑘1 𝑃𝑖𝐴𝑐𝑘2 ,
+where 𝑃𝑖𝐴𝑐𝑘1 and 𝑃𝑖𝐴𝑐𝑘2 are the probabilities that the first
+and the second ACK, respectively, is transmitted successfully,
+provided that data was transmitted at rate 𝑖. The first ACK is
+transmitted successfully if no data frame intersects it:
+𝐷𝑎𝑡𝑎
+
+𝑃𝑖𝐴𝑐𝑘1 = 𝑒−(min(𝑇1 ,𝑇𝑖
+
+)+𝑇𝑖𝐴𝑐𝑘 )𝑟𝑖 .
+
+Here we take the minimum of 𝑇𝑖𝐷𝑎𝑡𝑎 and 𝑇1 , because if a
+frame exceeds 𝑇1 , it breaks the acknowledged frame, but such
+an event is already taken into account by 𝑃𝑖𝐷𝑎𝑡𝑎 . The second
+ACK is transmitted successfully if no data frame is successful
+in any other channel or at any other data rate, such that its
+second ACK would intersect the considered one:
+𝐴𝑐𝑘
+
+𝑃𝑖𝐴𝑐𝑘2 = 𝑒−𝑇0
+
+𝑝
+
+𝜆(1− 𝐹𝑖 )
+
+∑︀𝑅
+
+𝐷𝑎𝑡𝑎
+𝑝𝑗
+𝑗=0 𝑃𝑗
+
+.
+
+B. Retransmissions
+Consider a case, when two motes transmit frames with
+collision, as shown in Fig. 2. Let 0 be the time when the
+frame of mote A begins, and 𝑥 be the offset for frame of
+mote B. Motes choose a channel for retransmission randomly.
+If they choose different channels, the collision is resolved.
+Otherwise, with probability 𝐹1 , they choose the same channel.
+In this case, let 𝑦 and 𝑧 be the times when motes A and B start
+their retransmission, respectively. The value of 𝑦 is distributed
+uniformly in the interval [𝜏, 𝜏 + 𝑊 ], where 𝜏 is the frame
+duration 𝑇 plus the timeout for the ACK. The value of 𝑧 is
+distributed uniformly in the interval [𝜏 + 𝑥, 𝜏 + 𝑥 + 𝑊 ]. The
+retransmission results in a new collision, if [𝑧, 𝑧 +𝑇 ] intersects
+with [𝑦, 𝑦 + 𝑇 ], which happens with the probability
+∫︀𝑇
+𝑃𝑥 =
+
+𝑟𝑖 𝑒−𝑟𝑖 𝑥
+
+0
+
+∫︀𝑊 𝑊∫︀+𝑥 1(𝑦≤𝑧≤𝑦+𝑇 )+1(𝑧≤𝑦≤𝑧+𝑇 )
+0
+
+𝑊2
+
+𝑥
+
+∫︀𝑇
+
+𝑑𝑧𝑑𝑦𝑑𝑥
+=
+
+𝑟𝑖 𝑒−𝑟𝑖 𝑥 𝑑𝑥
+
+0
+
+𝑇
+= 2
+𝑊
+
+(︃
+
+3
+2
+1
+2𝑊 − 𝑇 −
++
+2
+𝑇 𝑟𝑖2
+𝑟𝑖 tanh( 𝑟𝑖2𝑇 )
+
+)︃
+,
+
+where 1(𝑐𝑜𝑛𝑑𝑖𝑡𝑖𝑜𝑛) is the indicator function which equals 1
+if 𝑐𝑜𝑛𝑑𝑖𝑡𝑖𝑜𝑛 is true and 0 otherwise.
+Motes have the same probability of being the first and the
+second one, so the probability that there is no collision equals
+𝐷𝑎𝑡𝑎
+𝑃𝑖,𝑅𝑒
+= 1 − 2𝑃𝑥 /𝐹.
+
+The average probability of a successful transmission 𝑃𝑆 is
+
+...
+0
+
+𝑥 𝑇
+
+𝜏
+
+𝑦
+
+𝑧
+
+𝜏 +𝑊
+
+10-1
+
+𝑡
+
+Fig. 2: Retransmission
+𝑃𝑆 = 𝑃1 𝑃𝑆,1 + (1 − 𝑃1 )𝑃𝑆,𝑅𝑒 ,
+where 𝑃𝑆,𝑅𝑒 is the probability of a successful retransmission,
+𝐷𝑎𝑡𝑎
+calculated as in eq. (1), using 𝑃𝑖,𝑅𝑒
+instead of 𝑃𝑖𝐷𝑎𝑡𝑎 , and
+𝑃1 is the probability that the transmission is the first one (not
+a retry). 𝑃1 is reverse to the average number of transmission
+attempts per a frame:
+(︃
+)︃−1
+𝑅𝐿
+∑︁
+𝑟 𝑟+1
+𝑃1 = 1 + (1 − 𝑃𝑆,1 )
+(1 − 𝑃𝑆,𝑅𝑒 ) 𝑃𝑁
+,
+𝑟=0
+
+∑︀𝑅
+
+100
+
+frame of mote B
+
+𝜆
+(𝑇𝑖𝐷𝑎𝑡𝑎 +𝑇2 +𝑇0𝐴𝑐𝑘 +⟨𝑇𝑤𝑎𝑖𝑡 ⟩)
+−𝑁
+
+where 𝑃𝑁 =
+is the
+𝑖=0 𝑝𝑖 𝑒
+probability that a new frame does not arrive during the
+transmission and ⟨𝑇𝑤𝑎𝑖𝑡 ⟩ = 1 + 𝑊/2 is the average interval
+that a mote waits before a retransmission. The packet error
+rate is calculated as 𝑃 𝐸𝑅 = 1 − 𝑃𝑆 .
+The model estimates PER correctly up to such network load,
+that new frames arrive at the motes as quickly as the motes
+drop the frames due to inability to resolve collisions after 𝑅𝐿
+retransmission attempts. It means that the load equals
+(︃ 𝑅
+)︃−1
+∑︁ (︀
+)︀
+*
+𝐷𝑎𝑡𝑎
+𝐴𝑐𝑘
+𝜆 =𝐹
+𝑝𝑖 𝑇𝑖
++ 𝑇2 + 𝑇0 + ⟨𝑇𝑤𝑎𝑖𝑡 ⟩ 𝑅𝐿
+.
+𝑖=0
+
+V. N UMERICAL R ESULTS
+Let us use the developed model to evaluate performance of a
+LoRaWAN network. As in [6], we consider a scenario, when
+the motes are distributed uniformly in a circular area with
+radius of 1 km around the GW, and the path-loss is described
+by Okumura-Hata model for urban environment. We consider
+EU 863-880 MHz ISM band. In this case, the data rates are
+distributed as follows: 𝑝0 = 0.28, 𝑝1 = 0.2, 𝑝2 = 0.14, 𝑝3 =
+0.1, 𝑝4 = 0.08, 𝑝5 = 0.2. We simulate a network with 1000
+motes and compare the average PER and PER1 for the first
+transmission attempt with those obtained with the developed
+mathematical model. The results are shown in Fig. 3. Because
+of inefficient retransmission parameters the real PER is by
+50% greater than PER1 . Thus, by taking into account retransmissions, we have significantly improved the accuracy
+of the model. From Fig. 3 we also see that we correctly
+estimate 𝜆* which is the highest load when we can neglect
+high-order collisions and the “avalanche effect” inherent to
+the default retransmission parameters. Non-adaptive and small
+retransmission window does not allow to resolve collisions
+with high number of packets, and involving new motes in
+collisions is faster than packet dropping or collision resolution.
+This significantly limits the capacity of a LoRaWAN network.
+While the network can transmit several packets per second,
+because of a poor retransmission policy the PER rapidly tends
+to 1, when the load exceeds 10−1 packets per second.
+
+PER
+
+frame of mote A
+
+PER, sim
+PER, math
+PER1 , sim
+PER1 , math
+λ∗
+
+10-2
+10-3
+10-4 -3
+10
+
+10-1
+10-2
+100
+Network load, frames per second
+
+101
+
+Fig. 3: Dependency of PER on the network load
+VI. C ONCLUSION
+In the paper, we develop the first accurate mathematical
+model of acknowledged uplink transmissions in LoRaWAN
+networks with class A devices. We have shown that leaving
+out of consideration retransmission process significantly overestimates efficiency of a LoRaWAN network. In contrast, our
+model takes into account peculiarities of the retransmission
+process and correctly estimates packet error rate when the
+load is lower than some threshold 𝜆* , which is found in
+the paper. However the area with the higher loads is not
+interesting from a practical point of view. Indeed, after the
+load exceeds the described threshold, PER rapidly grows to
+1 because retransmissions form an “avalanche”. Thus in this
+area LoRaWAN cannot provide reliable communications.
+R EFERENCES
+[1] M. Centenaro, L. Vangelista, A. Zanella, and M. Zorzi, “Long-range
+Communications in Unlicensed Bands: The Rising Stars in the IoT and
+Smart City Scenarios,” IEEE Wireless Communications, vol. 23, no. 5,
+pp. 60–67, 2016.
+[2] L. Vangelista, A. Zanella, and M. Zorzi, “Long-Range IoT Technologies:
+The Dawn of LoRaTM ,” in Future Access Enablers of Ubiquitous and
+Intelligent Infrastructures, pp. 51–58, Springer, 2015.
+[3] C. Goursaud and J.-M. Gorce, “Dedicated networks for IoT: PHY/MAC
+state of the art and challenges,” EAI endorsed transactions on Internet of
+Things, 2015.
+[4] D. Bankov, E. Khorov, and A. Lyakhov, “On the Limits of LoRaWAN
+Channel Access,” in Engineering and Telecommunication (EnT), 2016
+International Conference on, pp. 10–14, IEEE, 2016.
+[5] K. Mikhaylov, J. Petäjäjärvi, and T. Hänninen, “Analysis of the Capacity
+and Scalability of the LoRa Wide Area Network Technology,” in Proceedings of 2016 22nd European Wireless Conference, VDE, May 2016.
+[6] F. Adelantado, X. Vilajosana, P. Tuset, B. Martinez, J. MELIA-SEGUI,
+and T. Watteyne, “Understanding the Limits of LoRaWAN,” IEEE Communications Magazine, June 2017.
+[7] N. Abramson, “THE ALOHA SYSTEM: Another Alternative for Computer Communications,” in Proceedings of the November 17-19, 1970,
+Fall Joint Computer Conference, AFIPS ’70 (Fall), (New York, NY,
+USA), pp. 281–285, ACM, 1970.
+[8] A. Augustin, J. Yi, T. Clausen, and W. M. Townsley, “A Study of LoRa:
+Long Range & Low Power Networks for the Internet of Things,” Sensors,
+vol. 16, no. 9, p. 1466, 2016.
+[9] LoRa Alliance, LoRaWAN Specification, 2015.
+
+

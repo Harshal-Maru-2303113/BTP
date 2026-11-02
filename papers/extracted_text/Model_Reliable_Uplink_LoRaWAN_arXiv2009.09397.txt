@@ -1,0 +1,1174 @@
+2019 15th International Conference on Distributed Computing in Sensor Systems (DCOSS)
+
+arXiv:2009.09397v1 [cs.NI] 20 Sep 2020
+
+A Model for Reliable Uplink Transmissions in LoRaWAN
+Furqan Hameed Khan
+School of ITEE
+The University of Queensland
+Brisbane, Australia
+furqan.khan@uq.net.au
+
+Raja Jurdak
+Distributed Sensing Systems
+Data61 CSIRO
+Brisbane, Australia
+rjurdak@ieee.org
+
+Abstract—Long range wide area networks (LoRaWAN) technology provides a simple solution to enable low-cost services
+for low power internet-of-things (IoT) networks in various
+applications. The current evaluation of LoRaWAN networks
+relies on simulations or early testing, which are typically timeconsuming and prevent effective exploration of the design
+space. This paper proposes an analytical model to calculate the
+delay and energy consumed for reliable Uplink (UL) data delivery in Class A LoRaWAN. The analytical model is evaluated
+using a real network test-bed as well as simulation experiments
+based on the ns-3 LoRaWAN module. The resulting comparison
+confirms that the model accurately estimates the delay and
+energy consumed in the considered environment. The value of
+the model is demonstrated via its application to evaluate the
+impact of the number of end-devices and the maximum number
+of data frame retransmissions on delay and energy consumed
+for the confirmed UL data delivery in LoRaWAN networks.
+The model can be used to optimize different transmission
+parameters in future LoRaWAN networks.
+Keywords-LoRaWAN; Delay; Energy; Performance Modelling;
+
+I. I NTRODUCTION
+Future 5G networks will support applications that require
+ultra-reliable communication among massive Internet-ofthings (IoT) devices [1]. Achieving low-cost and reliable
+communication with bounded delay is challenging in these
+networks. Moreover, the number of IoT devices in future
+ubiquitous networks will eventually surpass the number of
+connected user devices [2], making it more difficult to satisfy
+the application-specific requirements of data rate and latency.
+A new suite of long-range IoT technologies have emerged,
+including long term evolution for machines (LTE-M),
+narrow-band IoT (NBIoT), SigFox, Ingenu, and long range
+(LoRa) [18]. These technologies target low rates, small
+power, and wide area coverage for a massive number of
+devices. Among these, LoRa provides low cost, low power,
+and long range IoT solution, targeting various network
+devices such as wearables, smart meters, and remote sensors.
+This technology uses the LoRa modulation scheme over its
+physical layer. LoRa radio transmission requires setting up
+2325-2944/19/$31.00 c 2019 IEEE
+
+Marius Portmann
+School of ITEE
+The Univeristy of Queensland
+Brisbane, Australia
+marius@ieee.org
+
+Figure 1: Long Range Wide Area Network (LoRaWAN)
+Architecture
+
+of the following five configurable parameters with respective
+limits: transmission power (2 dBm to 20 dBm), frequency
+(860 MHz to 1020 MHz), spreading factor (SF) (7 to 12),
+channel bandwidth (125kHz, 250 kHz, or 500 kHz), and
+coding rate (4/5 to 4/8) [14].
+LoRaWAN is the medium access layer (MAC) protocol
+used by LoRa devices to transmit their data over the wireless
+channel. So far, LoRaWANv1.1 has defined the operation
+of three device classes, namely Class A (sensors), Class
+B (actuators), and Class C (all time active) in a LoRa
+network [10]. Class A and B devices perform energy efficient network operation in the uplink (UL) and downlink
+(DL) respectively. All LoRaWAN devices must support the
+Class A UL operation, which forms the basis of LoRaWAN
+operation and is the focus of this work. Fig. 1 presents the
+LoRaWAN network architecture consisting of end devices,
+gateways, and a network server. The network server is
+connected to the end devices over the MAC layer running
+LoRaWAN, whereas the LoRa gateways are just traffic
+forwarding elements. The server is the main component
+of the LoRa network that handles traffic coming via all
+gateways. LoRaWAN devices support two different types of
+frames transmissions, namely confirmed and unconfirmed.
+DOI 10.1109/DCOSS.2019.00042
+
+The confirmed frames require an acknowledgement (ACK)
+back to the end device, whereas the unconfirmed frames
+do not need any ACK. This work focuses on the UL
+communication through the confirmed frames transmissions.
+Achieving reliable and low-cost data delivery in future
+IoT networks is important. Current practice in exploring the
+design space for LoRa networks mostly relies on simulations, with some early testing efforts. Simulations can be
+time-consuming and limiting due to their iterative nature,
+while physical experimentation is costly, tedious, and labourintensive. Thus, there is a clear need for a mathematical
+model to more effectively explore the design space and
+highlight performance tradeoffs in different scenarios.
+We propose an analytical model to calculate the amount
+of resources consumed for the UL delivery of confirmed
+data frames. Empirical experiments based on a small scale
+LoRaWAN testbed, as well as larger scale ns-3 simulations,
+are used to evaluate our model in terms of the resources
+consumed by each end-device for an UL confirmed transmission. Our findings confirm that the proposed model can be
+used to estimate the consumed energy and delay experienced
+by an end device for reliable UL transmission. Next, we
+further evaluate our Markov-chain based analytical model,
+by exploring different values for the maximum number of
+allowed retransmissions, the choice of receive slot for ACK
+transmissions, and the network load. Our model shows how
+transmission delay and energy depend on these parameters.
+In the rest of this paper, the next section provides a
+background on the basic LoRaWAN operation. Section III
+discusses the model assumptions and explains the complete
+Markov-chain based model and its associated state transition
+probabilities. In Section IV we show the results attained
+through our proposed model, from a small scale test-bed, as
+well as using the ns-3 LoRaWAN module based simulations.
+Section V presents and discusses the evaluation results of
+different use case scenarios based on our proposed analytical
+model. Section VI briefly outlines the relevant related work,
+and Section VII concludes the paper.
+II. BACKGROUND
+This section briefly describes the basic working of LoRaWAN. In LoRaWANv1.1, a Class A device performs UL
+transmission following the pure ALOHA access method,
+while respecting the region-specific regulatory duty cycle
+(RDC) restriction over the specific sub-band. Various subbands are supported in LoRaWAN, some consist of only
+main channels and are used for normal data transmission,
+some are used by devices to send join requests, while
+others are reserved for sending DL responses from the
+gateway. For each UL transmission, the device switches to
+transmit mode and picks a spreading factor (SF), channel,
+bandwidth, coding rate (as advised from the network server),
+and sends the data for the transmit duration based on the
+frame length. After the UL transmission, the end device
+
+Figure 2: Confirmed UL Transmission in LoRaWANv1.1: (a)
+General scenario, (b) Case 1, and (c) Case 2 for confirmed
+UL frame with maximum transmissions N = 2.
+
+opens two consecutive receive slots as shown in Fig. 2a,
+to wait for DL data transmission. The two receive slots
+recommends offset value of 1 and 2 seconds respectively.
+As shown in Fig. 2a, after the receive delay expiration, in
+receive slot 1 (RS1 ) the device listens for any DL frames
+over the same channel with a rate which is a function of
+the UL data rate. If it hears nothing, the device wait for
+another second and again listens for the DL data in receive
+slot 2 (RS2 ) over a reserved channel with minimum rate.
+If the device does not get any ACK during RS2 duration
+(equal to preamble air-time with minimum rate), it waits for
+an ACK-TIMEOUT duration, to make sure that the device
+has nothing to send until the air-time of a valid frame.
+After the time expires, the same confirmed frame CF0 (with
+frame counter zero) can be retransmitted following the RDC,
+similar to any other UL transmission, as shown in the case
+of CF0 in Fig. 2a. From Fig. 2a, note that the LoRaWAN
+operation results in two transmission opportunities from the
+gateway as a result of an UL transmission from a device.
+This is to save the battery powered devices resources, in
+contrast to the gateway which is often mains powered, or
+has otherwise a less restricted power source.
+A device will continue to re-transmit frame following
+the RDC, as long as it does not get any DL data from
+the gateway. The maximum number of confirmed frame
+
+Figure 3: Proposed Markov-Chain Model for Confirmed UL Transmission in LoRaWAN.
+
+retransmissions is a configurable value, with a recommended
+limit of seven1 . The device moves to the next frame once the
+current frame gets acknowledged, or the limit N is reached.
+Furthermore, for each received data frame (with unique
+frame counter), the gateway must send the ACK frame only
+once [10], as seen from the operation depicted in Fig. 2b,
+i.e. Case 1. However, to enhance the network performance,
+most LoRaWAN applications support re-sending of ACK
+frames, as shown by the process in Fig. 2c, i.e. Case 2.
+Moreover, Fig. 2b,c show three different conditions of ACK
+transmission in the case of a confirmed data frame (with N
+= 2). In the first, the ACK frame is immediately received by
+the end device in RS1 . In the second case, the ACK frame is
+lost during the first transmission attempt, whereas in the last
+one the frame could not be successfully ACK’d. If after all
+the N attempts no ACK for the confirmed frame has arrived,
+the device will drop the frame immediately after the ACK
+timeout. Note further in Event 3 of Fig. 2b,c, after the UL
+frame reception in the first transmission attempt, the gateway
+can send the ACK in one of the two receive slots. After
+the ACK from the gateway is lost, the device will assume
+that the transmission was not successful and will resend the
+frame after the ACK-TIMEOUT. Finally, when the device
+PHY layer does not get any ACK after N attempts, it will
+drop the frame and will notify the loss to the higher layer.
+
+Also given a maximum transmissions limit, our model can
+be used to find the worst case delay and energy consumption.
+The notation and symbols used in this section are listed with
+their definitions in Table I.
+A. Assumptions
+We make the following assumptions for our model,
+1) Only class A type LoRaWAN devices are present.
+Hence, an ACK does not contain any piggybacked data
+and has a fixed size comprising the preamble and the
+MAC frame header with a set ACK flag.
+2) For the proposed analytical model, we consider that
+overlapping transmissions from multiple devices over
+the same channel with the same LoRaWAN transmission parameters (i.e. bandwidth, SF, code rate) will be
+lost. In other words, we ignore the capture effect.
+3) All UL transmissions respect the RDC of the given
+sub-band. For RS2 , our model assumes that the reserved channels used for DL ACK transmission by the
+gateway has no duty cycle restriction. This is valid 2 ,
+as only the gateway can use these reserved channels.
+4) All network devices have uniform traffic intensities.
+B. Proposed Analytical Model
+
+In this section, we develop an analytical model for the
+UL confirmed data frame transmission of class A devices in
+a LoRaWAN network. For a given traffic load over a device
+and in the presence of a given number of devices, our goal
+is to estimate the average time it takes for the successful
+reception of a data frame sent by an arbitrary end device.
+
+Fig. 3 shows our proposed Markov-chain model for the
+confirmed UL transmission, where devices perform data
+transmission based on the region specific RDC restrictions [11], and the data frame availability. In our model, for
+each new data frame all available channels have a uniform
+probability to be selected for transmission. Whenever an
+end-device PHY has a frame ready to send, it switches
+to the Send Frame state S1 (where n=1, for the first
+transmission attempt of a confirmed UL data frame.), and
+
+1 i.e. if N is the maximum number of retransmissions including the first
+transmission, then N = 8 as defined in the LoRaWANv1.1 [10].
+
+2 ETSI regulations [17] allows a device to use channel either by respecting
+the RDC or following listen before talk adaptive frequency agility.
+
+III. S YSTEM M ODEL
+
+Table I: Symbols and their Definition
+Symbols
+A
+n=1,2,...,N
+tI
+∆
+mc
+α
+γn
+Psn ,r1
+n
+xa (/ya )
+Dsn
+Esn
+X P R ACK
+tT
+n , tn , tn
+
+Definition
+Total network devices
+(n) frame tx., (N ) max. possible tx.
+Traffic intensity
+Duty cycle of sub-band for UL tx.
+Channels available for UL tx.
+Channel quality
+Slot use by gateway for ACK tx.
+1
+Transition probability from sn to rn
+Probability of device a tx. (/not tx.)
+Delay observed in state sn
+Energy consumed in state sn
+Data, preamble, ACK frames air-time
+
+remains there until the end of the frame transmission. Then
+the device wait in the receive slot RS1 in state (R1 , n) to
+detect DL data over the same channel with the same rate
+that was used for the UL frame transmission. As shown
+in Fig. 3 3 , the states for the data reception in the first
+receive slot, i.e. (R1 , n), (P 1 , n), and (C 1 , n) are defined
+by rn1 , p1n , and c1n . These are referred to as the detection
+of preamble (rn1 ), checking the preamble (p1n ), and checking
+the ACK data frame (c1n ), in RS1 , respectively. Note that
+here, n refers to the nth transmission attempt of the given
+confirmed UL frame. Thus, n=1 is the first transmission,
+while n=2, 3, ... , N represent the later UL retransmissions of
+the same confirmed frame, until the ACK is received. Similar
+to RS1 , for every successive UL transmission, RS2 also has
+three 2-dimensional states for checking the preamble and the
+corresponding frame data, namely (R2 , n), (P 2 , n), and (C 2 ,
+n), represented by rn2 , p2n , and c2n , as shown in Fig. 3.
+Model Description: We assume a LoRaWAN network
+with available sub-bands, comprising of mc channels available for UL data transmission. ∆ is the maximum percentage
+of air-time a device can use sub-bands for data frame
+transmission, and it is called as the RDC constraint. With
+this restriction, a device can only transmit a constant number
+of fixed size UL packets to the gateway. We call it the packet
+transmission rate of an end-device. If the frame arrival rate
+to an end-device application is greater than or equal to its
+frame transmission rate (regulated by ∆), the network is
+considered to be fully loaded. We use tI to represent the
+ratio of the frame arrival rate and frame transmission rate
+from a particular device. In other words, tI (0 ≤ tI ≤ 1)
+defines the traffic intensity. From here on, we use tI = 1,
+i.e. all devices in the network are fully loaded. Also, as
+seen from Table I, γn is the choice of receive slot used by
+gateway for sending ACK in response to the nth data frame
+transmission. γn if one and zero implies that the RS1 and
+RS2 is chosen, respectively.
+The overall traffic generation probability over the subband is given by ∆ · A. For a device a, the probability of
+3 The
+
+arrows for transition between states with only non-zero state
+transition probabilities are shown in the Fig. 3.
+
+sending frame within the duty cycle over a channel will be,
+xa =
+
+∆
+,
+mc
+
+(1)
+
+As in [6], the probability that an active device will not
+send data over a channel is defined through ya as 1 - m∆c .
+From LoRaWAN specifications [10], during retransmission
+the device must not use the same channel that was used in the
+last transmission. Hence with mc available channels for the
+first transmission, the available channels will reduce by one
+in the following retransmission. Therefore the probability
+that an end device is not using a given channel during
+retransmission is,
+ya0 = 1 −
+
+∆
+,
+mc − 1
+
+(2)
+
+The formulation of the state transition matrix P for our
+model is added in the Appendix. A detailed version with all
+relevant explanation is available at [20].
+To find the expected delay and energy consumed using the
+Markov-chain model of Fig. 3, we use the resulting state
+transition matrix P of length (8 · N + 1) × (8 · N + 1).
+Using J 0 as the row vector of length 1 × (8 · N + 1), with
+initial value for the state S1 as 1. The probability of a device
+residing in a particular state can be determined after each
+K period as, J (K) = J 0 · PK . Using the Markov-chain
+property as K approaches to infinity, the probabilities for
+each state in J (K) approaches to some steady state. Based
+on these steady state probabilities (J (K) for very large K)
+we can find the average delay and energy consumed as a
+device moves from the send state (S1 ) to the ACK state,
+using the delay and energy values for each state.
+Delay vector: The delay in each state is given by the
+column vector D (of length 8 · N + 1) defined by [Dsn , Drn1 ,
+Dp1n , Dc1n , Drn2 , Dp2n , Dc2n , Dwn , Da ], where n corresponds
+to the nth transmission of the current data frame. Here, Dsn
+comprises the delay due to the nth data frame transmission
+by the user device until the time the end device waits
+for RS1 (1 + tTn X ). Drn1 is the time a device spends in
+RS1 to receive/decode the DL preamble during nth frame
+R
+transmission (tP
+n ). Dp1n is the time delay for checking the
+received preamble and it is assumed as negligible (≈ 0). Dc1n
+is the delay in receiving the entire DL ACK frame of 12
+bytes (tACK
+). It has two components, the first component
+n
+corresponds to the case when the UL frame gets ACK’d
+successfully in the state RS1 . The second is the case when
+the frame gets lost due to poor channel quality (low α) and
+the device wait for 1 - tACK
+seconds until it gets to RS2 .
+n
+Thus Dc1n for n=1 will be,
+R
+ACK
+Dc11 = γ1 ya 2A α·((tACK
+−tP
+, 0)), (3)
+1
+1 )+max(1−t1
+
+Note that, for n ≥ 2 the variable ya will be replaced by
+ya0 . Similarly, the states (R2 , n), (P 2 , n), and (C 2 , n) are the
+same states for receiving and preamble checking, and the
+
+payload data corresponds to RS2 . The delay for receiving
+the ACK preamble in RS2 , i.e. state (R2 , n), is the same
+R
+as for tP
+n , Dp2n and Da are very small (≈ 0), and Dc2n is
+ACK
+R
+tn
+- tP
+n .
+Finally, the delay in the wait state Dwn is calculated as
+the average time the sub-band becomes unavailable after the
+UL transmission, as a device moves from different states to
+the corresponding wait state in the nth transmission attempt.
+Energy vector: Similar to delay column vector, the energy in each state is given by the energy column vector,
+defined as [Esn , Ern1 , Ep1n , Ec1n , Ern2 , Ep2n , Ec2n , Ewn , Ea ].
+Here, Esn is the energy spent by the end-device from the
+start of the nth UL frame transmission until it opens RS1 .
+Ern1 and Ern2 are the energy spent during the DL preamble
+reception time in RS1 and RS2 respectively, after the nth
+transmission attempt of the UL data frame. Consequently,
+Ec2n is the energy consumed by the device during the rest
+of the ACK frame reception. Similar to Dc1n , Ec1n consists
+of the energy used for receiving the ACK frame plus that
+spent in idle mode waiting for RS2 , after the respective UL
+transmission. From Dp1n , Dp2n and Da , the corresponding
+energy used for checking the preamble (Ep1n and Ep2n ), and
+after the detection of an ACK frame in the ACK state (Ea )
+will all be zero. Ewn is the energy consumed in the wait state
+when the device is idle, after using the sub-band during the
+nth transmission.
+IV. M ODEL E VALUATION
+In this section, we show the delay and consumed energy
+per successful UL transmission results achieved through our
+analytical model, using a real network setup, as well as from
+the ns-3 based LoRaWAN module [9].
+A. LoRaWAN test-bed Experiments
+1) Network Setup: For a real network environment, we
+use a MultiConnect Conduit 4 gateway and mDots as the
+end devices in its coverage area. Our setup (Fig. 4) shows
+the gateway with 5 devices used in our experiments. The
+LoRaWAN transmission parameters settings are the same as
+highlighted in Table II. The mDot device performs overthe-air (OTA) activation to join the LoRaWAN network. A
+device records the time before each UL data frame transmission. Similarly, the time is also recorded immediately
+after the device receives the corresponding ACK frame. The
+difference of these two times gives the successful frame
+transmission to ACK delay. In the same way, the device
+maintains a transmission counter that shows the number
+of attempt needed until the successful transmission of the
+specific frame. An mDot is programmed to send the delay
+of each subsequent UL confirmed frame and the transmission counter value as a payload in the next data frame.
+Consequently, all UL frames from different network devices
+4 http://www.multitech.net
+
+Figure 4: LoRaWAN real network setup with mDots and
+Multi-tech conduit.
+
+are collected at the network server, containing within their
+payloads the delay and transmission attempt information for
+each previous UL frame.
+Due to the limited number of available physical devices,
+we focus on a scenario where the UL duty cycle of each
+mDot is increased beyond the normal RDC limit (of 1%).
+This is done to achieve a higher network load, and to
+evaluate the proposed analytical model as the network gets
+saturated. Hence, we increased the duty cycle from 1% to
+16% in the presence of 5 devices as shown in Fig. 4. Thus
+5 devices with 16% duty cycle in real setup shows the
+performance that is comparable to 80 devices (each with
+1% duty cycle) using the proposed analytical model. For
+each duty cycle value, the setup runs over a duration of 2
+hours.
+2) Evaluation Results: The test-bed results of the average
+ACK delay are shown in Fig. 5 with 5 devices with the
+increasing UL operation duty cycle per device. As we can
+see, with a larger duty cycle, the resulting delay increase becomes quite significant compared to the smaller duty cycle.
+The results from our approximated values via the analytical
+model achieved using the same network parameters with
+an almost perfect channel (α=0.95) also show a similar
+trend with the increasing duty cycle. It is important to note
+that with higher duty cycle (replicating the operation of
+large number of network devices) a difference is observed
+between real network and our analytical model average ACK
+delay results. This is expected since with more simultaneous
+transmissions (larger duty cycle), accurate analytical estimation of channel conditions is non-trivial. Also note that
+from assumption 3 (in Section III A), the model does not
+consider the RDC limit over the reserved channels. Hence
+with larger duty cycle the network performance degrades
+which increases the overall observed average ACK delay.
+B. ns-3 Simulation Experiments
+1) ns-3 LoRaWAN Module: The ns-3 based LoRaWAN
+module is an extension of the ns-3 module for low power
+wide area network (LPWAN) [15]. The PHY layer of each
+device interacts with that of the respective gateway via the
+
+Table II: Default Parameters
+
+Average ACK Delay (seconds)
+
+250
+
+Analytical model γn=1, α=0.95
+Analytical model γn=0, α=0.95
+200 Analytical model γn=1, α=0.90
+Analytical model γn=0, α=0.90
+With Real LoRaWAN network
+150
+100
+50
+0
+
+0
+
+2
+
+4
+
+6
+
+8
+
+10
+
+12
+
+14
+
+16
+
+Parameters
+tI
+UL tx. power
+Gateway coverage radius
+Spreading factor (SF)
+Preamble length
+Confirmed PHY Payload
+ACK payload
+Code rate
+∆
+RS1 DR offset
+Channel bandwidth
+Path loss model
+
+Value
+1
+14dBm
+5km
+DR0/SF12
+12.25 symbols (8 bytes)
+21 bytes
+12 bytes
+4
+7
+
+1%
+0
+125 kHz
+LogDistancePropagationLoss
+
+Per Device Uplink (UL) Duty Cycle (%)
+
+Figure 5: Analytical model evaluation with real network
+setup of A = 5, N = 8, mC = 7.
+
+ns-3 Spectrum PHY module, implementing the device’s air
+interface and channel specific parameters based on the path
+loss model. On each channel in a sub-band, a gateway
+can simultaneously receive signals with different spreading
+factors. Note that, in the module the LoRa PHY uses the
+error model drawn from the baseband implementation of
+the PHY layer in MATLAB based on an AWGN channel,
+as described in [9].
+We modified the functionality of the LoRaWAN module
+based on the LoRaWANv1.1 standard specifications. All end
+devices select a new channel among the available channels in
+a pseudo-random manner for each new UL frame transmission. In each retransmission, the device changes its channel
+by randomly picking a channel among the set of available
+channels, excluding the one used in the last transmission
+attempt. Then, after every two consecutive transmissions of
+an UL data frame (with the same counter value), the device
+reduces its rate by changing DR (/SF) by one step.
+The collision model used in the ns-3 LoRaWAN module
+considers both the impact of interference and the capture
+effect on the resulting bit error rate. Compared to this, our
+LoRaWAN analytical model uses a simple collision model
+based on simultaneous transmissions over the same channel.
+In order to account for the difference (due to capture
+effect) and reduce its impact, we restricted our evaluation
+experiments to scenarios with a relatively limited number of
+devices and with all devices in a distance of 5km from the
+gateway. While in our further evaluations (next section), the
+analytical model is used with even more number of devices.
+Similar to real network, in the ns-3 LoRaWAN module, a
+network server can acknowledge a device in RS1 , following
+RDC restrictions provided that the MAC is in idle state. If
+this is not the case, the gateway will choose RS2 .
+2) Evaluation Settings and Environment: The evaluation
+of our analytical model uses the default parameters defined
+in Table II, unless stated otherwise. For the calculation of
+
+the number of symbols, we assume that header compression is enabled while the data rate optimization feature is
+disabled. A perfect channel (i.e. α=1) implying no channel
+losses is used in a network with a gateway and randomly
+distributed devices. There is no dwell time limit for the frame
+transmission duration (as in LoRaWAN specification [11]).
+Each UL data frame include 8 bytes of application payload,
+with 13 bytes PHY payload, which makes a total size of
+21 bytes. The ACK payload frames from the gateway are
+considered without the optional FPort field, resulting in a
+size of 12 bytes. To make a reasonable comparison, no
+duty cycle restriction is imposed over the reserved channel,
+as assumed in our analytical model. An UL confirmed
+frame transmission is performed following a pseudo-random
+channel hopping pattern, with each time picking one of the
+7 available channels uniformly randomly. The experimental
+results of ACK delay and consumed energy using ns-3
+are collected from 100 simulation runs, and the average is
+calculated. For the consumed energy resources, we use the
+specification of the Semtech SX1272/73 device [16] with
+PA-Boost-ON state and a voltage of 1.5V. The transmit
+current at RFOP 17 dBm is 90mA. The idle (sleep) mode
+current (with transceiver off) is 0.1µA, the normal idle mode
+current is 1.5µA, and the receive mode current is 10.8mA.
+3) ns-3 Evaluation Results: In this section, we use the
+system-level implementation of ns-3 based LoRaWAN module to evaluate the average delay and consumed energy per
+ACK’d UL frame results of the proposed analytical model
+for case 2, as defined in Fig. 2c. From Fig. 6a, the results
+show that increasing the network load, by increasing the
+number of devices, significantly increases the average ACK
+delay for UL confirmed frame. Intuitively, the delay using
+RS1 should be smaller compared to RS2 . However, in the
+worst case scenario the use of only RS1 (when γn =1) for
+ACK transmission increases the delay and energy due to
+high interference from other transmissions and the possible
+collisions as the channel used in RS1 is shared among
+all devices. In contrast to that, the channel used in RS2
+is reserved. Thus, as shown in Fig. 6, the delay (/energy
+consumed) using RS2 is small compared to RS1 , and it
+
+results (represented as delay approx. and consumed energy
+approx.) in Fig. 6 shows that our model is able to accurately
+estimate the delay and consumed energy of LoRaWAN
+devices performing confirmed UL transmissions.
+V. M ODEL A PPLICATION U SE C ASES
+
+Figure 6: Analytical model evaluation of UL delay and
+energy via ns-3 simulations when N =8, mc =7, and α=1.
+
+even surpasses the difference in their transmission times (of
+one second). Also, as with an increasing number of devices
+the collision probability increases, the difference in the delay
+and energy consumed using RS1 /RS2 also increases.
+Furthermore, using our ns-3 based simulation experiments, we can see that the average ACK delay and energy
+confirms the validity of our analytical model. When the
+load is low, the ns-3 LoRaWAN results show a small
+delay and amount of energy consumed, as there are not
+many collisions, and ACKs can also be sent via RS2 .
+When the load becomes high, the average delay and energy
+consumed in ns-3 results increases, due to packet loss and
+retransmissions, caused by collisions and interference. Also
+due to the opportunistic use of RS2 in our ns-3 LoRaWAN
+results, the resulting average delay and energy per successful
+ACK increases, but is still less compared to using only RS1
+(γn =1) slot for all ACK transmissions.
+From the results in Fig. 6 (a, b), it is important to note
+that the consumed resources depend heavily on the choice
+of receive slot (1 or 2). To get information about the choice
+of receive slot in each successive (nth ) transmission, we
+carried out multiple simulation runs in ns-3 with each set
+of devices (in Fig. 6). The results give us the probabilities
+for the selection of the respective receive slots (1 and 2)
+by the gateway for ACK transmission, in response to a
+transmission attempt from a device. In other words, for each
+set of sub-band load we finds the probabilities of receive
+slots (1 and 2) selection in each of the nth transmission
+attempts. As expected, we found that with increasing load
+(network devices) the probability of receive slot selection
+in higher transmission attempts increases. We then used
+these probabilities of the choice of receive slot for ACK
+transmission and the expected delay (/energy) values from
+our analytical model to estimate the consumed resources
+when both slots (1 and 2) are available. The approximate
+
+This section demonstrate the application of our analytical
+model in different network scenarios. Here, we consider
+a channel quality (α) of 0.9. For the cases where these
+parameters are not varied, we use the maximum number
+of retransmissions, including the first transmission as N =
+2. Three channels are available for UL data transmission
+(mc =3) in a network with total 50 devices (A=50). All other
+parameters are shown in Table II. Further we evaluate the
+results using both cases 1 and 2, as discussed in Section II.
+A. Number of Devices (A)
+Results in Fig. 7a and Fig. 7b show the consumed
+resources with the increasing number of devices, i.e. load. As
+can be seen, increasing the number of devices also increases
+the resource consumption for an UL confirmed delivery.
+The trend in delay and consumed energy for the case of
+only RS1 (i.e. γn =1) shows an exponential increase due
+to an increase in collisions. In contrast, with the use of
+only RS2 for ACK transmissions, the average delay and
+consumed energy increases only slightly with respect to the
+network load. This is because the reserved channel is only
+used by the gateway in RS2 , and the end device is not
+experiencing interference from the neighboring gateways.
+Hence, with high network load more devices can be served
+in a smaller amount of time, and the corresponding delay and
+energy per device for achieving a successful UL transmission
+is relatively small. Similarly, due to the small maximum
+transmission limit (N =2), a slight difference in delay and
+consumed energy results can be observed between the two
+cases with increasing network devices.
+B. Maximum Transmissions (N ) Per Device
+In the next scenario, we increase the maximum number
+of allowed transmissions N of a frame, and evaluate the
+impact on the delay and consumed energy per ACK with
+50 devices. Overall, in case 1 the results of Fig. 8a and
+Fig. 8b show an increasing trend of both delay and energy
+consumption with an increasing value of N , whereas the
+increase is minor for case 2. In case 1, when the ACK transmission is done using RS2 , we can see that the consumed
+resources increases with a smaller slope than using RS1 .
+This is because the use of reserved channel for DL ACK
+transmission eliminates the possibility of collisions. As a
+consequence, the probability of required retransmissions also
+reduces significantly, especially when the gateway is serving
+large number of devices. However, when only RS1 is used to
+transmit ACK, the probability of a collision and subsequent
+retransmission increases.
+
+80
+60
+
+Energy consumed per ack (joules)
+
+Delay per ack (minutes)
+
+100
+
+Analytical [Case 1] γn = 1
+Analytical [Case 1] γn = 0
+Analytical [Case 2] γn = 1
+Analytical [Case 2] γn = 0
+
+40
+20
+0
+
+50
+
+100
+
+150
+
+200
+
+250
+
+300
+
+10
+
+Analytical [Case 1] γn = 1
+Analytical [Case 1] γn = 0
+Analytical [Case 2] γn = 1
+Analytical [Case 2] γn = 0
+
+8
+6
+4
+2
+0
+
+50
+
+100
+
+Active devices (A)
+
+150
+
+200
+
+250
+
+300
+
+Active devices (A)
+
+(a) Expected delay per ACK
+
+(b) Expected energy per ACK
+
+Figure 7: Expected delay and energy results per ACK’d
+transmission when N =2, mc =3, and α=0.9 for different
+values of γn with respect to number of network devices.
+Energy consumed per ack (joules)
+
+Delay per ack (minutes)
+
+30
+
+Analytical [Case 1] γn = 1
+25 Analytical [Case 1] γn = 0
+Analytical [Case 2] γn = 1
+Analytical [Case 2] γn = 0
+20
+15
+10
+5
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+3
+
+Analytical [Case 1] γn = 1
+2.5 Analytical [Case 1] γn = 0
+Analytical [Case 2] γn = 1
+2 Analytical [Case 2] γn = 0
+1.5
+1
+0.5
+0
+
+1
+
+2
+
+Maximum transmissions (N)
+(a) Expected delay per ACK
+
+3
+
+4
+
+5
+
+6
+
+7
+
+Maximum transmissions (N)
+(b) Expected energy per ACK
+
+Figure 8: Expected delay and energy per ACK’d transmission when A=50, mc =3, and α=0.9 for different values of
+γn with respect to maximum transmissions (N ).
+
+Finally, a considerable difference in average ACK delay
+and consumed energy can be noticed among the two cases
+(1 and 2), as the maximum transmissions (N ) approaches 8.
+This further shows that when an ACK frame is lost, a higher
+limit non-uniformly increases the delay and consumed energy, especially when the ACK retransmission is not done.
+VI. R ELATED W ORK
+Recently, several efforts have been made to improve the
+performance of long range IoT technologies. The work in [3]
+gives a brief survey, comparing the LoRa and narrowband
+IoT (NBIoT) in terms of the cost, QoS, coverage, latency,
+and energy consumption. While the LoRa network can
+achieve low cost, prolonged battery life, and enhanced
+coverage, it does not provide any QoS. This is because the
+asynchronous nature of the LoRaWAN operation reduces
+
+8
+
+the network server control over the delay and the data rate.
+An in-depth study and evaluation of LoRa and LoRaWAN
+technology is carried out in [8]. Using the physical LoRa
+testbed, the authors study the average throughput, collision
+rate, and channel utility in various network load conditions.
+The results show that with unconfirmed and confirmed transmissions the network achieves maximum channel occupancy
+when the load is 48% and 25%, respectively.
+The work presented in [13] and [8] shows that the RDC
+constraints limit the performance of Class A LoRaWAN
+devices. Especially for confirmed UL transmissions, this
+badly affects the LoRaWAN performance as the transmission
+of ACKs by the gateway increases the problem. Thus, as
+shown in [13], the packet reception rate decreases due
+to a higher number of collisions when either the number
+of devices becomes too high, or their packet generation
+rate goes beyond a threshold. For these reasons, modifying
+the existing ALOHA-based channel access, investigating
+efficient channel hopping mechanisms, and devising new
+ways to minimize the number of ACKs emerge as new
+challenges in LoRaWAN.
+The LoRaWAN performance highly depends on the appropriate selection of different transmission parameters (such
+as power, SF, coding rate, etc.) for each end-device. In [19],
+the authors suggest a passive probing approach that chooses
+a suitable transmission power and UL rate to save device
+energy. The results shows that a significant amount of power
+can be saved using this method. However, it can take quite
+some time to collect enough probing measurements for an
+effective decision. Also, if the above parameters are not
+chosen well, it can increase the consumed energy, as well as
+a more delay due to the RDC limit. Therefore, an analytical
+model, such as presented in this paper, can be a useful
+tool for the exploration of LoRaWAN, and in particular the
+optimal choice of network and protocol parameters.
+The works in [4], [5], [6], and [7] model resource consumption for various aspects of LoRaWAN. In [4] and [7],
+the authors present models to compute the energy and delay
+consumption for UL LoRaWAN transmissions. Specifically,
+the authors show how the frame collision rate and the
+respective device bit error rate (BER) changes under the
+given network conditions. In [4], results show that a LoRa
+device with a 2400mAh battery can last up to 1 year
+when sending data frames every 5 minutes. The Markovchain based queuing model presented in [7] is used to
+estimate the network transmission latency based on the
+traffic intensity. However, the model is not suitable for the
+case of retransmissions and does not consider confirmed
+devices [12] and [14].
+The work presented in [5] models the behavior of the
+Class B DL transmissions using Markov-chain to calculate
+the data delivery delay to the end-device. The results show
+the delay with respect to load, available channels, and the
+used UL rates. As in the case of Class B devices, the gateway
+
+is continuously sending beacon frames (with 128s interval)
+for synchronization over the DL. The work considers that the
+gateway can only deliver the DL data either via ping slots
+or during one of the receive slots that opens after an UL
+transmission. Thus, the DL frame delay mainly depends on
+the number of ping-periods in a beacon interval. However,
+the work did not investigate how many ping periods per
+beacon interval are enough for efficient DL data delivery.
+One of the key contribution related to analytical modeling
+of LoRaWAN is presented in [6]. It models the resource
+consumption during the activation of devices in a network
+comprised of non-active and active devices. The results show
+that the activation delay and energy resources increases when
+more devices are going through the activation procedure.
+Similar to [5, 6] our work is also based on a Markovchain model, however it focuses on reliable transmissions
+and addresses the following limitations of previous works:
+• It does not investigate both delay and energy consumption for confirmed UL transmissions in different cases.
+• It does not study retransmissions and their impact on
+the resource consumption and network performance.
+• None of the previous works evaluate results using both
+a real network and its system-level simulator.
+VII. C ONCLUSIONS
+This paper proposes and evaluates an analytical model
+for reliable UL transmissions in a LoRaWAN network. The
+model is able to quantify the resources required for achieving
+a successful transmission. Our test-bed and simulation based
+results show that the model can be use to estimate the
+delay and energy resources consumed in different use cases.
+Further the model also gives us the upper limit on the ACK
+delay and consumed energy when only RS1 (i.e. γn =1) is
+use for ACK transmission. The proposed model can also
+be evaluated for different channel quality values, number
+of available channels, and the DR offsets used for sending
+ACKs in RS1 .
+A PPENDIX
+F ORMULATION OF S TATE T RANSITION M ATRIX
+This section explains the calculation of the state transition
+matrix P for the proposed model shown in Fig. 3. As
+described in Section II, once a device has sent its data frame,
+it will open the first receive slot after a RECV-DELAY
+time. Therefore, for the nth transmission of a frame the
+transition probability from state sn to rn1 will be Psn ,rn1 =
+1 (∀ n ∈ [1, N]). In state (R1 , n), the device stays for the
+preamble air-time to receive the full preamble. The transition
+probability from state (R1 , n) to state (P 1 , n) (i.e. Prn1 ,p1n )
+is the probability that some data is received in receive slot 1
+(RS1 ). Next the transition from state (P 1 , n) to state (C 1 , n)
+occurs based on the probability that the detected preamble
+is correct, i.e. the preamble of the ACK sent by the gateway
+successfully arrives at the device in the RS1 . Furthermore,
+
+the probability of transitioning from state (R1 , n) to state
+(R2 , n), i.e. Prn1 ,rn2 , is the probability that nothing is detected
+in RS1 , as a result the device has opened RS2 . This is the
+probability that there was neither a transmission from the
+gateway nor from any of the devices during the RS1 .
+States for Receive Slot 1 (RS1 ): Preamble Detection
+State: In the presence of A devices, the probability that
+no UL transmission occurs is ya A . The probability that the
+ACK sent by the gateway is successful in RS1 for the nth
+UL transmission attempt is αγn ya A . Here, α represents the
+quality of UL channel used for frame transmission. The
+range of α is 0 ≤ α ≤ 1, with α = 1 corresponds to a
+perfect channel, implying no frame loss occur due to the
+channel. γn is the receive slot selection index for ACKs
+during the nth transmission attempt. γn is 1 when the first
+receive slot is used by the gateway for the ACK, while it is
+0 if the second receive slot is used for sending ACK. The
+probability that there is no transmission from the gateway is
+obtained by complementing the probability that the gateway
+transmits in RS1 and is successfully received. We define the
+transition probability Prn1 ,rn2 for n = 1 as,
+Pr11 ,r12 = (1 − α · γ1 · ya A ) · ya A ,
+
+(4)
+
+Similarly, the probability Pr11 ,p11 is defined as,
+Pr11 ,p11 = 1 − Pr11 ,r12 ,
+
+(5)
+
+Above findings (Eq. 4 and Eq. 5) are true when n = 1.
+However when n ≥ 2, for Prn1 ,rn2 and Prn1 ,p1n , the ya is
+replaced by ya0 .
+Preamble Identification State: Next, with a preamble of 8
+bytes, the preamble detection duration (for 12.25 symbols) is
+0.401408 sec which is less than one, even with the minimum
+rate (DR0/SF12). Therefore, Pp1n ,wn = 0, as it can never be
+the case that the preamble detection takes more time than the
+time between two receive slots. Pp1n ,c1n is the probability that
+the preamble is correct, given that some data (/preamble)
+is detected. The probability that the detected preamble is
+correct in RS1 is the probability that only one transmission
+happens either by gateway or by any one of the device
+in RS1 . The probability that only the gateway sends data
+(/preamble), and no other device is sending a data frame
+is αγ1 ya A ya A . (1 − αγ1 ya A )ya A−1 xa A is the probability
+that only one device has sent a frame, and the gateway has
+not sent any data over the DL. From the above findings,
+for n = 1 we can define Pp11 ,c11 using the definition of
+conditional probability as follows,
+Pp11 ,c11 =
+
+(αγ1 ya A ya A ) + (1 − αγ1 ya A )ya A−1 xa A
+, (6)
+Pr11 ,p11
+
+Similarly, for n ≥ 2, Pp1n ,c1n can be find by replacing ya A
+A
+and xa in above by ya0 and x0a , respectively. The probability
+of incorrect preamble detection, is the probability that the
+
+device move to the state (R2 , n) (i.e. rn2 ) from the state (P 1 ,
+n) (i.e. p1n ) and is stated as,
+Pp1n ,rn2 = 1 − Pp1n ,c1n ,
+
+(7)
+
+Checking Payload State: For the first confirmed frame
+transmission, the probability that the received frame is
+successfully ACK’d in the first receive slot (Pc11 ,a ), and no
+transmission from any device occurred is defined as,
+Pc11 ,a = αγ1 ya A αya A ,
+
+(8)
+
+In the case of successive retransmissions (n ≥ 2), ya A in
+A
+above equation will be replaced by ya0 . Next the probability that for the first transmission of confirmed frame the
+corresponding payload with preamble does not contain any
+ACK is the probability that the frame gets corrupted due to
+channel errors therefore Pc11 ,r12 is defined as,
+Pc11 ,r12 = β1 αγ1 ya A (1 − α)ya A ,
+
+(9)
+
+Similarly, for the retransmission attempts (i.e. n ≥ 2), the
+transition probability Pc1n ,rn2 can be calculated by replacing
+A
+β1 and ya A in above equation by βn and ya0 , respectively.
+In above, βn can be either 1 or 0, it is 1 if the ACK reception
+) is less than one second
+time in nth transmission (tACK
+n
+otherwise it is 0. The probability Pc1n ,wn can simply be stated
+as 1 - Pc1n ,rn2 - Pc1n ,a .
+Receive Slot 2 (RS2 ) States: The probability that a UL
+frame is received correctly and the gateway is sending an
+ACK using RS2 is defined below,
+Prn2 ,p2n = α(1 − γn )ya A ,
+
+(10)
+
+Next, the transition probability to the wait state, as a result
+of a failed reception in RS2 , is as follows,
+Prn2 ,wn = 1 − Prn2 ,p2n ,
+
+(11)
+
+Since only the gateway is using the reserved channel for
+ACK transmission, Pp2n ,c2n = 1, Pc2n ,a = α, and Pc2n ,wn = 1
+- α. Note that the above formulation is correct for the first
+transmission, while for retransmissions (when n = 2 ... N)
+the parameters ya and xa will be replaced by ya0 and x0a ,
+respectively, as shown previously.
+Wait States (wn ) States: Next, ∀ n ≤ (N - 1), once the
+device PHY layer is in the wait state, the probability that it
+will go to the next send state is 1, Pwn ,sn+1 = 1. Whereas
+upon n = N, the state transition probability to the next frame
+transmission becomes 1 (i.e. PwN ,s1 = 1), as tI is one.
+Above, we have defined the state transition matrix following the operation of LoRaWAN shown in Fig. 2c (case
+2). The reader should note that during default LoRaWAN
+operation, as shown in Fig. 2b (case 1), once an ACK
+is sent, the network server should ignore all subsequent
+transmissions of the same frame. In such a case, the ACK
+from gateway at the nth (for n ≥ 2) transmission attempt of
+a device depends on the probability that the frame ACK has
+
+not been sent in any of the past n-1 transmission attempts.
+Thus, the probability that the gateway sends an ACK in
+response to the nth transmission attempt is denoted by
+P RnACK and defined as,
+A
+
+A
+
+P RnACK = [1 − (α · ya0 (γn · ya0 + (1 − γn )))]n−1 , (12)
+A
+
+A
+
+A
+
+where αya0 γn ya0 and αya0 (1 − γn ) are the probabilities
+that an ACK is sent via RS1 and RS2 , respectively. For
+case 1 (in Fig. 2b), the above state transition probabilities
+i.e. Prn1 ,rn2 , Pp1n ,c1n , Pc1n ,a , Pc1n ,rn2 , and Prn2 ,p2n are updated
+with P RnACK ∀ n ≥ 2.
+R EFERENCES
+[1] A. Osseiran et al. 5G Mobile and Wireless Communications Technology, 06 2016.
+[2] Ericsson
+White
+Paper,
+Uen
+284
+23-3278
+Cellular Networks for massive IoT, Jan. 2016.
+available: https://ericsson.com/assets/local/publications/
+white-papers/wp iot.pdf
+[3] R. S. Sinha et al. A Survey on LPWA technology: LoRa
+and NB-IoT, ICT Express, 3(1):14-21, 2017.
+[4] L. Casals et al. Modeling the Energy Performance of
+LoRaWAN, Sensors (Basel), 17(10), 2017.
+[5] F. Delobel et al. Analysis of the Delay of Confirmed
+Downlink Frames in Class B of LoRaWAN, VTC
+Spring’17, pages 1-6, June 2017.
+[6] J. Toussaint et al. Performance analysis of the on-the-air
+activation in LoRaWAN, IEMCON’16, pages 1-7, 2016.
+[7] R. B. Srensen et al. Analysis of Latency and MAC-Layer
+Performance for Class A LoRaWAN, IEEE Wireless
+Comm. Lett., 6(5): 566-569, Oct 2017.
+[8] A. Augustin, J. Yi, T. Clausen and W. M. Townsley, A
+Study of LoRa: Long Range and Low Power Networks
+for the Internet of Things, Sensors, 16(9), 2016.
+[9] F. Van den Abeele, et al. Scalability Analysis of LargeScale LoRaWAN Networks in ns-3, IEEE Internet of
+Things Journal, 4(6): 2186-2198, Dec 2017.
+[10] LoRa Alliance LoRaWAN Specs v1.1, (accessed
+Dec’17) 2017. https://lora-alliance.org/resource-hub/
+lorawantm-specification-v11.
+[11] LoRa Alliance LoRaWAN Regional Parameters Specs
+v1.1, (accessed Dec’17) 2017. https://lora-alliance.org/
+resource-hub/lorawantm-regional-parameters-v11rb
+[12] D. Bankov et al., Mathematical model of LoRaWAN
+channel access with capture effect, IEEE 28th International Symp. on PIMRC, pages 1-5, Oct 2017.
+[13] F. Adelantado, et al. Understanding the Limits of
+LoRaWAN, IEEE Comm. Magazine, 55(9): 34-40, 2017.
+[14] Bor, Martin C. et al. Do LoRa Low-Power Wide-Area
+Networks Scale?, Proc. of 19th ACM MSWiM’16, 5967, Nov. 2016.
+[15] LR-WPAN Module, 2016 (accessed April 7, 2018).
+https://nsnam.org/docs/models/html/lr-wpan.html
+
+[16] Semtech SX1272/73 - 860 MHz to 1020 MHz Low
+Power Long Range Transceiver Specs, Semtech inc.,
+https://semtech.com/uploads/documents/sx1272.pdf
+[17] E. T. C. E. compatibility and R. spectrum Matters
+(ERM). 09 2011.
+[18] J. Finnegan and S. Brown, A Comparative Survey of
+LPWA Networking, CoRR, abs/1802.04222, 2018.
+[19] M. Bor and U. Roedig, LoRa Transmission Parameter
+Selection, 13th IEEE Conf. DCOSS’17, 27-34, 2017.
+[20] F. H. Khan et al. Formulation of State Transition Matrix, available https://www.dropbox.com/s/
+gwcdla01fmzfudx/extended version.pdf?dl=0.
+
+
